@@ -34,7 +34,7 @@ const { Content } = await render(entry);
             )
           }
           <h2 set:html={markdownify(title)} class="h3 mb-6 text-center"></h2>
-          <div class="prose prose-gray max-w-none text-left">
+          <div class="prose max-w-none text-left dark:prose-invert">
             <Content />
         </div>
       </div>
