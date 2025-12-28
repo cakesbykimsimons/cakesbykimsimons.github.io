@@ -12,7 +12,7 @@ import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://janedoe.com",
+  site: "https://cakesbykimsimons.github.io",
   base: "/",
   trailingSlash: "ignore",
   prefetch: {
@@ -35,7 +35,7 @@ export default defineConfig({
       themes: { // https://shiki.style/themes
         light: "light-plus",
         dark: "dark-plus",
-      } 
+      }
     },
     extendDefaultPlugins: true
   },
