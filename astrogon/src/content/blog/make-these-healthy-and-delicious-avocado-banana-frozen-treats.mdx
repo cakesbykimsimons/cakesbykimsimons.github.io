@@ -5,6 +5,7 @@ description: "I’ve noticed lately that I’m getting a lot of warnings in my s
 categories: [Kim's Kitchen]
 tags: []
 author: kim-simons
+recipe: ./avocado-banana-frozen-treats
 url: "https://www.riverreporter.com/stories/make-these-healthy-and-delicious-avocado-banana-frozen-treats,165415"
 image: "@assets/recipes/avocado-banana-frozen-treats.jpg"
 imageAlt: ""
@@ -13,36 +14,30 @@ showFeaturedImage: false
 
 import { Image } from 'astro:assets';
 import img1 from '@assets/recipes/avocado-banana-frozen-treats.jpg';
-import img2 from '@assets/blog/make-these-healthy-and-delicious-avocado-banana-frozen-treats/20240925-120547-52c-IMG_1544__1_.jpg';
-import img3 from '@assets/blog/make-these-healthy-and-delicious-avocado-banana-frozen-treats/filling.jpg';
-import img4 from '@assets/blog/make-these-healthy-and-delicious-avocado-banana-frozen-treats/step-two-chocolate.jpg';
+import img2 from '@assets/blog/make-these-healthy-and-delicious-avocado-banana-frozen-treats/filling.jpg';
+import img3 from '@assets/blog/make-these-healthy-and-delicious-avocado-banana-frozen-treats/step-two-chocolate.jpg';
 
 <figure class="blog-image">
     <Image src={img1} alt="" />
     <figcaption>
-        This month’s project is Avocado-Banana Frozen Treats. In creating the treats, I wanted to stay away from any ultra-processed component, and used only the best ingredients available: organic bananas, organic avocado, organic coconut milk, real maple syrup, organic lemons and dark—not milk—chocolate.
+        This month's project is Avocado-Banana Frozen Treats. In creating the treats, I wanted to stay away from any ultra-processed component, and used only the best ingredients available: organic bananas, organic avocado, organic coconut milk, real maple syrup, organic lemons and dark—not milk—chocolate.
     </figcaption>
 </figure>
 
 <figure class="blog-image">
-    <Image src={img2} alt=""/>
-    <figcaption>
-    </figcaption>
-</figure>
-
-<figure class="blog-image">
-    <Image src={img3} alt="" />
+    <Image src={img2} alt="" />
     <figcaption>
         The treats include avocado, which—among other things—helps boost good cholesterol. Then factor in the bananas, which contain fiber and antioxidants. The lemons are high in vitamin C, which helps fortify the immune system. In this step, cut up all the bananas and avocado, and blend till smooth. Pour into molds and freeze.
     </figcaption>
 </figure>
 
 <figure class="blog-image">
-    <Image src={img4} alt="" />
+    <Image src={img3} alt="" />
     <figcaption>
         While your treats are freezing, melt the chocolate. Then use it to coat the frozen treats.
     </figcaption>
 </figure>
+
 
 I’ve noticed lately that I’m getting a lot of warnings in my social media feed regarding processed food. And a lot of that information is downright scary.
 
@@ -88,9 +83,7 @@ As always, feel free to experiment with flavor combinations of your own. Part of
 
 Plus, delicious, healthy treats such as these can go a long way in helping you eliminate ultra-processed foods in your diet.
 
-
-
-
+<RecipeEmbed recipeId="avocado-banana-frozen-treats" />
 
 
 [Kim’s main source: Miller, Korin. “What Are Ultra-Processed Foods, and Why Are They So Bad for You? Experts Explain.” Prevention Magazine. February 7, 2023. www.prevention.com. Accessed Sept. 10, 2024. Web.]
