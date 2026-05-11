@@ -61,6 +61,7 @@ const blog = defineCollection({
       complexity: z.number().default(1),
       hideToc: z.boolean().default(false),
       showFeaturedImage: z.boolean().default(true),
+      url: z.string().optional(),
     }),
 });
 

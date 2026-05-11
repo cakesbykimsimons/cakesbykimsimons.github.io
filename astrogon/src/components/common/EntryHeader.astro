@@ -29,6 +29,7 @@ interface EntryData {
   categories?: string[];
   tags?: string[];
   complexity?: number;
+  url?: string;
 }
 
 interface Props {
@@ -69,6 +70,7 @@ const {
   pubDate,
   modDate,
   complexity,
+  url,
 } = entry.data as EntryData;
 
 categories?.sort((a: string, b: string) => a.localeCompare(b));
@@ -150,6 +152,14 @@ tags?.sort((a: string, b: string) => a.localeCompare(b));
             </li>
           )}
         </ul>
+        {url && (
+          <p class="text-sm text-gray-600 dark:text-gray-300 mt-3">
+            Originally published at:{" "}
+            <a href={url} target="_blank" rel="noopener noreferrer" class="underline hover:text-gray-800 dark:hover:text-gray-100">
+              {url}
+            </a>
+          </p>
+        )}
       </div>
     )
   }
