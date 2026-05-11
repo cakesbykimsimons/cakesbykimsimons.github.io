@@ -107,7 +107,7 @@ const {
         <div class="glass rounded-lg p-3">
           {instructions.map((step: string, index: number) => (
             <div class="flex gap-3 py-2 border-b border-border dark:border-darkmode-border last:border-0">
-              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-txt-p dark:bg-darkmode-txt-p text-white dark:text-darkmode-bg flex items-center justify-center text-xs font-bold">{index + 1}</span>
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-txt-p dark:bg-darkmode-txt-p text-white dark:text-darkmode-bg-p flex items-center justify-center text-xs font-bold">{index + 1}</span>
               <span class="text-sm text-txt-p dark:text-darkmode-txt-p pt-0.5" set:html={step} />
             </div>
           ))}
