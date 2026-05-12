@@ -1,6 +1,6 @@
 ---
 import CollectionLayout from "@components/blog/CollectionLayout.astro";
-import { getTaxaMultiset, getTaxa } from "@lib/taxonomyParser";
+import { getTaxaMultiset, getTaxa, getSidebarTaxa } from "@lib/taxonomyParser";
 import { getEntries, getIndex } from "@lib/contentParser";
 import { sortByDate } from "@lib/sortFunctions";
 import type { BlogEntry } from "@/types";
@@ -13,7 +13,7 @@ const entries = (await getEntries("blog", sortByDate)) as BlogEntry[];
 
 const allCategories = await getTaxaMultiset("blog", "categories");
 const categories = await getTaxa("blog", "categories");
-const tags = await getTaxa("blog", "tags");
+const tags = await getSidebarTaxa("blog", "tags");
 
 const entriesPerPage = 4;
 const indexOfLastEntry = currentPageIndex * entriesPerPage;

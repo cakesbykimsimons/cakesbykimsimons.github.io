@@ -4,8 +4,8 @@ import { getTaxa, getTaxaMultiset } from "@lib/taxonomyParser";
 
 const collection = "blog";
 const taxonomy = "tags";
-const taxa = await getTaxa(collection, taxonomy);
 const allTaxa = await getTaxaMultiset(collection, taxonomy);
+const taxa = await getTaxa(collection, taxonomy, allTaxa);
 ---
 
 <TaxaLayout taxonomy={taxonomy} taxa={taxa} allTaxa={allTaxa} />
