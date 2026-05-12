@@ -19,15 +19,15 @@ const { title, image, imageAlt } = entry.data;
       class="group hover:opacity-100"
       href={`/${basePath}/${entry.id.replace("/-index", "")}`}
     >
-      <div class="relative rounded-lg pb-9/16 overflow-hidden">
+      <div class="relative rounded-lg pb-[100%] overflow-hidden">
         {
           image && (
             <Image
               class="absolute object-cover w-full h-full group-hover:scale-[105%] transition-all duration-300"
               src={image}
               alt={imageAlt}
-              width={1280}
-              height={720}
+              width={800}
+              height={800}
               loading="eager"
             />
           )
