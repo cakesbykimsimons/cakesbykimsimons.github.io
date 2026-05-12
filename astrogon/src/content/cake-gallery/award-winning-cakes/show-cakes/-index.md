@@ -1,6 +1,6 @@
 ---
 title: Show Cakes
 description: Character creation information
-image: "@assets/docs/characters/cover.jpg"
+image: "@assets/gallery-thumbs/cake-gallery/sea-turtle-cake.jpg"
 imageAlt: A white knight, painted dramatically
 ---

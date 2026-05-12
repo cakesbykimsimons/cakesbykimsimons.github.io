@@ -1,7 +1,7 @@
 ---
-title: Backgrounds
+title: Child Travel Cake
 description: "A collection of backgrounds that shape a character’s skills, motivations, and story before becoming an adventurer."
-image: "@assets/docs/characters/backgrounds/cover.jpg"
+image: "@assets/gallery-thumbs/cake-gallery/child-travel-cake.jpg"
 imageAlt: "Painting of a hooded figure with light beaming out from his chest"
 pubDate: 2024-07-15
 modDate: 2024-08-03
