@@ -13,7 +13,7 @@ interface Props {
 }
 
 const { entry, relatedEntries }: Props = Astro.props;
-const { title, description, autodescription, image, hideToc } = entry.data;
+const { title, description, autodescription, image, hideToc, showFeaturedImage } = entry.data;
 const { Content, headings } = await render(entry);
 
 const descriptionLenth = 200; // the max length in characters for the auto-generated description
@@ -34,7 +34,7 @@ const entryDescription =
         <section>
           <EntryHeader
             entry={entry}
-            showImage
+            showImage={showFeaturedImage}
             showAuthor
             showDate
             showReadingTime

@@ -55,10 +55,13 @@ const blog = defineCollection({
       image: image().optional(),
       imageAlt: z.string().default(""),
       author: reference("authors").optional(),
+      recipe: reference("recipes").optional(),
       categories: z.array(z.string()).optional(),
       tags: z.array(z.string()).optional(),
       complexity: z.number().default(1),
       hideToc: z.boolean().default(false),
+      showFeaturedImage: z.boolean().default(true),
+      url: z.string().optional(),
     }),
 });
 

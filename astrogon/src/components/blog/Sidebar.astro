@@ -1,5 +1,5 @@
 ---
-import { lowerHumanize, upperHumanize } from "@lib/textConverter";
+import { lowerHumanize, slugify, upperHumanize } from "@lib/textConverter";
 import { FaRegFolder, FaHashtag } from "react-icons/fa";
 import Button from "@components/common/Button.astro";
 import { ScrollArea } from "@components/common/shortcodes/ScrollArea";
@@ -61,7 +61,7 @@ const { tags, categories, allCategories }: Props = Astro.props;
               <li class="inline-block m-1">
                 <Button
                   label={tag}
-                  link={`/blog/tags/${lowerHumanize(tag)}`}
+                  link={`/blog/tags/${slugify(tag)}`}
                   type="secondary"
                 />
               </li>

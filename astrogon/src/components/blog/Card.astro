@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import type { BlogEntry } from "@/types";
 import { upperHumanize, plainify, slugify } from "@lib/textConverter";
 import {
@@ -23,6 +24,8 @@ const {
   categories,
   tags,
   complexity,
+  image,
+  imageAlt,
 } = entry.data;
 
 const descriptionLength = 200;
@@ -35,56 +38,106 @@ const entryDescription =
 ---
 
 <div class="h-full m-2 pl-0 bg-gradient-to-br gradient rounded-lg">
-  <div class="glass h-full rounded-lg p-4 intersect:animate-fadeUp opacity-0">
-    <h4 class="mb-2">
-      <a href={`/blog/${entry.id}`}>
-        {title}
-      </a>
-    </h4>
-    <ul class="mb-2">
-      {
-        categories && (
-          <li class="mr-0 inline-block">
-            {categories.map((category: string, index: number) => (
-              <a href={`/blog/categories/${slugify(category)}`}>
-                <FaRegFolder className={"ml-2 -mt-1 inline-block"} />
-                {upperHumanize(category)}
-              </a>
-            ))}
-          </li>
-        )
-      }
-      <!-- { tags && (
-        <li class="mr-0 inline-block">
+  <div class="glass h-full rounded-lg intersect:animate-fadeUp opacity-0">
+    <div class="blog-card-inner">
+      {image && (
+        <a href={`/blog/${entry.id}`} class="blog-card-image-wrapper">
+          <Image
+            class="w-full object-cover blog-card-img"
+            src={image}
+            alt={imageAlt || title}
+            width={480}
+            height={320}
+            loading="lazy"
+          />
+        </a>
+      )}
+      <div class="blog-card-content p-4">
+        <h4 class="mb-2">
+          <a href={`/blog/${entry.id}`}>{title}</a>
+        </h4>
+        <ul class="mb-2">
           {
-            tags.map((tag: string, index: number) => (
-              <a href={`/blog/tags/${slugify(tag)}`}>
-                <FaHashtag className={"ml-2 -mt-1 inline-block"} />
-                {lowerHumanize(tag)}
-              </a>
-            ))
+            categories && (
+              <li class="mr-0 inline-block">
+                {categories.map((category: string, index: number) => (
+                  <a href={`/blog/categories/${slugify(category)}`}>
+                    <FaRegFolder className={"ml-2 -mt-1 inline-block"} />
+                    {upperHumanize(category)}
+                  </a>
+                ))}
+              </li>
+            )
           }
-        </li>
-      )} -->
-      {
-        entryDate && (
-          <li class="mr-0 inline-block">
-            <FaRegCalendarAlt className={"ml-2 -mt-1 inline-block"} />
-            {entryDate}
-          </li>
-        )
-      }
-      {
-        complexity > 0 && (
-          <li class="mr-0 inline-block">
-            <FaRegClock className={"ml-2 -mt-1 inline-block"} />
-            {entryReadingTime}
-          </li>
-        )
-      }
-    </ul>
-    <p class="">
-      {entryDescription}
-    </p>
+          <!-- { tags && (
+            <li class="mr-0 inline-block">
+              {
+                tags.map((tag: string, index: number) => (
+                  <a href={`/blog/tags/${slugify(tag)}`}>
+                    <FaHashtag className={"ml-2 -mt-1 inline-block"} />
+                    {lowerHumanize(tag)}
+                  </a>
+                ))
+              }
+            </li>
+          )} -->
+          {
+            entryDate && (
+              <li class="mr-0 inline-block">
+                <FaRegCalendarAlt className={"ml-2 -mt-1 inline-block"} />
+                {entryDate}
+              </li>
+            )
+          }
+          {
+            complexity > 0 && (
+              <li class="mr-0 inline-block">
+                <FaRegClock className={"ml-2 -mt-1 inline-block"} />
+                {entryReadingTime}
+              </li>
+            )
+          }
+        </ul>
+        <p class="">
+          {entryDescription}
+        </p>
+      </div>
+    </div>
   </div>
 </div>
+
+<style>
+  .blog-card-inner {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .blog-card-image-wrapper {
+    overflow: hidden;
+    height: 224px;
+    border-radius: 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .blog-card-inner {
+      flex-direction: row;
+    }
+
+    .blog-card-image-wrapper {
+      width: 240px;
+      height: auto;
+      flex-shrink: 0;
+      border-radius: 0.5rem;
+    }
+  }
+
+  .blog-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .blog-card-content {
+    flex: 1;
+  }
+</style>
