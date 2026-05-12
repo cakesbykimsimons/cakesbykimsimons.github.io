@@ -79,20 +79,6 @@ tags?.sort((a: string, b: string) => a.localeCompare(b));
 
 <div class="mt-2">
   {
-    image && showImage && (
-      <div class="mb-8 glass rounded-lg intersect:animate-fadeDown opacity-0 intersect-no-queue">
-        <Image
-          class="w-full rounded-lg"
-          src={image}
-          alt={imageAlt || ""}
-          height={500}
-          width={1200}
-          loading="eager"
-        />
-      </div>
-    )
-  }
-  {
     showInfo && (
       <div class="glass mb-8 p-4 rounded-lg intersect:animate-fade opacity-0 intersect-no-queue">
         <h1 set:html={markdownify(title)} class="mb-4" />
@@ -159,6 +145,18 @@ tags?.sort((a: string, b: string) => a.localeCompare(b));
               {url}
             </a>
           </p>
+        )}
+        {image && showImage && (
+          <div class="mt-6 glass rounded-lg intersect:animate-fadeDown opacity-0 intersect-no-queue">
+            <Image
+              class="w-full rounded-lg"
+              src={image}
+              alt={imageAlt || ""}
+              height={500}
+              width={1200}
+              loading="eager"
+            />
+          </div>
         )}
       </div>
     )
