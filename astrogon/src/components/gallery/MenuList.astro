@@ -1,0 +1,24 @@
+---
+import type { MenuItem as MenuItemType } from "@/types";
+import MenuItem from "@components/gallery/MenuItem.astro";
+
+interface Props {
+  items: MenuItemType[];
+  currentPage: string;
+  basePath: string;
+  level: number;
+}
+
+const { items, currentPage, basePath, level } = Astro.props;
+---
+
+<ul class="list-none m-0">
+  {items.map((item) => (
+    <MenuItem
+      item={item}
+      currentPage={currentPage}
+      basePath={basePath}
+      level={level}
+    />
+  ))}
+</ul>
