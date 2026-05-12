@@ -2,6 +2,7 @@
 title: Avocado-Banana Frozen Treats
 description: A refreshing frozen dessert blending creamy avocado and sweet banana, enriched with coconut cream and maple syrup, then dipped in a crisp dark chocolate shell.
 image: "@assets/recipes/avocado-banana-frozen-treats.jpg"
+imageAlt: "Two green avocado-banana frozen treats on sticks arranged on a plate with one split in half"
 author: kim-simons
 prepTime: 20
 cook_time: 270

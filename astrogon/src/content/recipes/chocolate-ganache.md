@@ -2,6 +2,7 @@
 title: Chocolate Ganache
 description: A rich, velvety chocolate ganache made with semi-sweet chocolate and heavy cream, perfect as a glaze or filling for cakes and pastries.
 image: "@assets/blog/make-this-candle-cake-centerpiece/candle-cake.jpg"
+imageAlt: "A white candle cake centerpiece decorated to look like a large candle"
 author: kim-simons
 prepTime: 10
 cook_time: 5
