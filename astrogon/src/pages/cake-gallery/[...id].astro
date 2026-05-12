@@ -1,12 +1,12 @@
 ---
-import type { DocsEntry, MenuItem } from "@/types";
-import EntryLayout from "@components/docs/EntryLayout.astro";
-import CollectionLayout from "@components/docs/CollectionLayout.astro";
+import type { CakeGalleryEntry, MenuItem } from "@/types";
+import EntryLayout from "@components/cake-gallery/EntryLayout.astro";
+import CollectionLayout from "@components/cake-gallery/CollectionLayout.astro";
 import { getEntries, getEntriesInGroup, getGroups } from "@lib/contentParser";
 import { sortByTitle } from "@lib/sortFunctions";
 
 export async function getStaticPaths() {
-  const entries = (await getEntries("docs", sortByTitle)) as DocsEntry[];
+  const entries = (await getEntries("cakeGallery", sortByTitle)) as CakeGalleryEntry[];
 
   const paths = entries.map((entry) => {
     const segments = entry.id.replace("/-index", "").split("/");
@@ -30,19 +30,19 @@ export async function getStaticPaths() {
 const { entry, isGroup } = Astro.props;
 const groupName = entry.id.replace("/-index", "");
 const groupEntries = isGroup
-  ? ((await getEntriesInGroup("docs", groupName, sortByTitle)) as DocsEntry[])
+  ? ((await getEntriesInGroup("cakeGallery", groupName, sortByTitle)) as CakeGalleryEntry[])
   : [];
 
 // Construct Doc Browser menu
 const browserMenu: MenuItem[] = [];
-const groups = (await getGroups("docs", sortByTitle)) as DocsEntry[];
+const groups = (await getGroups("cakeGallery", sortByTitle)) as CakeGalleryEntry[];
 await Promise.all(
   groups.map(async (group) => {
     const groupEntries = (await getEntriesInGroup(
-      "docs",
+      "cakeGallery",
       group.id.replace("/-index", ""),
       sortByTitle
-    )) as DocsEntry[];
+    )) as CakeGalleryEntry[];
     browserMenu.push({
       title: group.data.title,
       id: group.id.replace("/-index", ""),
