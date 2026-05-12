@@ -1,34 +1,17 @@
 ---
-import BaseLayout from "@components/base/BaseLayout.astro";
-import DocCard from "@components/cake-gallery/Card.astro";
-import PageHeader from "@components/common/PageHeader.astro";
+import GalleryCollectionLayout from "@components/gallery/CollectionLayout.astro";
 import type { CakeGalleryEntry } from "@/types";
 
 interface Props {
   collectionIndex: CakeGalleryEntry;
-  entries: CakeGalleryEntry[]; // this could either be the set of entries in a doc group, or the set of indices of the doc groups
+  entries: CakeGalleryEntry[];
 }
 
 const { collectionIndex, entries } = Astro.props;
 ---
 
-<BaseLayout
-  title={collectionIndex.data.title}
-  image={collectionIndex.data.image?.src}
-  description={collectionIndex.data.description}
->
-  <PageHeader title={collectionIndex.data.title} />
-  <section class="section">
-    <div class="container">
-      <div class="row">
-        {
-          entries.map((entry) => (
-            <div class="md:col-6 lg:col-4 h-min p-2">
-              <DocCard entry={entry} />
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-</BaseLayout>
+<GalleryCollectionLayout
+  collectionIndex={collectionIndex}
+  entries={entries}
+  basePath="cake-gallery"
+/>
