@@ -1,5 +1,6 @@
 ---
 import { getImagesForCake, type CakeImage } from "@lib/galleryUtils";
+import CakeGallery from "@components/cake-gallery/CakeGallery";
 
 interface Props {
   entryId: string;
@@ -9,22 +10,4 @@ const { entryId } = Astro.props;
 const images: CakeImage[] = await getImagesForCake(entryId);
 ---
 
-<div class="gallery-masonry">
-  {images.map((image: CakeImage) => (
-    <div class="gallery-item">
-      <div class="glass rounded-lg p-3">
-        <img
-          src={image.src}
-          alt={image.caption}
-          class="w-full rounded"
-          loading="lazy"
-        />
-      </div>
-      {image.caption && (
-        <div class="mt-2 text-center text-sm glass px-3 py-2 rounded-lg">
-          {image.caption}
-        </div>
-      )}
-    </div>
-  ))}
-</div>
+<CakeGallery client:load images={images.map((img) => ({ src: img.src, caption: img.caption }))} />
