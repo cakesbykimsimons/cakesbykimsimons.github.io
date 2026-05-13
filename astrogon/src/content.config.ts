@@ -69,8 +69,6 @@ const cakeGallery = defineCollection({
   loader: glob({ pattern: "**\/[^_]*.{md,mdx}", base: "./src/content/cake-gallery" }),
   schema: ({ image }) =>
     searchable.extend({
-      pubDate: z.date().optional(),
-      modDate: z.date().optional(),
       image: image().optional(),
       imageAlt: z.string().default(""),
       hideToc: z.boolean().default(false),

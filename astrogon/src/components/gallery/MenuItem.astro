@@ -15,7 +15,7 @@ const { item, currentPage, basePath, level } = Astro.props;
 <li style={level > 0 ? `margin-left: ${level}rem` : ""}>
   <a
     href={`/${basePath}/${item.id}`}
-    class={`w-full leading-none no-underline ${item.id === currentPage ? "font-bold" : ""}`}
+    class={`w-full leading-none no-underline block px-2 py-1 rounded ${item.id === currentPage ? "font-bold" : ""} hover:bg-bg-s dark:hover:bg-darkmode-bg-s`}
   >
     {item.title}
   </a>
