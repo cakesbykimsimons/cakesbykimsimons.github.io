@@ -44,22 +44,22 @@ export default function CakeGallery({ images }: Props) {
   if (!images.length) return null;
 
   return (
-    <div class="gallery-masonry">
+    <div className="gallery-masonry">
       {images.map((image, i) => (
-        <div class="gallery-item">
+        <div key={i} className="gallery-item">
           <div
-            class="glass rounded-lg p-3 cursor-pointer"
+            className="glass rounded-lg p-3 cursor-pointer"
             onClick={() => openLightbox(i)}
           >
             <img
               src={image.src}
               alt={image.caption}
-              class="w-full rounded"
+              className="w-full rounded"
               loading="lazy"
             />
           </div>
           {image.caption && (
-            <div class="mt-2 text-center text-sm glass px-3 py-2 rounded-lg">
+            <div className="mt-2 text-center text-sm glass px-3 py-2 rounded-lg">
               {image.caption}
             </div>
           )}
