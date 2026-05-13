@@ -7,4 +7,3 @@ imageAlt: "A detailed sculpted candy show piece cake"
 hideToc: true
 
 ---
-Candy Show Piece

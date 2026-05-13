@@ -7,6 +7,9 @@ imageAlt: "A detailed sculpted india peacock wedding cake"
 hideToc: true
 
 ---
-India Peacock Wedding Cake
-2012 - National Capital Area Cake Show, Annadale, VA.Wedding Cake Theme – Cake in a Bag** 2nd Place in Wedding Cakes, Master's Division** People’s Choice
-The peacock symbolizes many things. It is a symbol of beauty, prosperity, royalty, love, compassion, soul and peace. It is considered sacred in India. The semi-precious stones symbolize love, protection and luck. The water lily symbolizes life and love.
+#### 2012 - National Capital Area Cake Show, Annadale, VA.
+**Wedding Cake Theme** – *Cake in a Bag*
+- 2nd Place in Wedding Cakes, Master's Division
+- People’s Choice
+
+*The peacock symbolizes many things. It is a symbol of beauty, prosperity, royalty, love, compassion, soul and peace. It is considered sacred in India. The semi-precious stones symbolize love, protection and luck. The water lily symbolizes life and love.*

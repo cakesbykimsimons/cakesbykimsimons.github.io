@@ -6,4 +6,9 @@ imageAlt: "A detailed sculpted child travel cake"
 hideToc: true
 ---
 
-This themed travel cake was awarded Best In Show and People's Choice at the 2011 Garden State Cake Show in Burlington, NJ. The show theme was "What I Want to Be When I Grow Up." It placed 1st in Themed Cake at Professional Level and won Division Winner of Professional Level.
+#### 2011 - Garden State Cake Show, Burlington, NJ  
+**Show Theme** - *What I Want to be When I Grow Up*
+- 1st Place in Themed Cake at Professional Level
+- Division Winner of Professional Level
+- People’s Choice
+- Best In Show

@@ -7,5 +7,8 @@ imageAlt: "A detailed sculpted i am crow cake"
 hideToc: true
 
 ---
-"I am Crow" Native American Cake
-2014 - National Capital Area Cake Show, Fairfax, VA.Show Theme -I am Crow** 1st Place in Themed Cake at Master Level** Division Winner of Master Level** Grand Division Winner
+#### 2014 - National Capital Area Cake Show, Fairfax, VA.
+**Show Theme** - *I am Crow*
+- 1st Place in Themed Cake at Master Level
+- Division Winner of Master Level
+- Grand Division Winner

@@ -7,5 +7,5 @@ imageAlt: "A detailed sculpted painted turtle cake"
 hideToc: true
 
 ---
-Painted Turtle Cake
-2011 - National Capital Area Cake Show, Annadale, VA.** 1st Place with Special Techniques, Master's Division
+#### 2011 - National Capital Area Cake Show, Annadale, VA.
+- 1st Place with Special Techniques, Master's Division

@@ -7,5 +7,6 @@ imageAlt: "A detailed sculpted fiesta wedding cake"
 hideToc: true
 
 ---
-Fiesta Wedding Cake
-2013 - Connecticut Cake Competition, Hartford. CT.Show Theme - Sugar Fiesta** 1st Place in Wedding Cakes, Master's Division
+#### 2013 - Connecticut Cake Competition, Hartford. CT.
+**Show Theme** - *Sugar Fiesta*
+- 1st Place in Wedding Cakes, Master's Division
