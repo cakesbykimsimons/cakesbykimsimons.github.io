@@ -11,7 +11,7 @@ export interface CakeImage {
   filename: string;
 }
 
-const allImages = import.meta.glob('@/assets/cake-gallery/**/*.{jpg,jpeg}', { eager: true, as: 'url' });
+const allImages = import.meta.glob('@/assets/cake-gallery/**/*.{jpg,jpeg}', { eager: true, query: '?url', import: 'default' });
 
 // Glob all gallery.json files at build time
 const allGalleryConfigs = import.meta.glob('@/assets/cake-gallery/**/gallery.json', { eager: true });
@@ -24,13 +24,9 @@ function resolvePath(key: string): string {
 // Build a flat map from resolved asset path -> URL
 function buildPathToUrlMap(): Record<string, string> {
   const map: Record<string, string> = {};
-  for (const [key, module] of Object.entries(allImages)) {
+  for (const [key, url] of Object.entries(allImages)) {
     const assetPath = resolvePath(key);
-    // With as: 'url', the module default is the URL string
-    const url = typeof module === 'object' && module !== null && 'default' in module
-      ? (module as { default: string }).default!
-      : (module as unknown as string);
-    map[assetPath] = url;
+    map[assetPath] = url as string;
   }
   return map;
 }
@@ -98,7 +94,7 @@ export async function getImagesForCake(cakeSlug: string): Promise<CakeImage[]> {
       const match = matchingImages.find(([key]) => key.split('/').pop() === jsonEntry.file);
       if (match) {
         entries.push({
-          src: (match[1] as { default: string }).default,
+          src: match[1] as string,
           caption: jsonEntry.caption || '',
           filename: jsonEntry.file,
         });
