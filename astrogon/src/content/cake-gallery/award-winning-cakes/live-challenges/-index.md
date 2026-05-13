@@ -1,6 +1,6 @@
 ---
 title: Live Challenges
-description: Character creation information
+description: "Live demonstration cake challenges and competitions."
 image: "@assets/gallery-thumbs/cake-gallery/live-challenges.jpg"
-imageAlt: A white knight, painted dramatically
+imageAlt: "Live challenge cakes"
 ---

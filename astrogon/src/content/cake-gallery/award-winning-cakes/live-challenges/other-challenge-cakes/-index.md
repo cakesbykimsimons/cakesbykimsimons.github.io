@@ -1,6 +1,0 @@
----
-title: Other Challenge Cakes
-description: Character creation information
-image: "@assets/gallery-thumbs/cake-gallery/live-challenges.jpg"
-imageAlt: A white knight, painted dramatically
----

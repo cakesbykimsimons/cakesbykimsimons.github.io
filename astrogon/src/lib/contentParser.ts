@@ -92,6 +92,19 @@ export const getAllChildrenInGroup = async (
   return entries;
 };
 
+// Fetch root-level entries (direct children of the collection base directory)
+export const getRootEntries = async (
+  collection: CollectionKey,
+  sortFunction?: ((array: any[]) => any[]),
+): Promise<GenericEntry[]> => {
+  let entries = await getEntries(collection, sortFunction, false);
+  entries = entries.filter((data: GenericEntry) => {
+    const segments = data.id.split("/");
+    return segments.length === 1 && !data.id.startsWith('-');
+  });
+  return entries;
+};
+
 // Recursively build a MenuItem tree from collection entries
 export const buildMenuTree = async (
   collection: CollectionKey,
@@ -99,7 +112,9 @@ export const buildMenuTree = async (
   parentPath: string = ""
 ): Promise<MenuItem[]> => {
   const childGroups = await getGroups(collection, sortFunction, parentPath);
-  const childEntries = await getEntriesInGroup(collection, parentPath, sortFunction);
+  const childEntries = parentPath
+    ? await getEntriesInGroup(collection, parentPath, sortFunction)
+    : await getRootEntries(collection, sortFunction);
   const menuItems: MenuItem[] = [];
 
   for (const group of childGroups) {

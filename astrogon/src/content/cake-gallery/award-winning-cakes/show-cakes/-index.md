@@ -1,6 +1,6 @@
 ---
 title: Show Cakes
-description: Character creation information
+description: "Award-winning sculpted show cakes from cake competitions."
 image: "@assets/gallery-thumbs/cake-gallery/sea-turtle-cake.jpg"
-imageAlt: A white knight, painted dramatically
+imageAlt: "Show cakes"
 ---

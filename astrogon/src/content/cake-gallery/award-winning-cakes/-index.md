@@ -1,6 +1,6 @@
 ---
 title: Award Winning Cakes
-description: Character creation information
+description: "Competition-winning cake designs from shows and contests."
 image: "@assets/gallery-thumbs/cake-gallery/bear-cake.jpg"
-imageAlt: A white knight, painted dramatically
+imageAlt: "Award winning cakes"
 ---

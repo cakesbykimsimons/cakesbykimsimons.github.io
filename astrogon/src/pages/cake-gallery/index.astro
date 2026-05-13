@@ -1,11 +1,13 @@
 ---
 import CollectionLayout from "@components/cake-gallery/CollectionLayout.astro";
-import { getIndex, getGroups } from "@lib/contentParser";
+import { getIndex, getGroups, getRootEntries } from "@lib/contentParser";
 import type { CakeGalleryEntry } from "@/types";
 import { sortByTitle } from "@lib/sortFunctions";
 
 const collectionIndex = (await getIndex("cakeGallery")) as CakeGalleryEntry;
 const groupIndices = (await getGroups("cakeGallery", sortByTitle)) as CakeGalleryEntry[];
+const rootEntries = (await getRootEntries("cakeGallery", sortByTitle)) as CakeGalleryEntry[];
+const allEntries = [...groupIndices, ...rootEntries];
 ---
 
-<CollectionLayout entries={groupIndices} collectionIndex={collectionIndex} />
+<CollectionLayout entries={allEntries} collectionIndex={collectionIndex} />
