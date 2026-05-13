@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 interface GalleryImage {
   src: string;
   caption: string;
+  credit: string;
 }
 
 interface Props {
@@ -57,6 +58,11 @@ export default function CakeGallery({ images }: Props) {
               className="w-full rounded"
               loading="lazy"
             />
+            {image.credit && (
+              <p className="mt-1 text-xs italic text-right text-muted-foreground/60">
+                {image.credit}
+              </p>
+            )}
           </div>
           {image.caption && (
             <div className="mt-2 text-center text-sm glass px-3 py-2 rounded-lg">
@@ -101,8 +107,13 @@ export default function CakeGallery({ images }: Props) {
               alt={images[index].caption}
               className="max-h-[80vh] max-w-full rounded object-contain"
             />
+          {images[index].credit && (
+              <p className="mt-0.5 text-xs italic text-right text-white/50">
+                {images[index].credit}
+              </p>
+            )}
             {images[index].caption && (
-              <p className="mt-2 text-center text-sm text-white/70">{images[index].caption}</p>
+              <p className="mt-1 text-center text-sm text-white/70">{images[index].caption}</p>
             )}
           </div>
 

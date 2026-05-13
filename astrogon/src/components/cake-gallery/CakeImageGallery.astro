@@ -10,4 +10,4 @@ const { entryId } = Astro.props;
 const images: CakeImage[] = await getImagesForCake(entryId);
 ---
 
-<CakeGallery client:load images={images.map((img) => ({ src: img.src, caption: img.caption }))} />
+<CakeGallery client:load images={images.map((img) => ({ src: img.src, caption: img.caption, credit: img.credit }))} />

@@ -2,12 +2,14 @@
 
 interface GalleryEntry {
   file: string;
-  caption: string;
+  caption?: string;
+  credit?: string;
 }
 
 export interface CakeImage {
   src: string;
   caption: string;
+  credit: string;
   filename: string;
 }
 
@@ -86,6 +88,7 @@ export async function getImagesForCake(cakeSlug: string): Promise<CakeImage[]> {
       entries.push({
         src: pathToUrlMap[resolvedPath],
         caption: jsonEntry.caption || '',
+        credit: jsonEntry.credit || '',
         filename,
       });
     } else if (!jsonEntry.file.includes('../')) {
@@ -96,6 +99,7 @@ export async function getImagesForCake(cakeSlug: string): Promise<CakeImage[]> {
         entries.push({
           src: match[1] as string,
           caption: jsonEntry.caption || '',
+          credit: jsonEntry.credit || '',
           filename: jsonEntry.file,
         });
       }
