@@ -1,5 +1,5 @@
 import { getEntry, getCollection, type CollectionKey } from "astro:content";
-import type { GenericEntry } from "@/types";
+import type { GenericEntry, MenuItem } from "@/types";
 
 export const getIndex = async (collection: CollectionKey): Promise<GenericEntry> => {
   const index = await getEntry(collection, "-index");
@@ -38,29 +38,102 @@ export const getEntriesBatch = async (
   return allCollections.flat();
 };
 
-// Fetch top-level folders within a collection
+// Fetch all subgroups (any depth) within the specified parent path
 export const getGroups = async (
   collection: CollectionKey,
-  sortFunction?: ((array: any[]) => any[])
+  sortFunction?: ((array: any[]) => any[]),
+  parentPath: string = ""
 ): Promise<GenericEntry[]> => {
   let entries = await getEntries(collection, sortFunction, false);
+  const prefix = parentPath ? `${parentPath}/` : "";
+  const prefixLen = prefix.length;
   entries = entries.filter((entry: GenericEntry) => {
-    const segments = entry.id.split("/");
-    return segments.length === 2 && segments[1] == "-index";
+    if (!entry.id.startsWith(prefix)) return false;
+    const remainder = entry.id.slice(prefixLen);
+    const segments = remainder.split("/");
+    return segments.length === 2 && segments[1] === "-index";
   });
   return entries;
 };
 
-// Fetch entries within the specified collection and group
+// Fetch entries within the specified collection and group (immediate children only)
 export const getEntriesInGroup = async (
   collection: CollectionKey,
   groupSlug: string,
   sortFunction?: ((array: any[]) => any[]),
 ): Promise<GenericEntry[]> => {
-  let entries = await getEntries(collection, sortFunction);
-  entries = entries.filter((data: any) => {
-    const segments = data.id.split("/");
-    return segments[0] === groupSlug && segments.length > 1 && segments[1] !== "-index";
+  let entries = await getEntries(collection, sortFunction, false);
+  const prefix = `${groupSlug}/`;
+  const prefixLen = prefix.length;
+  entries = entries.filter((data: GenericEntry) => {
+    if (!data.id.startsWith(prefix)) return false;
+    const remainder = data.id.slice(prefixLen);
+    const segments = remainder.split("/");
+    return segments.length === 1 && segments[0] !== "-index";
   });
   return entries;
+};
+
+// Fetch all immediate children (both subgroups and regular entries) within a group
+export const getAllChildrenInGroup = async (
+  collection: CollectionKey,
+  groupSlug: string,
+  sortFunction?: ((array: any[]) => any[]),
+): Promise<GenericEntry[]> => {
+  let entries = await getEntries(collection, sortFunction, false);
+  const prefix = `${groupSlug}/`;
+  const prefixLen = prefix.length;
+  entries = entries.filter((data: GenericEntry) => {
+    if (!data.id.startsWith(prefix)) return false;
+    const remainder = data.id.slice(prefixLen);
+    const segments = remainder.split("/");
+    return (segments.length === 1 && segments[0] !== "-index") || (segments.length === 2 && segments[1] === "-index");
+  });
+  return entries;
+};
+
+// Fetch root-level entries (direct children of the collection base directory)
+export const getRootEntries = async (
+  collection: CollectionKey,
+  sortFunction?: ((array: any[]) => any[]),
+): Promise<GenericEntry[]> => {
+  let entries = await getEntries(collection, sortFunction, false);
+  entries = entries.filter((data: GenericEntry) => {
+    const segments = data.id.split("/");
+    return segments.length === 1 && !data.id.startsWith('-');
+  });
+  return entries;
+};
+
+// Recursively build a MenuItem tree from collection entries
+export const buildMenuTree = async (
+  collection: CollectionKey,
+  sortFunction?: ((array: any[]) => any[]),
+  parentPath: string = ""
+): Promise<MenuItem[]> => {
+  const childGroups = await getGroups(collection, sortFunction, parentPath);
+  const childEntries = parentPath
+    ? await getEntriesInGroup(collection, parentPath, sortFunction)
+    : await getRootEntries(collection, sortFunction);
+  const menuItems: MenuItem[] = [];
+
+  for (const group of childGroups) {
+    const groupSlug = group.id.replace("/-index", "");
+    const subChildren = await buildMenuTree(collection, sortFunction, groupSlug);
+    menuItems.push({
+      title: group.data.title,
+      id: groupSlug,
+      children: subChildren,
+    });
+  }
+
+  for (const entry of childEntries) {
+    menuItems.push({
+      title: entry.data.title,
+      id: entry.id,
+      children: [],
+    });
+  }
+
+  return menuItems;
 };

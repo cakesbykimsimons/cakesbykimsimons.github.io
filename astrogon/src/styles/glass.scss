@@ -30,3 +30,22 @@
   // @apply dark:from-darkmode-txt-s dark:via-transparent dark:to-transparent;
 }
 
+// Cake Gallery Masonry
+.gallery-masonry {
+  columns: 3;
+  column-gap: 1.5rem;
+
+  @media (max-width: 1024px) {
+    columns: 2;
+  }
+
+  @media (max-width: 768px) {
+    columns: 1;
+  }
+}
+
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+}
+

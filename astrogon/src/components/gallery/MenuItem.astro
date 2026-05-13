@@ -1,0 +1,30 @@
+---
+import MenuList from "@components/gallery/MenuList.astro";
+import type { MenuItem as MenuItemType } from "@/types";
+
+interface Props {
+  item: MenuItemType;
+  currentPage: string;
+  basePath: string;
+  level: number;
+}
+
+const { item, currentPage, basePath, level } = Astro.props;
+---
+
+<li style={level > 0 ? `margin-left: ${level}rem` : ""}>
+  <a
+    href={`/${basePath}/${item.id}`}
+    class={`w-full leading-none no-underline block px-2 py-1 rounded ${item.id === currentPage ? "font-bold" : ""} hover:bg-bg-s dark:hover:bg-darkmode-bg-s`}
+  >
+    {item.title}
+  </a>
+  {item.children.length > 0 && (
+    <MenuList
+      items={item.children}
+      currentPage={currentPage}
+      basePath={basePath}
+      level={level + 1}
+    />
+  )}
+</li>

@@ -1,0 +1,13 @@
+---
+import { getImagesForCake, type CakeImage } from "@lib/galleryUtils";
+import CakeGallery from "@components/cake-gallery/CakeGallery";
+
+interface Props {
+  entryId: string;
+}
+
+const { entryId } = Astro.props;
+const images: CakeImage[] = await getImagesForCake(entryId);
+---
+
+<CakeGallery client:load images={images.map((img) => ({ src: img.src, caption: img.caption }))} />

@@ -1,0 +1,34 @@
+---
+import { ScrollArea } from "@components/common/shortcodes/ScrollArea";
+import MenuItem from "@components/gallery/MenuItem.astro";
+import type { MenuItem as MenuItemType } from "@/types";
+
+interface Props {
+  menu: MenuItemType[];
+  currentPage: string;
+  basePath: string;
+  title: string;
+}
+
+const { menu, currentPage, basePath, title } = Astro.props;
+---
+
+{
+  menu.length > 0 && (
+    <div class="relative glass rounded-lg p-4 my-2 w-full intersect:animate-fadeRight opacity-0">
+      <ScrollArea className="h-full" client:only="react">
+        <h2 class="text-2xl border-none">{title}</h2>
+        <ul class="list-none m-0">
+          {menu.map((item) => (
+            <MenuItem
+              item={item}
+              currentPage={currentPage}
+              basePath={basePath}
+              level={0}
+            />
+          ))}
+        </ul>
+      </ScrollArea>
+    </div>
+  )
+}

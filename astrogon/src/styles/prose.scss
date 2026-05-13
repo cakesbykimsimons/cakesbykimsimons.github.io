@@ -50,3 +50,8 @@
   margin-bottom: 0.0rem;
   font-size: 0.9rem;
 }
+
+// Prevent markdown images from interfering with gallery
+.content > p > img {
+  @apply inline-block;
+}
