@@ -18,7 +18,7 @@ ingredients:
   qty:
     - 1 cup
     - 1 cup
-    - 1&frasl;2 cup 
+    - 1&frasl;2 cup
 
 instructions:
   - Put watermelon pieces and berries into a blender and blend until liquefied.

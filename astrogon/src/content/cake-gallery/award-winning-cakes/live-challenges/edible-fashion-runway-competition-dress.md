@@ -5,5 +5,7 @@ image: "@assets/gallery-thumbs/cake-gallery/edible-fashion-runway-competition-dr
 imageAlt: "A detailed sculpted edible fashion runway competition dress"
 hideToc: true
 ---
+
 #### 2012 - Domino Sugar All American Classic Edible Fashion Runway Competition, Ithaca, NY
+
 - 2nd Place

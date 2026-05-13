@@ -22,7 +22,7 @@ const blogEntries = (await getEntries("blog", sortByDate)) as BlogEntry[];
 const filteredBlogEntries = blogEntries.filter(
   (entry: BlogEntry) =>
     slugify(entry.data.author?.id ? entry.data.author.id : "Kim Simons") ===
-    slugify(title)
+    slugify(title),
 );
 ---
 

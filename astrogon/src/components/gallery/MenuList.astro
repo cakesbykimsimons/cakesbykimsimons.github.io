@@ -13,12 +13,14 @@ const { items, currentPage, basePath, level } = Astro.props;
 ---
 
 <ul class="list-none m-0">
-  {items.map((item) => (
-    <MenuItem
-      item={item}
-      currentPage={currentPage}
-      basePath={basePath}
-      level={level}
-    />
-  ))}
+  {
+    items.map((item) => (
+      <MenuItem
+        item={item}
+        currentPage={currentPage}
+        basePath={basePath}
+        level={level}
+      />
+    ))
+  }
 </ul>

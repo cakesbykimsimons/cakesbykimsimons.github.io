@@ -2,7 +2,10 @@ import { getEntries } from "./contentParser";
 import { slugify } from "./textConverter";
 import type { CollectionKey } from "astro:content";
 
-export const getTaxaMultiset = async (collection: CollectionKey, name: string) => {
+export const getTaxaMultiset = async (
+  collection: CollectionKey,
+  name: string,
+) => {
   const entries = await getEntries(collection);
   const taxonomyPages = entries.map((entry: any) => entry.data[name]);
   let taxonomies: string[] = [];
@@ -15,7 +18,11 @@ export const getTaxaMultiset = async (collection: CollectionKey, name: string) =
   return taxonomies;
 };
 
-export const getTaxa = async (collection: CollectionKey, name: string, multiset?: string[]) => {
+export const getTaxa = async (
+  collection: CollectionKey,
+  name: string,
+  multiset?: string[],
+) => {
   const allTaxa = await getTaxaMultiset(collection, name);
   let taxonomy = [...new Set(allTaxa)];
   if (multiset) {
@@ -30,7 +37,10 @@ export const getTaxa = async (collection: CollectionKey, name: string, multiset?
   return taxonomy;
 };
 
-export const getSidebarTaxa = async (collection: CollectionKey, name: string) => {
+export const getSidebarTaxa = async (
+  collection: CollectionKey,
+  name: string,
+) => {
   const multiset = await getTaxaMultiset(collection, name);
   const counts: Record<string, number> = {};
   for (const t of multiset) {

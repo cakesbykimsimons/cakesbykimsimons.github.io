@@ -18,7 +18,9 @@ const { Content } = await render(entry);
   <section class="section-sm">
     <div class="container">
       <div class="row justify-center">
-        <div class="glass rounded-lg text-center p-8 md:col-10 lg:col-7 intersect:animate-fadeUp opacity-0 intersect-no-queue">
+        <div
+          class="glass rounded-lg text-center p-8 md:col-10 lg:col-7 intersect:animate-fadeUp opacity-0 intersect-no-queue"
+        >
           {
             image && (
               <div class="text-center">
@@ -33,9 +35,10 @@ const { Content } = await render(entry);
               </div>
             )
           }
-          <h2 set:html={markdownify(title)} class="h3 mb-6 text-center"></h2>
+          <h2 set:html={markdownify(title)} class="h3 mb-6 text-center" />
           <div class="prose max-w-none text-left dark:prose-invert">
             <Content />
+          </div>
         </div>
       </div>
     </div>

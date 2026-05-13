@@ -20,13 +20,17 @@ const cakeSlug = entry.id.replace(/\/?-index$/, "");
 
 <BaseLayout title={title} image={image?.src} description={description}>
   <section class="flex container p-4">
-    <div class="sticky top-[5rem] mr-4 max-h-static_sidemenu hidden md:flex md:w-1/4 lg:w-1/4">
+    <div
+      class="sticky top-[5rem] mr-4 max-h-static_sidemenu hidden md:flex md:w-1/4 lg:w-1/4"
+    >
       <GalleryBrowser menu={browserMenu} currentPage={cakeSlug} />
     </div>
     <div class="w-full md:w-3/4 lg:w-3/4">
       <article class="">
         <section class="">
-          <div class="glass mb-8 p-4 rounded-lg intersect:animate-fade opacity-0 intersect-no-queue">
+          <div
+            class="glass mb-8 p-4 rounded-lg intersect:animate-fade opacity-0 intersect-no-queue"
+          >
             <h1>{title}</h1>
           </div>
         </section>
@@ -34,7 +38,7 @@ const cakeSlug = entry.id.replace(/\/?-index$/, "");
           <Content />
         </section>
         <CakeImageGallery entryId={cakeSlug} />
-       <div class="md:hidden mt-8">
+        <div class="md:hidden mt-8">
           <GalleryBrowser menu={browserMenu} currentPage={cakeSlug} />
         </div>
       </article>

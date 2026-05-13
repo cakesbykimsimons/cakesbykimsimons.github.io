@@ -1,14 +1,15 @@
 ---
-
 title: Sea Play Cake
 description: "A detailed look at this sculpted sea play cake creation."
 image: "@assets/gallery-thumbs/cake-gallery/sea-play-cake.jpg"
 imageAlt: "A detailed sculpted sea play cake"
 hideToc: true
-
 ---
+
 #### 2011 - CNY Cake Show, Ithaca, NY.
-**Show Theme** - *Under the Sea*
+
+**Show Theme** - _Under the Sea_
+
 - 1st Place in Themed Cake at Professional Level
 - Division Winner of Professional Level
 - People’s Choice

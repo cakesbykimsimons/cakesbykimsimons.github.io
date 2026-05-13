@@ -22,7 +22,10 @@ const globalHideToc = false;
 const tocDepth = 3;
 
 const actuallyHideNav = hideNav || globalHideNav;
-const actuallyHideToc = hideToc || globalHideToc || headings.filter((heading) => heading.depth <= tocDepth).length === 0;
+const actuallyHideToc =
+  hideToc ||
+  globalHideToc ||
+  headings.filter((heading) => heading.depth <= tocDepth).length === 0;
 
 let articleClass = "";
 let navClass = "";

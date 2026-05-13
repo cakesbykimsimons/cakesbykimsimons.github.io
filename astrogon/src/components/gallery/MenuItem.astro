@@ -19,12 +19,14 @@ const { item, currentPage, basePath, level } = Astro.props;
   >
     {item.title}
   </a>
-  {item.children.length > 0 && (
-    <MenuList
-      items={item.children}
-      currentPage={currentPage}
-      basePath={basePath}
-      level={level + 1}
-    />
-  )}
+  {
+    item.children.length > 0 && (
+      <MenuList
+        items={item.children}
+        currentPage={currentPage}
+        basePath={basePath}
+        level={level + 1}
+      />
+    )
+  }
 </li>

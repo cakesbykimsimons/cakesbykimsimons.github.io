@@ -7,4 +7,5 @@ hideToc: true
 ---
 
 #### 2010 - New York City Cake Show, Manhattan, NY.
+
 - First Place in Sculpted Cakes at Semi-Professional Level

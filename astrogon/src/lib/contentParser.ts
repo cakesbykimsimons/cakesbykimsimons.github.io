@@ -1,23 +1,27 @@
 import { getEntry, getCollection, type CollectionKey } from "astro:content";
 import type { GenericEntry, MenuItem } from "@/types";
 
-export const getIndex = async (collection: CollectionKey): Promise<GenericEntry> => {
+export const getIndex = async (
+  collection: CollectionKey,
+): Promise<GenericEntry> => {
   const index = await getEntry(collection, "-index");
   return index;
-}
+};
 
 export const getEntries = async (
   collection: CollectionKey,
-  sortFunction?: ((array: any[]) => any[]),
+  sortFunction?: (array: any[]) => any[],
   noIndex = true,
-  noDrafts = true
+  noDrafts = true,
 ): Promise<GenericEntry[]> => {
   let entries: GenericEntry[] = await getCollection(collection);
   entries = noIndex
     ? entries.filter((entry: GenericEntry) => !entry.id.match(/^-/))
     : entries;
   entries = noDrafts
-    ? entries.filter((entry: GenericEntry) => 'draft' in entry.data && !entry.data.draft)
+    ? entries.filter(
+        (entry: GenericEntry) => "draft" in entry.data && !entry.data.draft,
+      )
     : entries;
   entries = sortFunction ? sortFunction(entries) : entries;
   return entries;
@@ -26,14 +30,14 @@ export const getEntries = async (
 // Fetch all pages in all specified collections, flattened into a single array
 export const getEntriesBatch = async (
   collections: CollectionKey[],
-  sortFunction?: ((array: any[]) => any[]),
+  sortFunction?: (array: any[]) => any[],
   noIndex = true,
-  noDrafts = true
+  noDrafts = true,
 ): Promise<GenericEntry[]> => {
   const allCollections = await Promise.all(
     collections.map(async (collection) => {
       return await getEntries(collection, sortFunction, noIndex, noDrafts);
-    })
+    }),
   );
   return allCollections.flat();
 };
@@ -41,8 +45,8 @@ export const getEntriesBatch = async (
 // Fetch all subgroups (any depth) within the specified parent path
 export const getGroups = async (
   collection: CollectionKey,
-  sortFunction?: ((array: any[]) => any[]),
-  parentPath: string = ""
+  sortFunction?: (array: any[]) => any[],
+  parentPath: string = "",
 ): Promise<GenericEntry[]> => {
   let entries = await getEntries(collection, sortFunction, false);
   const prefix = parentPath ? `${parentPath}/` : "";
@@ -60,7 +64,7 @@ export const getGroups = async (
 export const getEntriesInGroup = async (
   collection: CollectionKey,
   groupSlug: string,
-  sortFunction?: ((array: any[]) => any[]),
+  sortFunction?: (array: any[]) => any[],
 ): Promise<GenericEntry[]> => {
   let entries = await getEntries(collection, sortFunction, false);
   const prefix = `${groupSlug}/`;
@@ -78,7 +82,7 @@ export const getEntriesInGroup = async (
 export const getAllChildrenInGroup = async (
   collection: CollectionKey,
   groupSlug: string,
-  sortFunction?: ((array: any[]) => any[]),
+  sortFunction?: (array: any[]) => any[],
 ): Promise<GenericEntry[]> => {
   let entries = await getEntries(collection, sortFunction, false);
   const prefix = `${groupSlug}/`;
@@ -87,7 +91,10 @@ export const getAllChildrenInGroup = async (
     if (!data.id.startsWith(prefix)) return false;
     const remainder = data.id.slice(prefixLen);
     const segments = remainder.split("/");
-    return (segments.length === 1 && segments[0] !== "-index") || (segments.length === 2 && segments[1] === "-index");
+    return (
+      (segments.length === 1 && segments[0] !== "-index") ||
+      (segments.length === 2 && segments[1] === "-index")
+    );
   });
   return entries;
 };
@@ -95,12 +102,12 @@ export const getAllChildrenInGroup = async (
 // Fetch root-level entries (direct children of the collection base directory)
 export const getRootEntries = async (
   collection: CollectionKey,
-  sortFunction?: ((array: any[]) => any[]),
+  sortFunction?: (array: any[]) => any[],
 ): Promise<GenericEntry[]> => {
   let entries = await getEntries(collection, sortFunction, false);
   entries = entries.filter((data: GenericEntry) => {
     const segments = data.id.split("/");
-    return segments.length === 1 && !data.id.startsWith('-');
+    return segments.length === 1 && !data.id.startsWith("-");
   });
   return entries;
 };
@@ -108,8 +115,8 @@ export const getRootEntries = async (
 // Recursively build a MenuItem tree from collection entries
 export const buildMenuTree = async (
   collection: CollectionKey,
-  sortFunction?: ((array: any[]) => any[]),
-  parentPath: string = ""
+  sortFunction?: (array: any[]) => any[],
+  parentPath: string = "",
 ): Promise<MenuItem[]> => {
   const childGroups = await getGroups(collection, sortFunction, parentPath);
   const childEntries = parentPath
@@ -119,7 +126,11 @@ export const buildMenuTree = async (
 
   for (const group of childGroups) {
     const groupSlug = group.id.replace("/-index", "");
-    const subChildren = await buildMenuTree(collection, sortFunction, groupSlug);
+    const subChildren = await buildMenuTree(
+      collection,
+      sortFunction,
+      groupSlug,
+    );
     menuItems.push({
       title: group.data.title,
       id: groupSlug,

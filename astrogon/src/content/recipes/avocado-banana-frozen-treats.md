@@ -21,7 +21,7 @@ ingredients:
   qty:
     - 1 fresh
     - 1 peeled
-    - 1&frasl;3 cup 
+    - 1&frasl;3 cup
     - 1 squeezed
     - 3 tbsp
     - 20 oz

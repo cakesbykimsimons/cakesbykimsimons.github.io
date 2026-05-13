@@ -66,7 +66,10 @@ const blog = defineCollection({
 });
 
 const cakeGallery = defineCollection({
-  loader: glob({ pattern: "**\/[^_]*.{md,mdx}", base: "./src/content/cake-gallery" }),
+  loader: glob({
+    pattern: "**\/[^_]*.{md,mdx}",
+    base: "./src/content/cake-gallery",
+  }),
   schema: ({ image }) =>
     searchable.extend({
       image: image().optional(),
