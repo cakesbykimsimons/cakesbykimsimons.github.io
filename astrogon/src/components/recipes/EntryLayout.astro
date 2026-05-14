@@ -10,6 +10,7 @@ import {
   FaRegUserCircle,
   FaUtensils,
   FaSeedling,
+  FaBlender,
 } from "react-icons/fa";
 
 interface Props {
@@ -24,12 +25,16 @@ const {
   image,
   imageAlt,
   prepTime,
+  cookTime,
+  coolTime,
   servings,
   diet,
   ingredients,
   instructions,
   notes,
 } = entry.data;
+
+const totalTime = (prepTime || 0) + (cookTime || 0) + (coolTime || 0);
 ---
 
 <BaseLayout title={title} description={description} image={image?.src}>
@@ -76,8 +81,17 @@ const {
               {
                 prepTime && (
                   <div class="m-4">
+                    <FaBlender className={"mr-2 -mt-1 inline-block"} />
+                    Prep: {prepTime} minutes
+                  </div>
+                )
+              }
+              <!-- Total Time -->
+              {
+                totalTime > 0 && (
+                  <div class="m-4">
                     <FaRegClock className={"mr-2 -mt-1 inline-block"} />
-                    {prepTime + " minutes"}
+                    Total: {totalTime} minutes
                   </div>
                 )
               }
@@ -103,7 +117,7 @@ const {
               {
                 description && (
                   <div>
-                    {author || prepTime || servings || diet ? (
+                    {author || totalTime > 0 || servings || diet ? (
                       <hr class="my-2" />
                     ) : null}
                     <div class="m-4">

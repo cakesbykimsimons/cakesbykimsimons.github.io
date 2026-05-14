@@ -5,6 +5,8 @@ image: "@assets/recipes/.jpg"
 imageAlt:
 author:
 prepTime: 0
+cookTime: 0
+coolTime: 0
 servings: 0
 diet:
 draft: true

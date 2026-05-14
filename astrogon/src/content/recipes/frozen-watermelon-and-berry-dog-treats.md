@@ -5,7 +5,7 @@ image: "@assets/recipes/frozen-watermelon-and-berry-dog-treats.webp"
 imageAlt: "Frozen dog berry treats on a plate"
 author: kim-simons
 prepTime: 15
-cook_time: 180
+coolTime: 180
 servings: 16
 diet: Vegetarian
 

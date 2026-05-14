@@ -5,7 +5,8 @@ image: "@assets/blog/make-this-candle-cake-centerpiece/candle-cake.jpg"
 imageAlt: "A white candle cake centerpiece decorated to look like a large candle"
 author: kim-simons
 prepTime: 10
-cook_time: 5
+cookTime: 5
+coolTime: 120
 diet: Vegetarian
 
 ingredients:

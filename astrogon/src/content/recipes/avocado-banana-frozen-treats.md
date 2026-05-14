@@ -5,7 +5,7 @@ image: "@assets/recipes/avocado-banana-frozen-treats.jpg"
 imageAlt: "Two green avocado-banana frozen treats on sticks arranged on a plate with one split in half"
 author: kim-simons
 prepTime: 20
-cook_time: 270
+coolTime: 270
 servings: 8
 diet: Vegetarian
 
