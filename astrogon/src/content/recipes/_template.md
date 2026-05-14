@@ -22,7 +22,11 @@ ingredients:
         - Quantity 2
 
 instructions:
-  - Step
+  groups:
+    - label: "Step group name"
+      steps:
+        - Step 1
+        - Step 2
 
 notes:
   - Note

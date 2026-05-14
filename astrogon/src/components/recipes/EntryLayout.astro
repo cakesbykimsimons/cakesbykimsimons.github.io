@@ -182,16 +182,55 @@ const totalTime = (prepTime || 0) + (cookTime || 0) + (coolTime || 0);
               <section class="col basis-full p-2 min-w-72">
                 <div class="glass rounded-lg p-4 intersect:animate-fadeUp opacity-0">
                   <h2 set:html="Instructions" class="mb-2" />
-                  <div class="row justify-center">
-                    {instructions.map((it: string, index: number) => (
-                      <div class="row my-1">
-                        <div class="col">
-                          {index + 1}. {it}
+                  {Array.isArray(instructions)
+                    ? instructions.map((step: string, index: number) => (
+                        <div class="row my-2">
+                          <div class="col">
+                            <div class="flex items-center gap-3 py-1.5 border-b border-border dark:border-darkmode-border last:border-0">
+                              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-txt-p dark:bg-darkmode-txt-p text-white dark:text-darkmode-bg-p flex items-center justify-center text-xs font-bold">
+                                {index + 1}
+                              </span>
+                              <span
+                                class="text-sm text-txt-p dark:text-darkmode-txt-p pt-0.5"
+                                set:html={step}
+                              />
+                            </div>
+                          </div>
                         </div>
-                        <hr class="my-1" />
-                      </div>
-                    ))}
-                  </div>
+                      ))
+                    : instructions.groups.map((group, groupIndex: number) => (
+                        <div class="row my-2">
+                          <div class="col">
+                            <div class="flex items-center gap-3 py-1.5 border-b border-border dark:border-darkmode-border">
+                              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-txt-p dark:bg-darkmode-txt-p text-white dark:text-darkmode-bg-p flex items-center justify-center text-xs font-bold">
+                                {groupIndex + 1}
+                              </span>
+                              <span
+                                class="text-sm font-semibold text-txt-p dark:text-darkmode-txt-p"
+                                set:html={group.label}
+                              />
+                            </div>
+                            {group.steps.length > 0 && (
+                              <div class="ml-9 mt-1">
+                                {group.steps.map(
+                                  (step: string, stepIndex: number) => (
+                                    <div class="flex gap-2 py-1.5 border-b border-border dark:border-darkmode-border last:border-0">
+                                      <span class="text-sm text-txt-s dark:text-darkmode-txt-s flex-shrink-0 pt-0.5">
+                                        {stepIndex + 1}.
+                                      </span>
+                                      <span
+                                        class="text-sm text-txt-p dark:text-darkmode-txt-p pt-0.5"
+                                        set:html={step}
+                                      />
+                                    </div>
+                                  ),
+                                )}
+                              </div>
+                            )}
+                          </div>
+                          <hr class="my-1" />
+                        </div>
+                      ))}
                 </div>
               </section>
             )

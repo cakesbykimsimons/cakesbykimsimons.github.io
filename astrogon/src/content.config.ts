@@ -171,7 +171,19 @@ const recipes = defineCollection({
           { message: "Provide either 'list' or 'groups' for ingredients" },
         )
         .optional(),
-      instructions: z.array(z.string()).optional(),
+      instructions: z
+        .union([
+          z.array(z.string()),
+          z.object({
+            groups: z.array(
+              z.object({
+                label: z.string(),
+                steps: z.array(z.string()),
+              }),
+            ),
+          }),
+        ])
+        .optional(),
       notes: z.array(z.string()).optional(),
     }),
 });

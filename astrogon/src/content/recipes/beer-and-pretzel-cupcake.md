@@ -39,21 +39,25 @@ ingredients:
         - 3&frasl;4-1 cup
         - garnish
 
-
 instructions:
-  - Make the cupcakes.
-  - Preheat the oven to 350 degrees Fahrenheit.
-  - Line the cupcake tins with paper cups.
-  - In a stand mixer, add cake mix, pudding, oil and eggs. Gradually add the beer to the mixture. Mix until combined, beating for about a minute.
-  - Spoon batter into cupcake tins, filling about 3&frasl;4 of the way.
-  - Bake cupcakes for about 15 minutes or until a tester in the center comes out clean. Let cool completely before frosting.
-  - Make the chocolate stout buttercream frosting.
-  - Combine sugar, butter, shortening, cocoa and 1/2 of the stout in a stand mixer.
-  - Mix on medium speed, adding more stout until you get a creamy consistency. (If frosting is too thick, add 1-2 tablespoons of stout and mix well.)
-  - Mix on high speed for 4 minutes.
-  - Assemble the cupcakes.
-  - Using a piping bag filled with your favorite caramel sauce and a cupcake-filling tip, fill the centers of all cupcakes.
-  - Use a piping bag filled with stout buttercream and a decorative tip to decorate the cupcakes.
-  - Garnish cupcake tops with crushed pretzels.
-  - Enjoy!
+  groups:
+    - label: "Make the cupcakes"
+      steps:
+        - Preheat the oven to 350 degrees Fahrenheit.
+        - Line the cupcake tins with paper cups.
+        - In a stand mixer, add cake mix, pudding, oil and eggs. Gradually add the beer to the mixture. Mix until combined, beating for about a minute.
+        - Spoon batter into cupcake tins, filling about 3&frasl;4 of the way.
+        - Bake cupcakes for about 15 minutes or until a tester in the center comes out clean. Let cool completely before frosting.
+    - label: "Make the chocolate stout buttercream frosting"
+      steps:
+        - Combine sugar, butter, shortening, cocoa and 1/2 of the stout in a stand mixer.
+        - Mix on medium speed, adding more stout until you get a creamy consistency. (If frosting is too thick, add 1-2 tablespoons of stout and mix well.)
+        - Mix on high speed for 4 minutes.
+    - label: "Assemble the cupcakes"
+      steps:
+        - Using a piping bag filled with your favorite caramel sauce and a cupcake-filling tip, fill the centers of all cupcakes.
+        - Use a piping bag filled with stout buttercream and a decorative tip to decorate the cupcakes.
+        - Garnish cupcake tops with crushed pretzels.
+    - label: "Enjoy!"
+      steps: []
 ---
