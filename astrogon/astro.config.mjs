@@ -9,6 +9,7 @@ import remarkToc from "remark-toc";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 import cloudflare from "@astrojs/cloudflare";
+import { rehypeRecipeInstructions } from "./src/lib/rehypeRecipeInstructions.mjs";
 
 // https://astro.build/config
 export default defineConfig({
@@ -25,12 +26,12 @@ export default defineConfig({
     }
   }), AutoImport({
     imports: ["@components/common/Button.astro", "@components/common/RecipeEmbed.astro", "@shortcodes/Accordion", "@shortcodes/Notice", "@shortcodes/Youtube", "@shortcodes/Tabs", "@shortcodes/Tab"]
-  }), mdx()],
+  }), mdx({ rehypePlugins: [rehypeRecipeInstructions] })],
   markdown: {
     remarkPlugins: [remarkToc, [remarkCollapse, {
       test: "Table of contents"
     }], remarkMath],
-    rehypePlugins: [[rehypeKatex, {}]],
+    rehypePlugins: [[rehypeKatex, {}], rehypeRecipeInstructions],
     shikiConfig: {
       themes: { // https://shiki.style/themes
         light: "light-plus",
