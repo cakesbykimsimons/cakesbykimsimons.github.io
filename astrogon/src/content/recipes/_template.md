@@ -12,10 +12,14 @@ diet:
 draft: true
 
 ingredients:
-  list:
-    - Ingredient
-  qty:
-    - qty
+  groups:
+    - label: "Ingredient group name"
+      list:
+        - Ingredient 1
+        - Ingredient 2
+      qty:
+        - Quantity 1
+        - Quantity 2
 
 instructions:
   - Step

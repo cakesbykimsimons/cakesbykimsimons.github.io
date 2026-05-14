@@ -134,18 +134,44 @@ const totalTime = (prepTime || 0) + (cookTime || 0) + (coolTime || 0);
               <section class="col basis-1/3 p-2 min-w-72">
                 <div class="glass rounded-lg p-4 intersect:animate-fadeUp opacity-0">
                   <h2 set:html="Ingredients" class="mb-2" />
-                  <div class="row justify-center">
-                    {ingredients.list.map((it: string, index: number) => (
-                      <div class="row my-1">
-                        <div class="col-7" set:html={ingredients.list[index]} />
-                        <div
-                          class="col-5 text-right"
-                          set:html={ingredients.qty[index]}
+                  {ingredients.groups ? (
+                    ingredients.groups.map((group) => (
+                      <div class="mb-3">
+                        <h3
+                          set:html={group.label}
+                          class="text-sm font-semibold mb-1"
                         />
-                        <hr class="my-1" />
+                        <div class="row justify-center">
+                          {group.list.map((it: string, index: number) => (
+                            <div class="row my-1">
+                              <div class="col-7" set:html={group.list[index]} />
+                              <div
+                                class="col-5 text-right"
+                                set:html={group.qty[index]}
+                              />
+                              <hr class="my-1" />
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                    ))}
-                  </div>
+                    ))
+                  ) : (
+                    <div class="row justify-center">
+                      {ingredients.list!.map((it: string, index: number) => (
+                        <div class="row my-1">
+                          <div
+                            class="col-7"
+                            set:html={ingredients.list![index]}
+                          />
+                          <div
+                            class="col-5 text-right"
+                            set:html={ingredients.qty![index]}
+                          />
+                          <hr class="my-1" />
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </section>
             )

@@ -154,9 +154,22 @@ const recipes = defineCollection({
       diet: z.string().optional(),
       ingredients: z
         .object({
-          list: z.array(z.string()),
-          qty: z.array(z.string()),
+          list: z.array(z.string()).optional(),
+          qty: z.array(z.string()).optional(),
+          groups: z
+            .array(
+              z.object({
+                label: z.string(),
+                list: z.array(z.string()),
+                qty: z.array(z.string()),
+              }),
+            )
+            .optional(),
         })
+        .refine(
+          (data) => data.list !== undefined || data.groups !== undefined,
+          { message: "Provide either 'list' or 'groups' for ingredients" },
+        )
         .optional(),
       instructions: z.array(z.string()).optional(),
       notes: z.array(z.string()).optional(),
