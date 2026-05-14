@@ -5,7 +5,7 @@ image: "@assets/recipes/beer-and-pretzel-cupcake.jpg"
 imageAlt: "Chocolate cupcake with chocolate buttercream frosting, caramel drizzle, and pretzel pieces as garnish, sitting in a black and white patterned cupcake liner on a light-colored surface"
 author: kim-simons
 prepTime: 25
-cook_time: 45
+cookTime: 45
 servings: 24
 
 ingredients:
