@@ -1,15 +1,23 @@
 ---
 import type { RecipesEntry } from "@/types";
 import Share from "@components/common/Share.astro";
+import StepImageLightbox from "@components/common/StepImageLightbox";
 import { Image } from "astro:assets";
 import BaseLayout from "@components/base/BaseLayout.astro";
-import { upperHumanize, markdownify, slugify } from "@lib/textConverter";
+import {
+  upperHumanize,
+  markdownify,
+  slugify,
+  replaceFractions,
+} from "@lib/textConverter";
+import { render } from "astro:content";
 
 import {
   FaRegClock,
   FaRegUserCircle,
   FaUtensils,
   FaSeedling,
+  FaBlender,
 } from "react-icons/fa";
 
 interface Props {
@@ -17,6 +25,7 @@ interface Props {
 }
 
 const { entry } = Astro.props;
+const { Content } = await render(entry);
 const {
   title,
   author,
@@ -24,12 +33,15 @@ const {
   image,
   imageAlt,
   prepTime,
+  cookTime,
+  coolTime,
   servings,
   diet,
   ingredients,
-  instructions,
   notes,
 } = entry.data;
+
+const totalTime = (prepTime || 0) + (cookTime || 0) + (coolTime || 0);
 ---
 
 <BaseLayout title={title} description={description} image={image?.src}>
@@ -58,7 +70,9 @@ const {
           }
           <!-- About -->
           <section class="col basis-1/3 p-2 min-w-72">
-            <div class="glass rounded-lg p-2 h-full intersect:animate-fadeUp opacity-0">
+            <div
+              class="glass rounded-lg p-2 h-full intersect:animate-fadeUp opacity-0"
+            >
               <!-- Author -->
               {
                 author && (
@@ -74,8 +88,17 @@ const {
               {
                 prepTime && (
                   <div class="m-4">
+                    <FaBlender className={"mr-2 -mt-1 inline-block"} />
+                    Prep: {prepTime} minutes
+                  </div>
+                )
+              }
+              <!-- Total Time -->
+              {
+                totalTime > 0 && (
+                  <div class="m-4">
                     <FaRegClock className={"mr-2 -mt-1 inline-block"} />
-                    {prepTime + " minutes"}
+                    Total: {totalTime} minutes
                   </div>
                 )
               }
@@ -101,7 +124,7 @@ const {
               {
                 description && (
                   <div>
-                    {author || prepTime || servings || diet ? (
+                    {author || totalTime > 0 || servings || diet ? (
                       <hr class="my-2" />
                     ) : null}
                     <div class="m-4">
@@ -118,37 +141,63 @@ const {
               <section class="col basis-1/3 p-2 min-w-72">
                 <div class="glass rounded-lg p-4 intersect:animate-fadeUp opacity-0">
                   <h2 set:html="Ingredients" class="mb-2" />
-                  <div class="row justify-center">
-                    {ingredients.list.map((it: string, index: number) => (
-                      <div class="row my-1">
-                        <div class="col-7" set:html={ingredients.list[index]} />
-                        <div
-                          class="col-5 text-right"
-                          set:html={ingredients.qty[index]}
+                  {ingredients.groups ? (
+                    ingredients.groups.map((group) => (
+                      <div class="mb-3">
+                        <h3
+                          set:html={group.label}
+                          class="text-sm font-semibold mb-1"
                         />
-                        <hr class="my-1" />
+                        <div class="row justify-center">
+                          {group.list.map((it: string, index: number) => (
+                            <div class="row my-1">
+                              <div
+                                class="col-7"
+                                set:html={replaceFractions(group.list[index])}
+                              />
+                              <div
+                                class="col-5 text-right"
+                                set:html={replaceFractions(group.qty[index])}
+                              />
+                              <hr class="my-1" />
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                    ))}
-                  </div>
+                    ))
+                  ) : (
+                    <div class="row justify-center">
+                      {ingredients.list!.map((it: string, index: number) => (
+                        <div class="row my-1">
+                          <div
+                            class="col-7"
+                            set:html={replaceFractions(
+                              ingredients.list![index],
+                            )}
+                          />
+                          <div
+                            class="col-5 text-right"
+                            set:html={replaceFractions(ingredients.qty![index])}
+                          />
+                          <hr class="my-1" />
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </section>
             )
           }
           <!-- Instructions -->
           {
-            instructions && (
+            Content && (
               <section class="col basis-full p-2 min-w-72">
                 <div class="glass rounded-lg p-4 intersect:animate-fadeUp opacity-0">
                   <h2 set:html="Instructions" class="mb-2" />
-                  <div class="row justify-center">
-                    {instructions.map((it: string, index: number) => (
-                      <div class="row my-1">
-                        <div class="col">
-                          {index + 1}. {it}
-                        </div>
-                        <hr class="my-1" />
-                      </div>
-                    ))}
+                  <div class="recipe-instructions-body not-prose">
+                    <StepImageLightbox client:load>
+                      <Content />
+                    </StepImageLightbox>
                   </div>
                 </div>
               </section>
@@ -163,7 +212,7 @@ const {
                   <div class="row justify-center">
                     {notes.map((it: string, index: number) => (
                       <div class="row my-1">
-                        <div class="col">{it}</div>
+                        <div class="col">{replaceFractions(it)}</div>
                         <hr class="my-1" />
                       </div>
                     ))}

@@ -1,0 +1,283 @@
+.recipe-instructions {
+  counter-reset: step-counter;
+}
+
+.recipe-instructions,
+.recipe-instructions > li > ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* Reset default paragraph margins inside recipe lists */
+.recipe-instructions > li > p,
+.recipe-instructions > li > ul > li > p {
+  margin: 0;
+}
+
+/* Flat steps — numbered circle badge + text */
+.recipe-instructions > li:not(:has(> ul)) {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+  counter-increment: step-counter;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.25;
+  color: #000;
+}
+
+.dark .recipe-instructions > li:not(:has(> ul)) {
+  border-bottom-color: #444;
+  color: #fff;
+}
+
+.recipe-instructions > li:not(:has(> ul)):last-child {
+  border-bottom: none;
+}
+
+.recipe-instructions > li:not(:has(> ul))::before {
+  content: counter(step-counter);
+  display: flex;
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+  background-color: #000;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.dark .recipe-instructions > li:not(:has(> ul))::before {
+  background-color: #fff;
+  color: #1a1a1a;
+}
+
+/* Grouped: top-level list items with nested ul = group labels */
+.recipe-instructions.grouped > li {
+  counter-increment: group-counter;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.dark .recipe-instructions.grouped > li {
+  border-bottom-color: #444;
+}
+
+.recipe-instructions.grouped > li:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+/* Group label text (first p in a group li) */
+.recipe-instructions.grouped > li > p:first-child {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.375rem 0;
+  color: #000;
+}
+
+.recipe-instructions.grouped > li > p:first-child::before {
+  content: counter(group-counter);
+  display: flex;
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+  background-color: #000;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.dark .recipe-instructions.grouped > li > p:first-child {
+  color: #fff;
+}
+
+.dark .recipe-instructions.grouped > li > p:first-child::before {
+  background-color: #fff;
+  color: #1a1a1a;
+}
+
+/* Group label without steps (e.g. "Enjoy!") */
+.recipe-instructions.grouped > li:not(:has(> ul)) {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.375rem 0;
+  color: #000;
+}
+
+.recipe-instructions.grouped > li:not(:has(> ul))::before {
+  content: counter(group-counter);
+  display: flex;
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+  background-color: #000;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.dark .recipe-instructions.grouped > li:not(:has(> ul)) {
+  color: #fff;
+}
+
+.dark .recipe-instructions.grouped > li:not(:has(> ul))::before {
+  background-color: #fff;
+  color: #1a1a1a;
+}
+
+/* Nested steps list */
+.recipe-instructions.grouped > li > ul {
+  counter-reset: sub-step-counter;
+  margin-left: 2.25rem;
+  margin-top: 0.25rem;
+}
+
+.recipe-instructions.grouped > li > ul > li {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.375rem 0;
+  border-bottom: 1px solid #ddd;
+  counter-increment: sub-step-counter;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.875rem;
+  color: #000;
+}
+
+.dark .recipe-instructions.grouped > li > ul > li {
+  border-bottom-color: #444;
+  color: #fff;
+}
+
+.recipe-instructions.grouped > li > ul > li:last-child {
+  border-bottom: none;
+}
+
+.recipe-instructions.grouped > li > ul > li::before {
+  content: counter(sub-step-counter) ".";
+  flex-shrink: 0;
+  color: #222;
+  font-size: 0.875rem;
+  padding-top: 0.125rem;
+}
+
+.dark .recipe-instructions.grouped > li > ul > li::before {
+  color: #ddd;
+}
+
+/* Flat steps with images — flex with auto margin pushes image to right edge */
+.recipe-instructions > li:not(:has(> ul)):has(.step-image-inline) {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  padding-left: 2.25rem;
+}
+
+.recipe-instructions > li:not(:has(> ul)):has(.step-image-inline)::before {
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+}
+
+/* Grouped sub-steps with images — same approach */
+.recipe-instructions.grouped > li > ul > li:has(.step-image-inline) {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.recipe-instructions.grouped > li > ul > li:has(.step-image-inline)::before {
+  position: absolute;
+  left: 0;
+  top: 0.375rem;
+}
+
+/* Image pinned to right with auto margin, fixed width */
+.recipe-instructions
+  > li:not(:has(> ul)):has(.step-image-inline)
+  > .step-image-inline,
+.recipe-instructions.grouped
+  > li
+  > ul
+  > li:has(.step-image-inline)
+  > .step-image-inline {
+  flex-shrink: 0;
+  margin-left: auto;
+  max-width: 200px;
+  width: auto;
+}
+
+.step-image-inline {
+  border-radius: 0.5rem;
+  overflow: hidden;
+  max-height: 16rem;
+}
+
+.step-image-inline img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* Mobile: stack vertically with centered images */
+@media (max-width: 768px) {
+  .recipe-instructions > li:not(:has(> ul)):has(.step-image-inline),
+  .recipe-instructions.grouped > li > ul > li:has(.step-image-inline) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Keep badge positioned absolutely so it stays inline with text */
+  .recipe-instructions > li:not(:has(> ul)):has(.step-image-inline)::before,
+  .recipe-instructions.grouped > li > ul > li:has(.step-image-inline)::before {
+    position: absolute;
+  }
+
+  /* Center image including badge space — shift only text padding */
+  .recipe-instructions > li:not(:has(> ul)):has(.step-image-inline) > p {
+    padding-left: 2.25rem;
+  }
+
+  .recipe-instructions.grouped > li > ul > li:has(.step-image-inline) > p {
+    padding-left: 1.5rem;
+  }
+
+  /* Center the image in the full column width */
+  .recipe-instructions
+    > li:not(:has(> ul)):has(.step-image-inline)
+    > .step-image-inline,
+  .recipe-instructions.grouped
+    > li
+    > ul
+    > li:has(.step-image-inline)
+    > .step-image-inline {
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    max-width: 200px;
+  }
+
+  .step-image-inline {
+    max-width: 100%;
+    margin-top: 0.5rem;
+  }
+}

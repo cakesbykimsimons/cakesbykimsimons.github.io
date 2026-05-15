@@ -66,7 +66,10 @@ const blog = defineCollection({
 });
 
 const cakeGallery = defineCollection({
-  loader: glob({ pattern: "**\/[^_]*.{md,mdx}", base: "./src/content/cake-gallery" }),
+  loader: glob({
+    pattern: "**\/[^_]*.{md,mdx}",
+    base: "./src/content/cake-gallery",
+  }),
   schema: ({ image }) =>
     searchable.extend({
       image: image().optional(),
@@ -145,15 +148,29 @@ const recipes = defineCollection({
       imageAlt: z.string().default(""),
       author: reference("authors").optional(),
       prepTime: z.number().optional(),
+      cookTime: z.number().optional(),
+      coolTime: z.number().optional(),
       servings: z.number().optional(),
       diet: z.string().optional(),
       ingredients: z
         .object({
-          list: z.array(z.string()),
-          qty: z.array(z.string()),
+          list: z.array(z.string()).optional(),
+          qty: z.array(z.string()).optional(),
+          groups: z
+            .array(
+              z.object({
+                label: z.string(),
+                list: z.array(z.string()),
+                qty: z.array(z.string()),
+              }),
+            )
+            .optional(),
         })
+        .refine(
+          (data) => data.list !== undefined || data.groups !== undefined,
+          { message: "Provide either 'list' or 'groups' for ingredients" },
+        )
         .optional(),
-      instructions: z.array(z.string()).optional(),
       notes: z.array(z.string()).optional(),
     }),
 });

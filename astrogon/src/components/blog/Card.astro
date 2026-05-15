@@ -40,18 +40,20 @@ const entryDescription =
 <div class="h-full m-2 pl-0 bg-gradient-to-br gradient rounded-lg">
   <div class="glass h-full rounded-lg intersect:animate-fadeUp opacity-0">
     <div class="blog-card-inner">
-      {image && (
-        <a href={`/blog/${entry.id}`} class="blog-card-image-wrapper">
-          <Image
-            class="w-full object-cover blog-card-img"
-            src={image}
-            alt={imageAlt || title}
-            width={480}
-            height={320}
-            loading="lazy"
-          />
-        </a>
-      )}
+      {
+        image && (
+          <a href={`/blog/${entry.id}`} class="blog-card-image-wrapper">
+            <Image
+              class="w-full object-cover blog-card-img"
+              src={image}
+              alt={imageAlt || title}
+              width={480}
+              height={320}
+              loading="lazy"
+            />
+          </a>
+        )
+      }
       <div class="blog-card-content p-4">
         <h4 class="mb-2">
           <a href={`/blog/${entry.id}`}>{title}</a>

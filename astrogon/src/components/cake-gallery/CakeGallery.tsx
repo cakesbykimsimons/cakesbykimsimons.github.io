@@ -3,6 +3,8 @@ import { useState, useEffect, useCallback } from "react";
 interface GalleryImage {
   src: string;
   caption: string;
+  credit: string;
+  alt: string;
 }
 
 interface Props {
@@ -53,10 +55,15 @@ export default function CakeGallery({ images }: Props) {
           >
             <img
               src={image.src}
-              alt={image.caption}
+              alt={image.alt || image.caption}
               className="w-full rounded"
               loading="lazy"
             />
+            {image.credit && (
+              <p className="mt-1 text-xs italic text-right text-muted-foreground/60">
+                {image.credit}
+              </p>
+            )}
           </div>
           {image.caption && (
             <div className="mt-2 text-center text-sm glass px-3 py-2 rounded-lg">
@@ -79,8 +86,19 @@ export default function CakeGallery({ images }: Props) {
             className="absolute top-4 right-4 z-[110] flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
             aria-label="Close"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           </button>
 
@@ -90,19 +108,37 @@ export default function CakeGallery({ images }: Props) {
             className="absolute left-4 top-1/2 z-[110] -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
             aria-label="Previous"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15 19l-7-7 7-7"
+              />
             </svg>
           </button>
 
           <div className="max-h-[85vh] max-w-[90vw] p-4">
             <img
               src={images[index].src}
-              alt={images[index].caption}
+              alt={images[index].alt || images[index].caption}
               className="max-h-[80vh] max-w-full rounded object-contain"
             />
+            {images[index].credit && (
+              <p className="mt-0.5 text-xs italic text-right text-white/50">
+                {images[index].credit}
+              </p>
+            )}
             {images[index].caption && (
-              <p className="mt-2 text-center text-sm text-white/70">{images[index].caption}</p>
+              <p className="mt-1 text-center text-sm text-white/70">
+                {images[index].caption}
+              </p>
             )}
           </div>
 
@@ -112,8 +148,19 @@ export default function CakeGallery({ images }: Props) {
             className="absolute right-4 top-1/2 z-[110] -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
             aria-label="Next"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 5l7 7-7 7"
+              />
             </svg>
           </button>
 

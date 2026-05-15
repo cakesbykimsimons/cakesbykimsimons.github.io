@@ -1,53 +1,70 @@
 [
   {
+    "file": "peace-rabbit.jpg",
+    "alt": "A colorful clay sculpture of a hippie-style rabbit wearing a headband and tie-dye shirt, sitting on a mushroom and holding a rainbow peace sign."
+  },
+  {
     "file": "4315207.jpg",
-    "caption": "King of the Lions Cake"
+    "caption": "King of the Lions Cake",
+    "alt": "A realistic lion head cake with a sculpted, textured mane in shades of golden brown and cream, featuring detailed painted facial features including amber eyes, a pink nose, and black whiskers, set against a black background."
   },
   {
     "file": "444027.jpg",
-    "caption": "Lion Cake"
+    "caption": "Lion Cake",
+    "alt": "A realistic sculpted cake featuring a male lion's head with a golden mane and white beard, set against a green background and signed by the artist in the bottom right corner."
   },
   {
     "file": "5306309.jpg",
-    "caption": "Staple Center"
+    "caption": "Staple Center",
+    "alt": "A detailed cake sculpture features a replica of the Staples Center arena perched atop a basketball, accompanied by a Lakers jersey with the number 24 and a sneaker, all set on a court-themed base."
   },
   {
     "file": "5935836.jpg",
-    "caption": "Beer and Snacks Grooms Cake"
+    "caption": "Beer and Snacks Grooms Cake",
+    "alt": "A novelty cake designed to look like a wooden crate overflowing with a bag of Wise potato chips and Kit Kat bars, with five fondant Heineken beer cans stacked in a pyramid formation and topped with popcorn."
   },
   {
     "file": "7437222.jpg",
-    "caption": "Jackalope Cake"
+    "caption": "Jackalope Cake",
+    "alt": "A multi-tiered camouflage-patterned cake features a sculpted brown bunny wearing antlers and a camo vest, with the name \"Aaron\" written in gold icing on the chocolate base."
   },
   {
     "file": "7983565.jpg",
-    "caption": "Beagle Chasing Hare Cake"
+    "caption": "Beagle Chasing Hare Cake",
+    "alt": "A diorama depicts a tricolor hound wearing a black vest with the number 13 in pursuit of a brown hare through an autumnal forest floor scattered with orange leaves and bare trees."
   },
   {
     "file": "8213208.jpg",
-    "caption": "Computer Geek and Alien Cake"
+    "caption": "Computer Geek and Alien Cake",
+    "alt": "A blue birthday cake decorated with fondant figures of a yellow bicycle helmet, a green alien head, a tablet displaying \"Happy Birthday Ian,\" a smartphone, a blue car, USB drives, and a computer mouse."
   },
   {
     "file": "8323579.jpg",
-    "caption": "BBQ Cake"
+    "caption": "BBQ Cake",
+    "alt": "A square cake decorated to resemble a picnic scene features a realistic hamburger, an ear of corn, a watermelon slice, and a dessert on a blue and white checkered blanket atop green grass."
   },
   {
     "file": "923.jpg",
-    "caption": "Hang Glider Stuck in Tree Cake"
+    "caption": "Hang Glider Stuck in Tree Cake",
+    "alt": "A sculpted cake diorama depicts a man in a red helmet and yellow shirt suspended in a striped hang glider between two trees, hovering over a dense canopy of green and yellow leaves."
   },
   {
     "file": "942376.jpg",
-    "caption": "Gym Cake"
+    "caption": "Gym Cake",
+    "alt": "A gym-themed cake features a large fondant weight plate labeled \"Jake's Gym\" with a bodybuilder illustration, alongside a sculpted dumbbell, a Power Bar, and a white towel, all resting on a blue rectangular base."
   },
   {
     "file": "9498401.jpg",
-    "caption": "Sail Boat Cake"
+    "caption": "Sail Boat Cake",
+    "alt": "A sculpted cake of a white sailboat with two masts sits atop a sculpted blue and white base designed to resemble ocean waves."
   },
   {
     "file": "9677850.jpg",
-    "caption": "Bear Cake"
+    "caption": "Bear Cake",
+    "alt": "A realistic cake sculpted to resemble a brown bear's head rests behind a detailed cake replica of a knife with a red handle and sheath, all displayed on a black marble-patterned surface."
   },
   {
-    "file": "firetruck-cake.jpg"
+    "file": "firetruck-cake.jpg",
+    "alt": "A detailed cake sculpted to look like a yellow and white fire engine labeled \"Monticello Engine 49,\" complete with fondant hoses and a cone, set against a dramatic backdrop of a raging wildfire."
   }
 ]

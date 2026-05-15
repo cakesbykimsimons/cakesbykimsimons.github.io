@@ -1,14 +1,50 @@
 [
-  { "file": "1265091.jpg" },
-  { "file": "2330401.jpg" },
-  { "file": "2827991.jpg" },
-  { "file": "345663.jpg" },
-  { "file": "4006013.jpg" },
-  { "file": "4050854.jpg" },
-  { "file": "463718.jpg" },
-  { "file": "5871719.jpg" },
-  { "file": "5943506.jpg" },
-  { "file": "66587.jpg" },
-  { "file": "6881296.jpg" },
-  { "file": "790626.jpg" }
+  {
+    "file": "1265091.jpg",
+    "alt": "A close-up of a sculpted diorama featuring a tan leather pouch adorned with intricate beadwork and a turquoise stone, surrounded by a feather, antler, and smooth river stones."
+  },
+  {
+    "file": "2330401.jpg",
+    "alt": "A sculpted cake diorama features a sculpted bear-shaped cave with a white paw print, surrounded by miniature woven baskets, a beaded necklace, and scattered pebbles on a wooden base."
+  },
+  {
+    "file": "2827991.jpg",
+    "alt": "A sculpted cake bear head display features a pair of beaded moccasins, a woven basket, a pipe, and feathers arranged on a patterned blanket."
+  },
+  {
+    "file": "345663.jpg",
+    "alt": "A sculpted cake diorama on a wooden base depicts a textured, grey rock formation surrounded by Native American artifacts, including a beaded bag, a horn, a feather, a woven basket, and a painted bowl."
+  },
+  {
+    "file": "4006013.jpg",
+    "alt": "A sculpted cake diorama depicts a rustic still life scene featuring a woven basket with a lid, a beaded necklace, a small bowl with leaves, and a pair of moccasins arranged on a patterned blanket and fur."
+  },
+  {
+    "file": "4050854.jpg",
+    "alt": "A sculpted cake diorama features a beaded Native American pouch and antler resting on a sculpted base with stones and a tree root."
+  },
+  {
+    "file": "463718.jpg",
+    "alt": "A sculpted cake bear head mounted on a wooden plaque, surrounded by Native American artifacts including moccasins, a beaded pouch, a feather, a pipe, and a woven basket."
+  },
+  {
+    "file": "5871719.jpg",
+    "alt": "A pair of beaded Native American moccasins, a feather, a pipe, and a bear head sculpture are arranged on a decorative tray."
+  },
+  {
+    "file": "5943506.jpg",
+    "alt": "A small, woven basket with red and black geometric patterns holds a cluster of green leaves, resting on a patterned surface alongside other craft items."
+  },
+  {
+    "file": "66587.jpg",
+    "alt": "A close-up of a tan leather pouch adorned with a central circular pattern of black, red, and light blue beads surrounding a light blue stone, flanked by two curved rows of white bone beads and topped with a small turtle charm."
+  },
+  {
+    "file": "6881296.jpg",
+    "alt": "A collection of smooth, polished stones in various colors and patterns rests on a sandy surface next to a bundle of dried green leaves tied with twine, with a textured gray sculpture in the background."
+  },
+  {
+    "file": "790626.jpg",
+    "alt": "A sculpted cake wooden bowl with black geometric patterns and a central turtle motif, filled with red berries, green leaves, and small white flowers, surrounded by natural elements like stones, twigs, and dried plants on a textured surface."
+  }
 ]
