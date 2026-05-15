@@ -211,8 +211,14 @@
 }
 
 /* Image pinned to right with auto margin, fixed width */
-.recipe-instructions > li:not(:has(> ul)):has(.step-image-inline) > .step-image-inline,
-.recipe-instructions.grouped > li > ul > li:has(.step-image-inline) > .step-image-inline {
+.recipe-instructions
+  > li:not(:has(> ul)):has(.step-image-inline)
+  > .step-image-inline,
+.recipe-instructions.grouped
+  > li
+  > ul
+  > li:has(.step-image-inline)
+  > .step-image-inline {
   flex-shrink: 0;
   margin-left: auto;
   max-width: 200px;
@@ -256,8 +262,14 @@
   }
 
   /* Center the image in the full column width */
-  .recipe-instructions > li:not(:has(> ul)):has(.step-image-inline) > .step-image-inline,
-  .recipe-instructions.grouped > li > ul > li:has(.step-image-inline) > .step-image-inline {
+  .recipe-instructions
+    > li:not(:has(> ul)):has(.step-image-inline)
+    > .step-image-inline,
+  .recipe-instructions.grouped
+    > li
+    > ul
+    > li:has(.step-image-inline)
+    > .step-image-inline {
     margin-left: auto;
     margin-right: auto;
     width: auto;

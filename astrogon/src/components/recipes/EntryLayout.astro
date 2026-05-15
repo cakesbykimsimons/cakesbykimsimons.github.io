@@ -4,9 +4,13 @@ import Share from "@components/common/Share.astro";
 import StepImageLightbox from "@components/common/StepImageLightbox";
 import { Image } from "astro:assets";
 import BaseLayout from "@components/base/BaseLayout.astro";
-import { upperHumanize, markdownify, slugify } from "@lib/textConverter";
+import {
+  upperHumanize,
+  markdownify,
+  slugify,
+  replaceFractions,
+} from "@lib/textConverter";
 import { render } from "astro:content";
-
 
 import {
   FaRegClock,
@@ -147,10 +151,13 @@ const totalTime = (prepTime || 0) + (cookTime || 0) + (coolTime || 0);
                         <div class="row justify-center">
                           {group.list.map((it: string, index: number) => (
                             <div class="row my-1">
-                              <div class="col-7" set:html={group.list[index]} />
+                              <div
+                                class="col-7"
+                                set:html={replaceFractions(group.list[index])}
+                              />
                               <div
                                 class="col-5 text-right"
-                                set:html={group.qty[index]}
+                                set:html={replaceFractions(group.qty[index])}
                               />
                               <hr class="my-1" />
                             </div>
@@ -164,11 +171,13 @@ const totalTime = (prepTime || 0) + (cookTime || 0) + (coolTime || 0);
                         <div class="row my-1">
                           <div
                             class="col-7"
-                            set:html={ingredients.list![index]}
+                            set:html={replaceFractions(
+                              ingredients.list![index],
+                            )}
                           />
                           <div
                             class="col-5 text-right"
-                            set:html={ingredients.qty![index]}
+                            set:html={replaceFractions(ingredients.qty![index])}
                           />
                           <hr class="my-1" />
                         </div>
@@ -203,7 +212,7 @@ const totalTime = (prepTime || 0) + (cookTime || 0) + (coolTime || 0);
                   <div class="row justify-center">
                     {notes.map((it: string, index: number) => (
                       <div class="row my-1">
-                        <div class="col">{it}</div>
+                        <div class="col">{replaceFractions(it)}</div>
                         <hr class="my-1" />
                       </div>
                     ))}

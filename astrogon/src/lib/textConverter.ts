@@ -16,6 +16,11 @@ export const markdownify = (content: string, div?: boolean) => {
   return div ? marked.parse(content) : marked.parseInline(content);
 };
 
+// Replace fractions like 1/4 with HTML fraction slash
+export const replaceFractions = (content: string) => {
+  return content.replace(/(\d+)\/(\d+)/g, "$1\u2044$2");
+};
+
 // hyphen to space, uppercase only first letter in each word
 export const upperHumanize = (content: string) => {
   return content

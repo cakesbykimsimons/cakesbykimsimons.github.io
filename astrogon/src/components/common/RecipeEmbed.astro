@@ -3,7 +3,11 @@ import type { RecipesEntry } from "@/types";
 import StepImageLightbox from "@components/common/StepImageLightbox";
 import { getCollection, render } from "astro:content";
 import { Image } from "astro:assets";
-import { upperHumanize, markdownify } from "@lib/textConverter";
+import {
+  upperHumanize,
+  markdownify,
+  replaceFractions,
+} from "@lib/textConverter";
 
 import {
   FaRegClock,
@@ -135,11 +139,11 @@ const totalTime = (prepTime || 0) + (cookTime || 0) + (coolTime || 0);
                         <div class="flex justify-between items-center py-1.5 border-b border-border dark:border-darkmode-border last:border-0">
                           <span
                             class="text-sm text-txt-p dark:text-darkmode-txt-p"
-                            set:html={item}
+                            set:html={replaceFractions(item)}
                           />
                           <span
                             class="text-sm text-txt-s dark:text-darkmode-txt-s whitespace-nowrap ml-4"
-                            set:html={group.qty[index]}
+                            set:html={replaceFractions(group.qty[index])}
                           />
                         </div>
                       ))}
@@ -149,11 +153,11 @@ const totalTime = (prepTime || 0) + (cookTime || 0) + (coolTime || 0);
                     <div class="flex justify-between items-center py-1.5 border-b border-border dark:border-darkmode-border last:border-0">
                       <span
                         class="text-sm text-txt-p dark:text-darkmode-txt-p"
-                        set:html={item}
+                        set:html={replaceFractions(item)}
                       />
                       <span
                         class="text-sm text-txt-s dark:text-darkmode-txt-s whitespace-nowrap ml-4"
-                        set:html={ingredients.qty![index]}
+                        set:html={replaceFractions(ingredients.qty![index])}
                       />
                     </div>
                   ))}
@@ -195,7 +199,7 @@ const totalTime = (prepTime || 0) + (cookTime || 0) + (coolTime || 0);
                 </span>
                 <span
                   class="text-sm text-txt-p dark:text-darkmode-txt-p"
-                  set:html={note}
+                  set:html={replaceFractions(note)}
                 />
               </div>
             ))}

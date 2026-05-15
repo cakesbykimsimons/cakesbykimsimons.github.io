@@ -1,3 +1,11 @@
+function replaceFractions(node) {
+  if (node.type === "text") {
+    node.value = node.value.replace(/(\d+)\/(\d+)/g, "$1\u2044$2");
+  } else if (node.children) {
+    for (const child of node.children) replaceFractions(child);
+  }
+}
+
 function findRecipeUl(node) {
   if (node.type === "element" && node.tagName === "ul") return node;
   if (node.type === "mdxJsxFlowElement") {
@@ -10,7 +18,10 @@ function findRecipeUl(node) {
 }
 
 export function rehypeRecipeInstructions() {
-  return (tree) => {
+  return (tree, options) => {
+    const isRecipe = options?.file?.path?.includes("/recipes/");
+    if (isRecipe) replaceFractions(tree);
+
     let target = null;
     for (const node of tree.children) {
       target = findRecipeUl(node);
@@ -23,13 +34,20 @@ export function rehypeRecipeInstructions() {
         child.type === "element" &&
         child.tagName === "li" &&
         child.children.some(
-          (grandchild) => grandchild.type === "element" && grandchild.tagName === "ul",
+          (grandchild) =>
+            grandchild.type === "element" && grandchild.tagName === "ul",
         ),
     );
 
     if (hasNestedUl) {
       target.properties = target.properties || [];
-      target.properties["class"] = [target.properties["class"], "recipe-instructions grouped"].filter(Boolean).join(" ").trim();
+      target.properties["class"] = [
+        target.properties["class"],
+        "recipe-instructions grouped",
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .trim();
 
       for (const li of target.children) {
         if (li.type !== "element" || li.tagName !== "li") continue;
@@ -44,7 +62,10 @@ export function rehypeRecipeInstructions() {
         );
 
         if (textChildren.length > 0) {
-          const textValue = textChildren.map((t) => t.value).join("").trim();
+          const textValue = textChildren
+            .map((t) => t.value)
+            .join("")
+            .trim();
 
           const pNode = {
             type: "element",
@@ -66,7 +87,13 @@ export function rehypeRecipeInstructions() {
       }
     } else {
       target.properties = target.properties || [];
-      target.properties["class"] = [target.properties["class"], "recipe-instructions"].filter(Boolean).join(" ").trim();
+      target.properties["class"] = [
+        target.properties["class"],
+        "recipe-instructions",
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .trim();
     }
   };
 }
