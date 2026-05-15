@@ -25,7 +25,7 @@ export default defineConfig({
       applyBaseStyles: false
     }
   }), AutoImport({
-    imports: ["@components/common/Button.astro", "@components/common/RecipeEmbed.astro", "@shortcodes/Accordion", "@shortcodes/Notice", "@shortcodes/Youtube", "@shortcodes/Tabs", "@shortcodes/Tab"]
+    imports: ["@components/common/Button.astro", "@components/common/RecipeEmbed.astro", "@components/common/StepImage.astro", "@components/common/StepImageLightbox", "@shortcodes/Accordion", "@shortcodes/Notice", "@shortcodes/Youtube", "@shortcodes/Tabs", "@shortcodes/Tab"]
   }), mdx({ rehypePlugins: [rehypeRecipeInstructions] })],
   markdown: {
     remarkPlugins: [remarkToc, [remarkCollapse, {

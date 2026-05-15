@@ -1,63 +1,72 @@
-function cloneHastNode(node) {
-  if (Array.isArray(node)) return node.map(cloneHastNode);
-  if (node && typeof node === "object") {
-    const cloned = {};
-    for (const key of Object.keys(node)) {
-      cloned[key] = cloneHastNode(node[key]);
+function findRecipeUl(node) {
+  if (node.type === "element" && node.tagName === "ul") return node;
+  if (node.type === "mdxJsxFlowElement") {
+    for (const child of node.children || []) {
+      const found = findRecipeUl(child);
+      if (found) return found;
     }
-    return cloned;
   }
-  return node;
+  return null;
 }
 
 export function rehypeRecipeInstructions() {
   return (tree) => {
+    let target = null;
     for (const node of tree.children) {
-      if (node.type !== "element" || node.tagName !== "ul") continue;
+      target = findRecipeUl(node);
+      if (target) break;
+    }
+    if (!target) return;
 
-      const hasNestedUl = node.children.some(
-        (child) =>
-          child.type === "element" &&
-          child.tagName === "li" &&
-          child.children.some(
-            (grandchild) => grandchild.type === "element" && grandchild.tagName === "ul",
-          ),
-      );
+    const hasNestedUl = target.children.some(
+      (child) =>
+        child.type === "element" &&
+        child.tagName === "li" &&
+        child.children.some(
+          (grandchild) => grandchild.type === "element" && grandchild.tagName === "ul",
+        ),
+    );
 
-      if (hasNestedUl) {
-        node.properties = node.properties || [];
-        node.properties["class"] = [node.properties["class"], "recipe-instructions grouped"].filter(Boolean).join(" ").trim();
+    if (hasNestedUl) {
+      target.properties = target.properties || [];
+      target.properties["class"] = [target.properties["class"], "recipe-instructions grouped"].filter(Boolean).join(" ").trim();
 
-        for (const li of node.children) {
-          if (li.type !== "element" || li.tagName !== "li") continue;
+      for (const li of target.children) {
+        if (li.type !== "element" || li.tagName !== "li") continue;
 
-          const nestedUl = li.children.find(
-            (c) => c.type === "element" && c.tagName === "ul",
+        const nestedUl = li.children.find(
+          (c) => c.type === "element" && c.tagName === "ul",
+        );
+        if (!nestedUl) continue;
+
+        const textChildren = li.children.filter(
+          (c) => c.type === "text" && c.value.trim().length > 0,
+        );
+
+        if (textChildren.length > 0) {
+          const textValue = textChildren.map((t) => t.value).join("").trim();
+
+          const pNode = {
+            type: "element",
+            tagName: "p",
+            properties: {},
+            children: [{ type: "text", value: textValue + "\n" }],
+            data: {},
+          };
+
+          const otherChildren = li.children.filter(
+            (c) =>
+              !(c.type === "text" && c.value.trim() === "") &&
+              c !== nestedUl &&
+              !textChildren.includes(c),
           );
-          if (!nestedUl) continue;
 
-          const textChildren = li.children.filter(
-            (c) => c.type === "text" && c.value.trim().length > 0,
-          );
-
-          if (textChildren.length > 0) {
-            const textValue = textChildren.map((t) => t.value).join("").trim();
-
-            const pNode = {
-              type: "element",
-              tagName: "p",
-              properties: {},
-              children: [{ type: "text", value: textValue + "\n" }],
-              data: {},
-            };
-
-            li.children = [pNode, nestedUl];
-          }
+          li.children = [pNode, ...otherChildren, nestedUl];
         }
-      } else {
-        node.properties = node.properties || [];
-        node.properties["class"] = [node.properties["class"], "recipe-instructions"].filter(Boolean).join(" ").trim();
       }
+    } else {
+      target.properties = target.properties || [];
+      target.properties["class"] = [target.properties["class"], "recipe-instructions"].filter(Boolean).join(" ").trim();
     }
   };
 }

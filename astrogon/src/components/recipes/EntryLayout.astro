@@ -1,10 +1,12 @@
 ---
 import type { RecipesEntry } from "@/types";
 import Share from "@components/common/Share.astro";
+import StepImageLightbox from "@components/common/StepImageLightbox";
 import { Image } from "astro:assets";
 import BaseLayout from "@components/base/BaseLayout.astro";
 import { upperHumanize, markdownify, slugify } from "@lib/textConverter";
 import { render } from "astro:content";
+
 
 import {
   FaRegClock,
@@ -184,7 +186,9 @@ const totalTime = (prepTime || 0) + (cookTime || 0) + (coolTime || 0);
                 <div class="glass rounded-lg p-4 intersect:animate-fadeUp opacity-0">
                   <h2 set:html="Instructions" class="mb-2" />
                   <div class="recipe-instructions-body not-prose">
-                    <Content />
+                    <StepImageLightbox client:load>
+                      <Content />
+                    </StepImageLightbox>
                   </div>
                 </div>
               </section>
