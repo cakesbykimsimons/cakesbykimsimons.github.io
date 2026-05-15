@@ -1,0 +1,53 @@
+---
+title:
+description:
+image: "@assets/recipes/<recipe-name>/<recipe-name>.jpg"
+imageAlt:
+author:
+prepTime: 0
+cookTime: 0
+coolTime: 0
+servings: 0
+diet:
+draft: true
+
+ingredients:
+  list:
+    - Ingredient 1
+    - Ingredient 2
+  qty:
+    - Quantity 1
+    - Quantity 2
+
+# Or grouped:
+# ingredients:
+#   groups:
+#     - label: "Group name"
+#       list:
+#         - Ingredient 1
+#         - Ingredient 2
+#       qty:
+#         - Quantity 1
+#         - Quantity 2
+
+notes:
+  - Tip or variation note
+---
+
+import img1 from '@assets/recipes/<recipe-name>/step-one.jpg';
+
+- Step 1: do something
+- Step 2: do something else
+  <StepImage src={img1} alt="Descriptive alt text for step photo" />
+- Step 3: final step
+
+# Or grouped steps:
+# import img1 from '@assets/recipes/<recipe-name>/step-one.jpg';
+# - Make the base
+#   - Preheat oven to 350°F
+#   - Mix dry ingredients
+#   - Add wet ingredients and stir
+#     <StepImage src={img1} alt="Wet ingredients being folded into dry ingredients" />
+# - Make the frosting
+#   - Combine butter and sugar
+#   - Beat until fluffy
