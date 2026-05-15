@@ -222,7 +222,7 @@
 .step-image-inline {
   border-radius: 0.5rem;
   overflow: hidden;
-  max-height: 250px;
+  max-height: 16rem;
 }
 
 .step-image-inline img {
@@ -232,27 +232,39 @@
   display: block;
 }
 
-/* Mobile: stack vertically */
+/* Mobile: stack vertically with centered images */
 @media (max-width: 768px) {
   .recipe-instructions > li:not(:has(> ul)):has(.step-image-inline),
   .recipe-instructions.grouped > li > ul > li:has(.step-image-inline) {
     display: flex;
     flex-direction: column;
-    padding-left: 0;
   }
 
+  /* Keep badge positioned absolutely so it stays inline with text */
   .recipe-instructions > li:not(:has(> ul)):has(.step-image-inline)::before,
   .recipe-instructions.grouped > li > ul > li:has(.step-image-inline)::before {
-    position: static;
+    position: absolute;
   }
 
+  /* Center image including badge space — shift only text padding */
+  .recipe-instructions > li:not(:has(> ul)):has(.step-image-inline) > p {
+    padding-left: 2.25rem;
+  }
+
+  .recipe-instructions.grouped > li > ul > li:has(.step-image-inline) > p {
+    padding-left: 1.5rem;
+  }
+
+  /* Center the image in the full column width */
   .recipe-instructions > li:not(:has(> ul)):has(.step-image-inline) > .step-image-inline,
   .recipe-instructions.grouped > li > ul > li:has(.step-image-inline) > .step-image-inline {
-    margin-left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    max-width: 200px;
   }
 
   .step-image-inline {
-    width: 100%;
     max-width: 100%;
     margin-top: 0.5rem;
   }
