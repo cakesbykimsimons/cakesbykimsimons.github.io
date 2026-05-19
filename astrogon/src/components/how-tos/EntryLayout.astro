@@ -16,10 +16,10 @@ interface Props {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { title, author, description, image, imageAlt, meta, supplies, notes } =
+const { title, author, description, image, imageAlt, skillLevel, timeRequired, cost, supplies, notes } =
   entry.data;
 
-// Assemble sidebar items from meta array
+// Assemble sidebar items
 const sidebarItems: Array<{
   icon?: string;
   label: string;
@@ -35,14 +35,25 @@ if (author) {
     href: `/authors/${slugify(author.id)}`,
   });
 }
-
-if (meta && meta.length > 0) {
-  meta.forEach((item) => {
-    sidebarItems.push({
-      icon: item.icon,
-      label: "",
-      value: item.value,
-    });
+if (skillLevel) {
+  sidebarItems.push({
+    icon: "star",
+    label: "",
+    value: skillLevel,
+  });
+}
+if (timeRequired) {
+  sidebarItems.push({
+    icon: "clock",
+    label: "",
+    value: timeRequired,
+  });
+}
+if (cost) {
+  sidebarItems.push({
+    icon: "dollar",
+    label: "",
+    value: cost,
   });
 }
 ---

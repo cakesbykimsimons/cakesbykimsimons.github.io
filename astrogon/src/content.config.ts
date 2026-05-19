@@ -187,28 +187,9 @@ const howTos = defineCollection({
       image: image().optional(),
       imageAlt: z.string().default(""),
       author: reference("authors").optional(),
-      meta: z
-        .array(
-          z.object({
-            label: z.string(),
-            value: z.string(),
-            icon: z
-              .enum([
-                "clock",
-                "blender",
-                "paintbrush",
-                "tools",
-                "seedling",
-                "dollar",
-                "star",
-                "user",
-                "fire",
-                "lightbulb",
-              ])
-              .optional(),
-          }),
-        )
-        .optional(),
+      skillLevel: z.string().optional(),
+      timeRequired: z.string().optional(),
+      cost: z.string().optional(),
       supplies: z
         .object({
           list: z.array(z.string()).optional(),

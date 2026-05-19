@@ -20,7 +20,24 @@ if (!howTo) {
 }
 
 const { Content } = await render(howTo);
-const { title, description, image, imageAlt, meta, notes } = howTo.data;
+const { title, description, image, imageAlt, skillLevel, timeRequired, cost, notes } = howTo.data;
+
+// Assemble sidebar items for embed (like recipes)
+const sidebarItems: Array<{
+  icon?: string;
+  label: string;
+  value: string;
+  href?: string;
+}> = [];
+if (skillLevel) {
+  sidebarItems.push({ icon: "star", label: "", value: skillLevel });
+}
+if (timeRequired) {
+  sidebarItems.push({ icon: "clock", label: "", value: timeRequired });
+}
+if (cost) {
+  sidebarItems.push({ icon: "dollar", label: "", value: cost });
+}
 ---
 
 <div class="howto-embed my-6">
@@ -41,7 +58,7 @@ const { title, description, image, imageAlt, meta, notes } = howTo.data;
         }
       </div>
       <!-- Meta sidebar -->
-      {meta && meta.length > 0 && <EmbedMeta items={meta} />}
+      {sidebarItems.length > 0 && <EmbedMeta items={sidebarItems} />}
     </div>
 
     <!-- Cover image -->
