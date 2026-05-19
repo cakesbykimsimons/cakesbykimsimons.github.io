@@ -9,6 +9,7 @@ const searchableCollections = [
   "authors",
   "blog",
   "cakeGallery",
+  "how-tos",
   "poetry",
   "portfolio",
   "recipes",
@@ -19,6 +20,7 @@ const searchList = (await getEntriesBatch(
   searchableCollections,
   undefined,
   false,
+  import.meta.env.DEV ? false : true,
 )) as SearchableEntry[];
 ---
 

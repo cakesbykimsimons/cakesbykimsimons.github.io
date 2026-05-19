@@ -1,6 +1,18 @@
 import { getEntry, getCollection, type CollectionKey } from "astro:content";
 import type { GenericEntry, MenuItem } from "@/types";
 
+export const getDrafts = async (
+  collection: CollectionKey,
+  sortFunction?: (array: any[]) => any[],
+): Promise<GenericEntry[]> => {
+  let entries: GenericEntry[] = await getCollection(collection);
+  entries = entries.filter(
+    (entry: GenericEntry) => "draft" in entry.data && entry.data.draft,
+  );
+  entries = entries.filter((entry: GenericEntry) => !entry.id.match(/^-/));
+  return sortFunction ? sortFunction(entries) : entries;
+};
+
 export const getIndex = async (
   collection: CollectionKey,
 ): Promise<GenericEntry> => {

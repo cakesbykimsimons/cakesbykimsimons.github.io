@@ -1,0 +1,105 @@
+---
+import type { HowTosEntry } from "@/types";
+import Share from "@components/common/Share.astro";
+import GuideCoverImage from "@components/guides/GuideCoverImage.astro";
+import GuideSidebarMeta from "@components/guides/GuideSidebarMeta.astro";
+import GuideItemList from "@components/guides/GuideItemList.astro";
+import GuideInstructions from "@components/guides/GuideInstructions.astro";
+import GuideNotes from "@components/guides/GuideNotes.astro";
+import BaseLayout from "@components/base/BaseLayout.astro";
+import { upperHumanize, slugify } from "@lib/textConverter";
+import { render } from "astro:content";
+
+interface Props {
+  entry: HowTosEntry;
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, author, description, image, imageAlt, skillLevel, timeRequired, cost, supplies, notes } =
+  entry.data;
+
+// Assemble sidebar items
+const sidebarItems: Array<{
+  icon?: string;
+  label: string;
+  value: string;
+  href?: string;
+}> = [];
+
+if (author) {
+  sidebarItems.push({
+    icon: "user",
+    label: "",
+    value: upperHumanize(author.id),
+    href: `/authors/${slugify(author.id)}`,
+  });
+}
+if (skillLevel) {
+  sidebarItems.push({
+    icon: "star",
+    label: "",
+    value: skillLevel,
+  });
+}
+if (timeRequired) {
+  sidebarItems.push({
+    icon: "clock",
+    label: "",
+    value: timeRequired,
+  });
+}
+if (cost) {
+  sidebarItems.push({
+    icon: "dollar",
+    label: "",
+    value: cost,
+  });
+}
+---
+
+<BaseLayout title={title} description={description} image={image?.src}>
+  <section class="section">
+    <div class="container">
+      <div class="row justify-center">
+        <article class="lg:col-10 flex flex-wrap content-start">
+          <!-- Title -->
+          <h1 set:html={title} class="p-2 col basis-full min-w-72" />
+          <!-- Cover Photo -->
+          <GuideCoverImage image={image!} imageAlt={imageAlt} loading="eager" />
+          <!-- Sidebar -->
+          <GuideSidebarMeta
+            items={sidebarItems}
+            description={description || undefined}
+          />
+          <!-- Supplies -->
+          {
+            supplies && (
+              <GuideItemList
+                title="Supply List"
+                items={supplies.list ? { list: supplies.list } : undefined}
+                groups={supplies.groups}
+                columns={3}
+              />
+            )
+          }
+          <!-- Instructions -->
+          <GuideInstructions title="Instructions" Content={Content} />
+          <!-- Notes -->
+          <GuideNotes notes={notes || []} />
+        </article>
+        <!-- Share -->
+        <div
+          class="flex col-10 p-2 items-center justify-center lg:justify-end px-6"
+        >
+          <Share
+            title={title}
+            description={description}
+            folder="how-tos"
+            id={entry.id}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

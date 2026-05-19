@@ -56,6 +56,7 @@ const blog = defineCollection({
       imageAlt: z.string().default(""),
       author: reference("authors").optional(),
       recipe: reference("recipes").optional(),
+      howTo: reference("how-tos").optional(),
       categories: z.array(z.string()).optional(),
       tags: z.array(z.string()).optional(),
       complexity: z.number().default(1),
@@ -175,6 +176,41 @@ const recipes = defineCollection({
     }),
 });
 
+const howTos = defineCollection({
+  loader: glob({
+    pattern: "**\/[^_]*.{md,mdx}",
+    base: "./src/content/how-tos",
+  }),
+  schema: ({ image }) =>
+    searchable.extend({
+      date: z.date().optional(),
+      image: image().optional(),
+      imageAlt: z.string().default(""),
+      author: reference("authors").optional(),
+      skillLevel: z.string().optional(),
+      timeRequired: z.string().optional(),
+      cost: z.string().optional(),
+      supplies: z
+        .object({
+          list: z.array(z.string()).optional(),
+          groups: z
+            .array(
+              z.object({
+                label: z.string(),
+                list: z.array(z.string()),
+              }),
+            )
+            .optional(),
+        })
+        .refine(
+          (data) => data.list !== undefined || data.groups !== undefined,
+          { message: "Provide either 'list' or 'groups' for supplies" },
+        )
+        .optional(),
+      notes: z.array(z.string()).optional(),
+    }),
+});
+
 const terms = defineCollection({
   loader: glob({ pattern: "-index.{md,mdx}", base: "./src/content/terms" }),
   schema: searchable,
@@ -192,4 +228,5 @@ export const collections = {
   portfolio,
   recipes,
   terms,
+  "how-tos": howTos,
 };

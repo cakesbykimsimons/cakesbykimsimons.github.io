@@ -13,7 +13,7 @@
   @include meta.load-css("glass");
 }
 
-@include meta.load-css("recipe-instructions");
+@include meta.load-css("guide-instructions");
 
 @layer utilities {
   @include meta.load-css("utilities");

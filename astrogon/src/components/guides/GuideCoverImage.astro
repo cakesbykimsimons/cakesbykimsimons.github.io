@@ -1,0 +1,28 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  image: { src: string; width: number; height: number };
+  imageAlt: string;
+  loading?: string;
+}
+
+const { image, imageAlt, loading = "eager" }: Props = Astro.props;
+---
+
+{
+  image && (
+    <div class="col basis-2/3 p-2 min-w-72">
+      <div class="glass rounded-lg intersect:animate-fadeDown opacity-0">
+        <Image
+          class="w-full rounded-lg"
+          src={image}
+          alt={imageAlt}
+          width={1920}
+          height={1080}
+          loading={loading}
+        />
+      </div>
+    </div>
+  )
+}
