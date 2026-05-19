@@ -1,5 +1,5 @@
 ---
-import type { RecipesEntry } from "@/types";
+import type { HowTosEntry } from "@/types";
 import Share from "@components/common/Share.astro";
 import GuideCoverImage from "@components/guides/GuideCoverImage.astro";
 import GuideSidebarMeta from "@components/guides/GuideSidebarMeta.astro";
@@ -11,29 +11,15 @@ import { upperHumanize, slugify } from "@lib/textConverter";
 import { render } from "astro:content";
 
 interface Props {
-  entry: RecipesEntry;
+  entry: HowTosEntry;
 }
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const {
-  title,
-  author,
-  description,
-  image,
-  imageAlt,
-  prepTime,
-  cookTime,
-  coolTime,
-  servings,
-  diet,
-  ingredients,
-  notes,
-} = entry.data;
+const { title, author, description, image, imageAlt, meta, supplies, notes } =
+  entry.data;
 
-const totalTime = (prepTime || 0) + (cookTime || 0) + (coolTime || 0);
-
-// Assemble sidebar items
+// Assemble sidebar items from meta array
 const sidebarItems: Array<{
   icon?: string;
   label: string;
@@ -49,32 +35,14 @@ if (author) {
     href: `/authors/${slugify(author.id)}`,
   });
 }
-if (prepTime) {
-  sidebarItems.push({
-    icon: "blender",
-    label: "",
-    value: `Prep: ${prepTime} minutes`,
-  });
-}
-if (totalTime > 0) {
-  sidebarItems.push({
-    icon: "clock",
-    label: "",
-    value: `Total: ${totalTime} minutes`,
-  });
-}
-if (servings) {
-  sidebarItems.push({
-    icon: "utensils",
-    label: "",
-    value: servings === 1 ? "1 serving" : `${servings} servings`,
-  });
-}
-if (diet) {
-  sidebarItems.push({
-    icon: "seedling",
-    label: "",
-    value: diet,
+
+if (meta && meta.length > 0) {
+  meta.forEach((item) => {
+    sidebarItems.push({
+      icon: item.icon,
+      label: "",
+      value: item.value,
+    });
   });
 }
 ---
@@ -93,18 +61,14 @@ if (diet) {
             items={sidebarItems}
             description={description || undefined}
           />
-          <!-- Ingredients -->
+          <!-- Supplies -->
           {
-            ingredients && (
+            supplies && (
               <GuideItemList
-                title="Ingredients"
-                items={
-                  ingredients.list
-                    ? { list: ingredients.list, qty: ingredients.qty }
-                    : undefined
-                }
-                groups={ingredients.groups}
-                columns={2}
+                title="Supplies"
+                items={supplies.list ? { list: supplies.list } : undefined}
+                groups={supplies.groups}
+                columns={3}
               />
             )
           }
@@ -120,7 +84,7 @@ if (diet) {
           <Share
             title={title}
             description={description}
-            folder="recipes"
+            folder="how-tos"
             id={entry.id}
           />
         </div>

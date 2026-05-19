@@ -1,0 +1,26 @@
+---
+import type { Component } from "react";
+import StepImageLightbox from "@components/common/StepImageLightbox";
+
+interface Props {
+  title?: string;
+  Content: Component;
+}
+
+const { title, Content }: Props = Astro.props;
+---
+
+{
+  Content && (
+    <section class="col basis-full p-2 min-w-72">
+      <div class="glass rounded-lg p-4 intersect:animate-fadeUp opacity-0">
+        {title && <h2 set:html={title} class="mb-2" />}
+        <div class="guide-instructions-body not-prose">
+          <StepImageLightbox client:load>
+            <Content />
+          </StepImageLightbox>
+        </div>
+      </div>
+    </section>
+  )
+}

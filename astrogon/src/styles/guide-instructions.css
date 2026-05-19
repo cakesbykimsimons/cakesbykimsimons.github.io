@@ -1,21 +1,21 @@
-.recipe-instructions {
+.guide-instructions {
   counter-reset: step-counter;
 }
 
-.recipe-instructions,
-.recipe-instructions > li > ul {
+.guide-instructions,
+.guide-instructions > li > ul {
   list-style: none;
   padding-left: 0;
 }
 
 /* Reset default paragraph margins inside recipe lists */
-.recipe-instructions > li > p,
-.recipe-instructions > li > ul > li > p {
+.guide-instructions > li > p,
+.guide-instructions > li > ul > li > p {
   margin: 0;
 }
 
 /* Flat steps — numbered circle badge + text */
-.recipe-instructions > li:not(:has(> ul)) {
+.guide-instructions > li:not(:has(> ul)) {
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -28,16 +28,16 @@
   color: #000;
 }
 
-.dark .recipe-instructions > li:not(:has(> ul)) {
+.dark .guide-instructions > li:not(:has(> ul)) {
   border-bottom-color: #444;
   color: #fff;
 }
 
-.recipe-instructions > li:not(:has(> ul)):last-child {
+.guide-instructions > li:not(:has(> ul)):last-child {
   border-bottom: none;
 }
 
-.recipe-instructions > li:not(:has(> ul))::before {
+.guide-instructions > li:not(:has(> ul))::before {
   content: counter(step-counter);
   display: flex;
   flex-shrink: 0;
@@ -52,29 +52,29 @@
   font-weight: 700;
 }
 
-.dark .recipe-instructions > li:not(:has(> ul))::before {
+.dark .guide-instructions > li:not(:has(> ul))::before {
   background-color: #fff;
   color: #1a1a1a;
 }
 
 /* Grouped: top-level list items with nested ul = group labels */
-.recipe-instructions.grouped > li {
+.guide-instructions.grouped > li {
   counter-increment: group-counter;
   margin-bottom: 0.5rem;
   border-bottom: 1px solid #ddd;
 }
 
-.dark .recipe-instructions.grouped > li {
+.dark .guide-instructions.grouped > li {
   border-bottom-color: #444;
 }
 
-.recipe-instructions.grouped > li:last-child {
+.guide-instructions.grouped > li:last-child {
   margin-bottom: 0;
   border-bottom: none;
 }
 
 /* Group label text (first p in a group li) */
-.recipe-instructions.grouped > li > p:first-child {
+.guide-instructions.grouped > li > p:first-child {
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -84,7 +84,7 @@
   color: #000;
 }
 
-.recipe-instructions.grouped > li > p:first-child::before {
+.guide-instructions.grouped > li > p:first-child::before {
   content: counter(group-counter);
   display: flex;
   flex-shrink: 0;
@@ -99,17 +99,17 @@
   font-weight: 700;
 }
 
-.dark .recipe-instructions.grouped > li > p:first-child {
+.dark .guide-instructions.grouped > li > p:first-child {
   color: #fff;
 }
 
-.dark .recipe-instructions.grouped > li > p:first-child::before {
+.dark .guide-instructions.grouped > li > p:first-child::before {
   background-color: #fff;
   color: #1a1a1a;
 }
 
 /* Group label without steps (e.g. "Enjoy!") */
-.recipe-instructions.grouped > li:not(:has(> ul)) {
+.guide-instructions.grouped > li:not(:has(> ul)) {
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -119,7 +119,7 @@
   color: #000;
 }
 
-.recipe-instructions.grouped > li:not(:has(> ul))::before {
+.guide-instructions.grouped > li:not(:has(> ul))::before {
   content: counter(group-counter);
   display: flex;
   flex-shrink: 0;
@@ -134,23 +134,23 @@
   font-weight: 700;
 }
 
-.dark .recipe-instructions.grouped > li:not(:has(> ul)) {
+.dark .guide-instructions.grouped > li:not(:has(> ul)) {
   color: #fff;
 }
 
-.dark .recipe-instructions.grouped > li:not(:has(> ul))::before {
+.dark .guide-instructions.grouped > li:not(:has(> ul))::before {
   background-color: #fff;
   color: #1a1a1a;
 }
 
 /* Nested steps list */
-.recipe-instructions.grouped > li > ul {
+.guide-instructions.grouped > li > ul {
   counter-reset: sub-step-counter;
   margin-left: 2.25rem;
   margin-top: 0.25rem;
 }
 
-.recipe-instructions.grouped > li > ul > li {
+.guide-instructions.grouped > li > ul > li {
   display: flex;
   gap: 0.5rem;
   padding: 0.375rem 0;
@@ -161,16 +161,16 @@
   color: #000;
 }
 
-.dark .recipe-instructions.grouped > li > ul > li {
+.dark .guide-instructions.grouped > li > ul > li {
   border-bottom-color: #444;
   color: #fff;
 }
 
-.recipe-instructions.grouped > li > ul > li:last-child {
+.guide-instructions.grouped > li > ul > li:last-child {
   border-bottom: none;
 }
 
-.recipe-instructions.grouped > li > ul > li::before {
+.guide-instructions.grouped > li > ul > li::before {
   content: counter(sub-step-counter) ".";
   flex-shrink: 0;
   color: #222;
@@ -178,43 +178,43 @@
   padding-top: 0.125rem;
 }
 
-.dark .recipe-instructions.grouped > li > ul > li::before {
+.dark .guide-instructions.grouped > li > ul > li::before {
   color: #ddd;
 }
 
 /* Flat steps with images — flex with auto margin pushes image to right edge */
-.recipe-instructions > li:not(:has(> ul)):has(.step-image-inline) {
+.guide-instructions > li:not(:has(> ul)):has(.step-image-inline) {
   display: flex;
   align-items: flex-start;
   position: relative;
   padding-left: 2.25rem;
 }
 
-.recipe-instructions > li:not(:has(> ul)):has(.step-image-inline)::before {
+.guide-instructions > li:not(:has(> ul)):has(.step-image-inline)::before {
   position: absolute;
   left: 0;
   top: 0.5rem;
 }
 
 /* Grouped sub-steps with images — same approach */
-.recipe-instructions.grouped > li > ul > li:has(.step-image-inline) {
+.guide-instructions.grouped > li > ul > li:has(.step-image-inline) {
   display: flex;
   align-items: flex-start;
   position: relative;
   padding-left: 1.5rem;
 }
 
-.recipe-instructions.grouped > li > ul > li:has(.step-image-inline)::before {
+.guide-instructions.grouped > li > ul > li:has(.step-image-inline)::before {
   position: absolute;
   left: 0;
   top: 0.375rem;
 }
 
 /* Image pinned to right with auto margin, fixed width */
-.recipe-instructions
+.guide-instructions
   > li:not(:has(> ul)):has(.step-image-inline)
   > .step-image-inline,
-.recipe-instructions.grouped
+.guide-instructions.grouped
   > li
   > ul
   > li:has(.step-image-inline)
@@ -240,32 +240,32 @@
 
 /* Mobile: stack vertically with centered images */
 @media (max-width: 768px) {
-  .recipe-instructions > li:not(:has(> ul)):has(.step-image-inline),
-  .recipe-instructions.grouped > li > ul > li:has(.step-image-inline) {
+  .guide-instructions > li:not(:has(> ul)):has(.step-image-inline),
+  .guide-instructions.grouped > li > ul > li:has(.step-image-inline) {
     display: flex;
     flex-direction: column;
   }
 
   /* Keep badge positioned absolutely so it stays inline with text */
-  .recipe-instructions > li:not(:has(> ul)):has(.step-image-inline)::before,
-  .recipe-instructions.grouped > li > ul > li:has(.step-image-inline)::before {
+  .guide-instructions > li:not(:has(> ul)):has(.step-image-inline)::before,
+  .guide-instructions.grouped > li > ul > li:has(.step-image-inline)::before {
     position: absolute;
   }
 
   /* Center image including badge space — shift only text padding */
-  .recipe-instructions > li:not(:has(> ul)):has(.step-image-inline) > p {
+  .guide-instructions > li:not(:has(> ul)):has(.step-image-inline) > p {
     padding-left: 2.25rem;
   }
 
-  .recipe-instructions.grouped > li > ul > li:has(.step-image-inline) > p {
+  .guide-instructions.grouped > li > ul > li:has(.step-image-inline) > p {
     padding-left: 1.5rem;
   }
 
   /* Center the image in the full column width */
-  .recipe-instructions
+  .guide-instructions
     > li:not(:has(> ul)):has(.step-image-inline)
     > .step-image-inline,
-  .recipe-instructions.grouped
+  .guide-instructions.grouped
     > li
     > ul
     > li:has(.step-image-inline)

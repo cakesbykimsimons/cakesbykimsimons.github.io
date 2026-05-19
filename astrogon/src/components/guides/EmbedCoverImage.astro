@@ -1,0 +1,19 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  src: string;
+  alt: string;
+  title: string;
+}
+
+const { src, alt, title }: Props = Astro.props;
+---
+
+{
+  src && (
+    <div class="mb-4 rounded-lg overflow-hidden">
+      <Image class="w-full" src={src} alt={alt || title} loading="lazy" />
+    </div>
+  )
+}

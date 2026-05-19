@@ -6,25 +6,27 @@ function replaceFractions(node) {
   }
 }
 
-function findRecipeUl(node) {
+function findFirstUl(node) {
   if (node.type === "element" && node.tagName === "ul") return node;
   if (node.type === "mdxJsxFlowElement") {
     for (const child of node.children || []) {
-      const found = findRecipeUl(child);
+      const found = findFirstUl(child);
       if (found) return found;
     }
   }
   return null;
 }
 
-export function rehypeRecipeInstructions() {
+export function rehypeGuideInstructions() {
   return (tree, options) => {
-    const isRecipe = options?.file?.path?.includes("/recipes/");
-    if (isRecipe) replaceFractions(tree);
+    const isGuide =
+      options?.file?.path?.includes("/recipes/") ||
+      options?.file?.path?.includes("/how-tos/");
+    if (isGuide) replaceFractions(tree);
 
     let target = null;
     for (const node of tree.children) {
-      target = findRecipeUl(node);
+      target = findFirstUl(node);
       if (target) break;
     }
     if (!target) return;
@@ -43,7 +45,7 @@ export function rehypeRecipeInstructions() {
       target.properties = target.properties || [];
       target.properties["class"] = [
         target.properties["class"],
-        "recipe-instructions grouped",
+        "guide-instructions grouped",
       ]
         .filter(Boolean)
         .join(" ")
@@ -89,7 +91,7 @@ export function rehypeRecipeInstructions() {
       target.properties = target.properties || [];
       target.properties["class"] = [
         target.properties["class"],
-        "recipe-instructions",
+        "guide-instructions",
       ]
         .filter(Boolean)
         .join(" ")
