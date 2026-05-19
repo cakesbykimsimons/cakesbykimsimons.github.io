@@ -46,9 +46,9 @@ const shouldReplace = (str: string) =>
                 class="text-sm font-semibold text-txt-s dark:text-darkmode-txt-s mb-1"
               />
               {columns === 3 ? (
-                <div style="columns: 3" class="justify-center">
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-y-2">
                   {group.list.map((it: string, index: number) => (
-                    <div class="my-1 break-inside-avoid text-txt-p dark:text-darkmode-txt-p">
+                    <div class="text-txt-p dark:text-darkmode-txt-p">
                       {shouldReplace(it)}
                     </div>
                   ))}
@@ -76,9 +76,9 @@ const shouldReplace = (str: string) =>
           ))
         ) : items ? (
           columns === 3 ? (
-            <div style="columns: 3" class="justify-center">
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-y-2">
               {items.list!.map((it: string, index: number) => (
-                <div class="my-1 break-inside-avoid text-txt-p dark:text-darkmode-txt-p">
+                <div class="text-txt-p dark:text-darkmode-txt-p">
                   {shouldReplace(items.list![index])}
                 </div>
               ))}
