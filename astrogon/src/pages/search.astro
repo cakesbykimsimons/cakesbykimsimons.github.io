@@ -20,6 +20,7 @@ const searchList = (await getEntriesBatch(
   searchableCollections,
   undefined,
   false,
+  import.meta.env.DEV ? false : true,
 )) as SearchableEntry[];
 ---
 

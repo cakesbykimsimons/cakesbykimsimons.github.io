@@ -14,6 +14,7 @@ interface Props {
   allCategories: string[];
   pageIndex: number;
   pageCount: number;
+  collection?: string;
 }
 
 const {
@@ -24,6 +25,7 @@ const {
   allCategories,
   pageIndex,
   pageCount,
+  collection = "blog",
 } = Astro.props;
 ---
 
@@ -45,7 +47,7 @@ const {
             ))
           }
           <Pagination
-            collection="blog"
+            collection={collection}
             pageIndex={pageIndex}
             pageCount={pageCount}
           />

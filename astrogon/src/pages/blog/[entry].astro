@@ -6,7 +6,12 @@ import { getEntries } from "@lib/contentParser";
 import similerItems from "@lib/similarItems";
 
 export async function getStaticPaths() {
-  const entries = (await getEntries("blog", sortByDate)) as BlogEntry[];
+  const entries = (await getEntries(
+    "blog",
+    sortByDate,
+    true,
+    import.meta.env.DEV ? false : true,
+  )) as BlogEntry[];
   const paths = entries.map((entry) => ({
     params: {
       entry: entry.id,
