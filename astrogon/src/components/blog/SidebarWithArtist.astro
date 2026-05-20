@@ -1,0 +1,50 @@
+---
+import BlogSidebar from "@components/blog/Sidebar.astro";
+import ArtistCard from "@components/base/ArtistCard.astro";
+import type { SocialLinks } from "@/types";
+
+interface Props {
+  tags: string[];
+  categories: string[];
+  allCategories: string[];
+  artistImage?: string;
+  artistImageAlt?: string;
+  objectPositionProp?: string;
+  artistName: string;
+  artistTagline: string;
+  artistBio: string;
+  socialLinks?: SocialLinks;
+}
+
+const {
+  tags,
+  categories,
+  allCategories,
+  artistImage,
+  artistImageAlt,
+  objectPositionProp,
+  artistName,
+  artistTagline,
+  artistBio,
+  socialLinks,
+}: Props = Astro.props;
+---
+
+<div class="h-full">
+  <div class="mb-4">
+    <ArtistCard
+      image={artistImage}
+      imageAlt={artistImageAlt}
+      objectPositionProp={objectPositionProp}
+      name={artistName}
+      tagline={artistTagline}
+      bio={artistBio}
+      socialLinks={socialLinks}
+    />
+  </div>
+  <BlogSidebar
+    tags={tags}
+    categories={categories}
+    allCategories={allCategories}
+  />
+</div>

@@ -1,4 +1,4 @@
 ---
-title: Blog Posts
+title: Home
 description: The blog of Kim Simons
 ---

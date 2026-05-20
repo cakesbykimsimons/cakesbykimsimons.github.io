@@ -3,12 +3,19 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 type Props = {
   collection?: string;
+  basePath?: string;
+  homeUrl?: string;
   pageIndex?: number;
   pageCount?: number;
   pageIDs?: string[];
 };
 
-const { collection, pageIndex = 1, pageCount = 1, pageIDs } = Astro.props;
+const { collection, basePath, homeUrl = "/", pageIndex = 1, pageCount = 1, pageIDs } = Astro.props;
+
+function getPageUrl(page: number): string {
+  if (basePath) return page === 1 ? homeUrl : `${basePath}${page}`;
+  return page === 1 ? `${collection ? "/" + collection : "/"}` : `${collection ? "/" + collection : ""}/page/${page}`;
+}
 
 let pageList: number[] = [];
 for (let i = 1; i <= pageCount; i++) {
@@ -19,25 +26,22 @@ let prevPage: string | null;
 let nextPage: string | null;
 
 if (pageIDs) {
-  prevPage =
-    pageIndex > 0
-      ? `${collection ? "/" + collection : ""}/${pageIDs[pageIndex - 1]}`
-      : null;
-  nextPage =
-    pageIndex < pageCount - 1
-      ? `${collection ? "/" + collection : ""}/${pageIDs[pageIndex + 1]}`
-      : null;
-} else {
-  prevPage =
-    pageIndex === 2
-      ? `${collection ? "/" + collection : "/"}`
-      : pageIndex > 2
-        ? `${collection ? "/" + collection : ""}/page/${pageIndex - 1}`
+  if (basePath) {
+    prevPage = pageIndex === 2 ? homeUrl : pageIndex > 2 ? getPageUrl(pageIndex - 1) : null;
+    nextPage = pageIndex < pageCount - 1 ? getPageUrl(pageIndex + 1) : null;
+  } else {
+    prevPage =
+      pageIndex > 0
+        ? `${collection ? "/" + collection : ""}/${pageIDs[pageIndex - 1]}`
         : null;
-  nextPage =
-    pageIndex < pageCount
-      ? `${collection ? "/" + collection : ""}/page/${pageIndex + 1}`
-      : null;
+    nextPage =
+      pageIndex < pageCount - 1
+        ? `${collection ? "/" + collection : ""}/${pageIDs[pageIndex + 1]}`
+        : null;
+  }
+} else {
+  prevPage = pageIndex > 1 ? getPageUrl(pageIndex - 1) : null;
+  nextPage = pageIndex < pageCount ? getPageUrl(pageIndex + 1) : null;
 }
 ---
 
@@ -80,12 +84,8 @@ if (pageIDs) {
                 {pagination}
               </span>
             ) : (
-              <a
-                href={
-                  pagination === 1
-                    ? `${collection ? "/" + collection : "/"}`
-                    : `${collection ? "/" + collection : ""}/page/${pagination}`
-                }
+           <a
+              href={getPageUrl(pagination)}
                 aria-current="page"
                 class="col rounded px-4 py-2 font-semibold text-txt-p dark:text-darkmode-txt-p"
               >

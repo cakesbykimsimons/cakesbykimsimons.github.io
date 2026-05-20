@@ -87,13 +87,18 @@ const home = defineCollection({
       image: image().optional(),
       imageAlt: z.string().default(""),
       title: z.string(),
-      content: z.string(),
+      content: z.string().optional(),
       button: z
         .object({
           label: z.string(),
           link: z.string().optional(),
         })
         .optional(),
+      objectPosition: z.string().default("top center"),
+      tagline: z.string().optional(),
+      bio: z.string().optional(),
+      facebook: z.string().optional(),
+      instagram: z.string().optional(),
     }),
 });
 
