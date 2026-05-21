@@ -1,9 +1,11 @@
 ---
 title: Kim Simons
 image: "@assets/profile/kim-simons.webp"
+email: kame4@hotmail.com
 social:
   facebook: "https://www.facebook.com/kimsimons"
   instagram: "https://www.instagram.com/kimmsimons/"
+  email: kame4@hotmail.com
 ---
 
 Kim M. Simons is a master cake and food artist. She won Food Network's **Holiday Wars** (2019) and **Cake Wars: Star Wars** (2016), and has competed on numerous other shows including Halloween Wars, SugarDome, and Duff Till Dawn.

@@ -130,6 +130,7 @@ const home = defineCollection({
       bio: z.string().optional(),
       facebook: z.string().optional(),
       instagram: z.string().optional(),
+      email: z.string().optional(),
     }),
 });
 
