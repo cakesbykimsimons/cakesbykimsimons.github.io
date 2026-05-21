@@ -1,4 +1,4 @@
-const similerItems = (currentItem: any, allItems: any, id: string) => {
+const similarItems = (currentItem: any, allItems: any, id: string) => {
   let categories: string[] = [];
   let tags: string[] = [];
 
@@ -54,4 +54,4 @@ const similerItems = (currentItem: any, allItems: any, id: string) => {
   return uniqueItems;
 };
 
-export default similerItems;
+export default similarItems;

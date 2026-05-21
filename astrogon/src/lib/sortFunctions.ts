@@ -18,8 +18,3 @@ export const sortByTitle = (entries: GenericEntry[]): GenericEntry[] => {
   return sortedEntries;
 };
 
-// Sort by random
-export const sortByRandom = (entries: GenericEntry[]): GenericEntry[] => {
-  const sortedEntries = entries.sort(() => Math.random() - 0.5);
-  return sortedEntries;
-};

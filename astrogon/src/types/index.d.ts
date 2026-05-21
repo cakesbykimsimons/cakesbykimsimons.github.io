@@ -56,16 +56,3 @@ export type MenuItem = {
   children: MenuItem[];
 };
 
-// Define the type for menu items to created nested object
-export type MenuItemWithDraft = {
-  title?: string;
-  id: string;
-  draft: boolean;
-  children: MenuItemWithDraft[];
-};
-
-// Define the props for the SideNavMenu component
-export type SideNavMenuProps = {
-  items: MenuItemWithDraft[];
-  level: number;
-};
