@@ -171,14 +171,16 @@ if (diet) {
     }
 
     <!-- Notes -->
-    {notes && notes.length > 0 && (
-      <section class="mb-4">
-        <h4 class="text-lg font-semibold text-txt-p dark:text-darkmode-txt-p mb-2">
-          Notes
-        </h4>
-        <EmbedNotes notes={notes} />
-      </section>
-    )}
+    {
+      notes && notes.length > 0 && (
+        <section class="mb-4">
+          <h4 class="text-lg font-semibold text-txt-p dark:text-darkmode-txt-p mb-2">
+            Notes
+          </h4>
+          <EmbedNotes notes={notes} />
+        </section>
+      )
+    }
 
     <!-- Link to full recipe -->
     <div class="mt-3 text-right">

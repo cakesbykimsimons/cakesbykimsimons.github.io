@@ -17,7 +17,9 @@ const { notes }: Props = Astro.props;
           {notes.map((it: string, index: number) => (
             <div class="row my-1">
               <div class="flex gap-2 py-2 items-start">
-                <span class="text-txt-s dark:text-darkmode-txt-s flex-shrink-0">•</span>
+                <span class="text-txt-s dark:text-darkmode-txt-s flex-shrink-0">
+                  •
+                </span>
                 <span
                   class="text-sm text-txt-p dark:text-darkmode-txt-p"
                   set:html={replaceFractions(it)}

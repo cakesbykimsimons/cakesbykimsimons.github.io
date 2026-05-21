@@ -33,7 +33,9 @@ function buildPathToUrlMap(
 
 function resolveRelativePath(galleryDir: string, file: string): string | null {
   const normalizedFile = file.replace(/\\/g, "/");
-  const cleanFile = normalizedFile.startsWith("./") ? normalizedFile.slice(2) : normalizedFile;
+  const cleanFile = normalizedFile.startsWith("./")
+    ? normalizedFile.slice(2)
+    : normalizedFile;
 
   let parts: string[];
   if (cleanFile.startsWith("../")) {

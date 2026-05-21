@@ -7,10 +7,9 @@ const allImages = import.meta.glob("@/assets/art/**/*.{jpg,jpeg}", {
   import: "default",
 });
 
-const allGalleryConfigs = import.meta.glob(
-  "@/assets/art/**/gallery.json",
-  { eager: true },
-);
+const allGalleryConfigs = import.meta.glob("@/assets/art/**/gallery.json", {
+  eager: true,
+});
 
 const { getImages } = createGalleryLoader(allImages, allGalleryConfigs);
 export { getImages as getImagesForArt };

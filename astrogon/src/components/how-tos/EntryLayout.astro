@@ -16,8 +16,18 @@ interface Props {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { title, author, description, image, imageAlt, skillLevel, timeRequired, cost, supplies, notes } =
-  entry.data;
+const {
+  title,
+  author,
+  description,
+  image,
+  imageAlt,
+  skillLevel,
+  timeRequired,
+  cost,
+  supplies,
+  notes,
+} = entry.data;
 
 // Assemble sidebar items
 const sidebarItems: Array<{

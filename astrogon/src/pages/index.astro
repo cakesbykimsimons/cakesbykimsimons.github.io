@@ -44,7 +44,8 @@ const socialLinks = {
   artistImageAlt={homeEntry.data.imageAlt}
   objectPositionProp={homeEntry.data.objectPosition ?? "top center"}
   artistName={homeEntry.data.title}
-  artistTagline={homeEntry.data.tagline ?? "Multi-award winning master cake artist & Food Network Champion"}
+  artistTagline={homeEntry.data.tagline ??
+    "Multi-award winning master cake artist & Food Network Champion"}
   artistBio={homeEntry.data.bio ?? ""}
   socialLinks={socialLinks}
 />

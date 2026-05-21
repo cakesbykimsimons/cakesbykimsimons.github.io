@@ -23,15 +23,17 @@ const currentEntries = entries.slice(indexOfFirstEntry, indexOfLastEntry);
 const pageCount: number = Math.ceil(entries.length / entriesPerPage);
 ---
 
-{import.meta.env.DEV && (
-  <CollectionLayout
-    entryIndex={entryIndex}
-    entries={currentEntries}
-    categories={categories}
-    tags={tags}
-    allCategories={allCategories}
-    pageIndex={currentPageIndex}
-    pageCount={pageCount}
-    collection="blog/drafts"
-  />
-)}
+{
+  import.meta.env.DEV && (
+    <CollectionLayout
+      entryIndex={entryIndex}
+      entries={currentEntries}
+      categories={categories}
+      tags={tags}
+      allCategories={allCategories}
+      pageIndex={currentPageIndex}
+      pageCount={pageCount}
+      collection="blog/drafts"
+    />
+  )
+}

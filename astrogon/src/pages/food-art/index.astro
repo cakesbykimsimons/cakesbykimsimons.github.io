@@ -4,7 +4,9 @@ import { getIndex, getGroups, getRootEntries } from "@lib/contentParser";
 import type { FoodArtGalleryEntry } from "@/types";
 import { sortByTitle } from "@lib/sortFunctions";
 
-const collectionIndex = (await getIndex("foodArtGallery")) as FoodArtGalleryEntry;
+const collectionIndex = (await getIndex(
+  "foodArtGallery",
+)) as FoodArtGalleryEntry;
 const groupIndices = (await getGroups(
   "foodArtGallery",
   sortByTitle,

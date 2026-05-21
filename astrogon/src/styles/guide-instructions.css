@@ -52,7 +52,10 @@
   font-weight: 700;
 }
 
-.dark .guide-instructions-body .guide-instructions > li:not(:has(> ul))::before {
+.dark
+  .guide-instructions-body
+  .guide-instructions
+  > li:not(:has(> ul))::before {
   background-color: #fff;
   color: #1a1a1a;
 }
@@ -84,7 +87,10 @@
   color: #000;
 }
 
-.guide-instructions-body .guide-instructions.grouped > li > p:first-child::before {
+.guide-instructions-body
+  .guide-instructions.grouped
+  > li
+  > p:first-child::before {
   content: counter(group-counter);
   display: flex;
   flex-shrink: 0;
@@ -99,11 +105,19 @@
   font-weight: 700;
 }
 
-.dark .guide-instructions-body .guide-instructions.grouped > li > p:first-child {
+.dark
+  .guide-instructions-body
+  .guide-instructions.grouped
+  > li
+  > p:first-child {
   color: #fff;
 }
 
-.dark .guide-instructions-body .guide-instructions.grouped > li > p:first-child::before {
+.dark
+  .guide-instructions-body
+  .guide-instructions.grouped
+  > li
+  > p:first-child::before {
   background-color: #fff;
   color: #1a1a1a;
 }
@@ -119,7 +133,9 @@
   color: #000;
 }
 
-.guide-instructions-body .guide-instructions.grouped > li:not(:has(> ul))::before {
+.guide-instructions-body
+  .guide-instructions.grouped
+  > li:not(:has(> ul))::before {
   content: counter(group-counter);
   display: flex;
   flex-shrink: 0;
@@ -134,11 +150,17 @@
   font-weight: 700;
 }
 
-.dark .guide-instructions-body .guide-instructions.grouped > li:not(:has(> ul)) {
+.dark
+  .guide-instructions-body
+  .guide-instructions.grouped
+  > li:not(:has(> ul)) {
   color: #fff;
 }
 
-.dark .guide-instructions-body .guide-instructions.grouped > li:not(:has(> ul))::before {
+.dark
+  .guide-instructions-body
+  .guide-instructions.grouped
+  > li:not(:has(> ul))::before {
   background-color: #fff;
   color: #1a1a1a;
 }
@@ -178,43 +200,62 @@
   padding-top: 0.125rem;
 }
 
-.dark .guide-instructions-body .guide-instructions.grouped > li > ul > li::before {
+.dark
+  .guide-instructions-body
+  .guide-instructions.grouped
+  > li
+  > ul
+  > li::before {
   color: #ddd;
 }
 
 /* Flat steps with images — flex with auto margin pushes image to right edge */
-.guide-instructions-body .guide-instructions > li:not(:has(> ul)):has(.step-image-inline) {
+.guide-instructions-body
+  .guide-instructions
+  > li:not(:has(> ul)):has(.step-image-inline) {
   display: flex;
   align-items: flex-start;
   position: relative;
   padding-left: 2.25rem;
 }
 
-.guide-instructions-body .guide-instructions > li:not(:has(> ul)):has(.step-image-inline)::before {
+.guide-instructions-body
+  .guide-instructions
+  > li:not(:has(> ul)):has(.step-image-inline)::before {
   position: absolute;
   left: 0;
   top: 0.5rem;
 }
 
 /* Grouped sub-steps with images — same approach */
-.guide-instructions-body .guide-instructions.grouped > li > ul > li:has(.step-image-inline) {
+.guide-instructions-body
+  .guide-instructions.grouped
+  > li
+  > ul
+  > li:has(.step-image-inline) {
   display: flex;
   align-items: flex-start;
   position: relative;
   padding-left: 1.5rem;
 }
 
-.guide-instructions-body .guide-instructions.grouped > li > ul > li:has(.step-image-inline)::before {
+.guide-instructions-body
+  .guide-instructions.grouped
+  > li
+  > ul
+  > li:has(.step-image-inline)::before {
   position: absolute;
   left: 0;
   top: 0.375rem;
 }
 
 /* Image pinned to right with auto margin, fixed width */
-.guide-instructions-body .guide-instructions
+.guide-instructions-body
+  .guide-instructions
   > li:not(:has(> ul)):has(.step-image-inline)
   > .step-image-inline,
-.guide-instructions-body .guide-instructions.grouped
+.guide-instructions-body
+  .guide-instructions.grouped
   > li
   > ul
   > li:has(.step-image-inline)
@@ -240,32 +281,54 @@
 
 /* Mobile: stack vertically with centered images */
 @media (max-width: 768px) {
-  .guide-instructions-body .guide-instructions > li:not(:has(> ul)):has(.step-image-inline),
-  .guide-instructions-body .guide-instructions.grouped > li > ul > li:has(.step-image-inline) {
+  .guide-instructions-body
+    .guide-instructions
+    > li:not(:has(> ul)):has(.step-image-inline),
+  .guide-instructions-body
+    .guide-instructions.grouped
+    > li
+    > ul
+    > li:has(.step-image-inline) {
     display: flex;
     flex-direction: column;
   }
 
   /* Keep badge positioned absolutely so it stays inline with text */
-  .guide-instructions-body .guide-instructions > li:not(:has(> ul)):has(.step-image-inline)::before,
-  .guide-instructions-body .guide-instructions.grouped > li > ul > li:has(.step-image-inline)::before {
+  .guide-instructions-body
+    .guide-instructions
+    > li:not(:has(> ul)):has(.step-image-inline)::before,
+  .guide-instructions-body
+    .guide-instructions.grouped
+    > li
+    > ul
+    > li:has(.step-image-inline)::before {
     position: absolute;
   }
 
   /* Center image including badge space — shift only text padding */
-  .guide-instructions-body .guide-instructions > li:not(:has(> ul)):has(.step-image-inline) > p {
+  .guide-instructions-body
+    .guide-instructions
+    > li:not(:has(> ul)):has(.step-image-inline)
+    > p {
     padding-left: 2.25rem;
   }
 
-  .guide-instructions-body .guide-instructions.grouped > li > ul > li:has(.step-image-inline) > p {
+  .guide-instructions-body
+    .guide-instructions.grouped
+    > li
+    > ul
+    > li:has(.step-image-inline)
+    > p {
     padding-left: 1.5rem;
   }
 
   /* Center the image in the full column width */
-  .guide-instructions-body .guide-instructions
+  .guide-instructions-body
+    .guide-instructions
     > li:not(:has(> ul)):has(.step-image-inline)
     > .step-image-inline,
-  .guide-instructions-body .guide-instructions.grouped
+  .guide-instructions-body
+    .guide-instructions.grouped
     > li
     > ul
     > li:has(.step-image-inline)
