@@ -1,8 +1,8 @@
 ---
 title: I Am Crow Cake
 description: "A detailed look at this sculpted i am crow cake creation."
-image: "@assets/gallery-thumbs/cake-gallery/i-am-crow-cake.jpg"
-imageAlt: "A detailed sculpted i am crow cake"
+image: "@assets/cake-gallery/award-winning-cakes/show-cakes/i-am-crow-cake/5547601.jpg"
+objectPosition: "50% 50%"
 hideToc: true
 ---
 

@@ -1,8 +1,8 @@
 ---
 title: Bear Cake
 description: "A detailed look at this sculpted bear cake creation."
-image: "@assets/gallery-thumbs/cake-gallery/bear-cake.jpg"
-imageAlt: "A detailed sculpted bear cake"
+image: "@assets/cake-gallery/award-winning-cakes/show-cakes/bear-cake/463718.jpg"
+objectPosition: "50% 50%"
 hideToc: true
 ---
 
