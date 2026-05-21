@@ -1,8 +1,8 @@
 ---
 title: Sea Play Cake
 description: "A detailed look at this sculpted sea play cake creation."
-image: "@assets/gallery-thumbs/cake-gallery/sea-play-cake.jpg"
-imageAlt: "A detailed sculpted sea play cake"
+image: "@assets/cake-gallery/award-winning-cakes/show-cakes/sea-play-cake/2578096.jpg"
+objectPosition: "50% 25%"
 hideToc: true
 ---
 

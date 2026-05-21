@@ -1,8 +1,8 @@
 ---
 title: Three Little Pigs Cake
 description: "A detailed look at this sculpted three little pigs cake creation."
-image: "@assets/gallery-thumbs/cake-gallery/three-little-pigs-cake.jpg"
-imageAlt: "A detailed sculpted three little pigs cake"
+image: "@assets/cake-gallery/award-winning-cakes/show-cakes/three-little-pigs-cake/927605.jpg"
+objectPosition: "50% 50%"
 hideToc: true
 ---
 

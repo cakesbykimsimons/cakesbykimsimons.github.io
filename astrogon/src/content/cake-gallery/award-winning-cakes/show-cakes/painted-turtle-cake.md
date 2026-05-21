@@ -1,8 +1,8 @@
 ---
 title: Painted Turtle Cake
 description: "A detailed look at this sculpted painted turtle cake creation."
-image: "@assets/gallery-thumbs/cake-gallery/painted-turtle-cake.jpg"
-imageAlt: "A detailed sculpted painted turtle cake"
+image: "@assets/cake-gallery/award-winning-cakes/show-cakes/painted-turtle-cake/7186173.jpg"
+objectPosition: "50% 50%"
 hideToc: true
 ---
 

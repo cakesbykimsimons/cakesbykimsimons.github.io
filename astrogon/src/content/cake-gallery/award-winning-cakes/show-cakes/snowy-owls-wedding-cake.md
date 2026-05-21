@@ -1,8 +1,8 @@
 ---
 title: Snowy Owls Wedding Cake
 description: "A detailed look at this sculpted snowy owls wedding cake creation."
-image: "@assets/gallery-thumbs/cake-gallery/snowy-owls-wedding-cake.jpg"
-imageAlt: "A detailed sculpted snowy owls wedding cake"
+image: "@assets/cake-gallery/award-winning-cakes/show-cakes/snowy-owls-wedding-cake/9404115.jpg"
+objectPosition: "50% 20%"
 hideToc: true
 ---
 
