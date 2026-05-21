@@ -18,11 +18,15 @@ function findFirstUl(node) {
 }
 
 export function rehypeGuideInstructions() {
-  return (tree, options) => {
+  return (tree, file) => {
+    const filePath = file?.history?.[0] || file?.path || "";
     const isGuide =
-      options?.file?.path?.includes("/recipes/") ||
-      options?.file?.path?.includes("/how-tos/");
-    if (isGuide) replaceFractions(tree);
+      String(filePath).includes("/recipes/") ||
+      String(filePath).includes("/how-tos/");
+    if (!isGuide) {
+      return;
+    }
+    replaceFractions(tree);
 
     let target = null;
     for (const node of tree.children) {
