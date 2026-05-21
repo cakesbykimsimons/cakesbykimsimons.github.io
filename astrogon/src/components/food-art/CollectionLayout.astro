@@ -1,0 +1,17 @@
+---
+import GalleryCollectionLayout from "@components/gallery/CollectionLayout.astro";
+import type { FoodArtGalleryEntry } from "@/types";
+
+interface Props {
+  collectionIndex: FoodArtGalleryEntry;
+  entries: FoodArtGalleryEntry[];
+}
+
+const { collectionIndex, entries } = Astro.props;
+---
+
+<GalleryCollectionLayout
+  collectionIndex={collectionIndex}
+  entries={entries}
+  basePath="food-art"
+/>

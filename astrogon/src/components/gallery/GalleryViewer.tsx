@@ -11,7 +11,7 @@ interface Props {
   images: GalleryImage[];
 }
 
-export default function CakeGallery({ images }: Props) {
+export default function GalleryViewer({ images }: Props) {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
 

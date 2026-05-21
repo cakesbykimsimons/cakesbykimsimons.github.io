@@ -1,12 +1,12 @@
 ---
 import BaseLayout from "@components/base/BaseLayout.astro";
-import type { CakeGalleryEntry, MenuItem } from "@/types";
-import GalleryBrowser from "@components/cake-gallery/Browser.astro";
+import type { FoodArtGalleryEntry, MenuItem } from "@/types";
+import GalleryBrowser from "@components/food-art/Browser.astro";
 import ImageGallery from "@components/gallery/ImageGallery.astro";
 import { render } from "astro:content";
 
 interface Props {
-  entry: CakeGalleryEntry;
+  entry: FoodArtGalleryEntry;
   browserMenu: MenuItem[];
 }
 
@@ -14,8 +14,8 @@ const { entry, browserMenu } = Astro.props;
 const { Content, headings } = await render(entry);
 const { title, description, image } = entry.data;
 
-// Strip the -index suffix and any leading slash to get the cake slug for image lookup
-const cakeSlug = entry.id.replace(/\/?-index$/, "");
+// Strip the -index suffix and any leading slash to get the food-art slug for image lookup
+const foodArtSlug = entry.id.replace(/\/?-index$/, "");
 ---
 
 <BaseLayout title={title} image={image?.src} description={description}>
@@ -23,7 +23,7 @@ const cakeSlug = entry.id.replace(/\/?-index$/, "");
     <div
       class="sticky top-[5rem] mr-4 max-h-static_sidemenu hidden md:flex md:w-1/4 lg:w-1/4"
     >
-      <GalleryBrowser menu={browserMenu} currentPage={cakeSlug} />
+      <GalleryBrowser menu={browserMenu} currentPage={foodArtSlug} />
     </div>
     <div class="w-full md:w-3/4 lg:w-3/4">
       <article class="">
@@ -37,9 +37,9 @@ const cakeSlug = entry.id.replace(/\/?-index$/, "");
         <section class="content mb-4 glass px-4 rounded-lg">
           <Content />
         </section>
-        <ImageGallery entryId={cakeSlug} galleryType="cake" />
+        <ImageGallery entryId={foodArtSlug} galleryType="food-art" />
         <div class="md:hidden mt-8">
-          <GalleryBrowser menu={browserMenu} currentPage={cakeSlug} />
+          <GalleryBrowser menu={browserMenu} currentPage={foodArtSlug} />
         </div>
       </article>
     </div>

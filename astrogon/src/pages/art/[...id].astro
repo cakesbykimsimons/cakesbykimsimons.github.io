@@ -1,7 +1,7 @@
 ---
-import type { CakeGalleryEntry, MenuItem } from "@/types";
-import EntryLayout from "@components/cake-gallery/EntryLayout.astro";
-import CollectionLayout from "@components/cake-gallery/CollectionLayout.astro";
+import type { ArtGalleryEntry, MenuItem } from "@/types";
+import EntryLayout from "@components/art/EntryLayout.astro";
+import CollectionLayout from "@components/art/CollectionLayout.astro";
 import {
   getEntries,
   getAllChildrenInGroup,
@@ -11,9 +11,9 @@ import { sortByTitle } from "@lib/sortFunctions";
 
 export async function getStaticPaths() {
   const entries = (await getEntries(
-    "cakeGallery",
+    "artGallery",
     sortByTitle,
-  )) as CakeGalleryEntry[];
+  )) as ArtGalleryEntry[];
 
   const paths = entries.map((entry) => {
     const cleanId = entry.id.replace("/-index", "");
@@ -31,14 +31,14 @@ const { entry, isGroup } = Astro.props;
 const groupName = entry.id.replace("/-index", "");
 const groupEntries = isGroup
   ? ((await getAllChildrenInGroup(
-      "cakeGallery",
+      "artGallery",
       groupName,
       sortByTitle,
-    )) as CakeGalleryEntry[])
+    )) as ArtGalleryEntry[])
   : [];
 
 // Construct Doc Browser menu recursively
-const browserMenu = await buildMenuTree("cakeGallery", sortByTitle);
+const browserMenu = await buildMenuTree("artGallery", sortByTitle);
 ---
 
 {

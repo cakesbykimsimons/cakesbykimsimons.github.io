@@ -80,6 +80,34 @@ const cakeGallery = defineCollection({
     }),
 });
 
+const artGallery = defineCollection({
+  loader: glob({
+    pattern: "**\/[^_]*.{md,mdx}",
+    base: "./src/content/art",
+  }),
+  schema: ({ image }) =>
+    searchable.extend({
+      image: image().optional(),
+      imageAlt: z.string().default(""),
+      hideToc: z.boolean().default(false),
+      hideNav: z.boolean().default(false),
+    }),
+});
+
+const foodArtGallery = defineCollection({
+  loader: glob({
+    pattern: "**\/[^_]*.{md,mdx}",
+    base: "./src/content/food-art",
+  }),
+  schema: ({ image }) =>
+    searchable.extend({
+      image: image().optional(),
+      imageAlt: z.string().default(""),
+      hideToc: z.boolean().default(false),
+      hideNav: z.boolean().default(false),
+    }),
+});
+
 const home = defineCollection({
   loader: glob({ pattern: "-index.{md,mdx}", base: "./src/content/home" }),
   schema: ({ image }) =>
@@ -227,6 +255,8 @@ export const collections = {
   authors,
   blog,
   cakeGallery,
+  artGallery,
+  foodArtGallery,
   home,
   indexCards,
   poetry,
