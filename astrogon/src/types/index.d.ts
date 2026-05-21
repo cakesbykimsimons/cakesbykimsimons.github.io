@@ -10,9 +10,6 @@ export type CakeGalleryEntry = CollectionEntry<"cakeGallery">;
 export type ArtGalleryEntry = CollectionEntry<"artGallery">;
 export type FoodArtGalleryEntry = CollectionEntry<"foodArtGallery">;
 export type HomeEntry = CollectionEntry<"home">;
-export type IndexCardsEntry = CollectionEntry<"indexCards">;
-export type PoetryEntry = CollectionEntry<"poetry">;
-export type PortfolioEntry = CollectionEntry<"portfolio">;
 export type HowTosEntry = CollectionEntry<"how-tos">;
 export type RecipesEntry = CollectionEntry<"recipes">;
 export type TermsEntry = CollectionEntry<"terms">;
@@ -25,8 +22,6 @@ export type SearchableEntry =
   | ArtGalleryEntry
   | FoodArtGalleryEntry
   | HowTosEntry
-  | PoetryEntry
-  | PortfolioEntry
   | RecipesEntry
   | TermsEntry;
 
@@ -59,16 +54,3 @@ export type MenuItem = {
   children: MenuItem[];
 };
 
-// Define the type for menu items to created nested object
-export type MenuItemWithDraft = {
-  title?: string;
-  id: string;
-  draft: boolean;
-  children: MenuItemWithDraft[];
-};
-
-// Define the props for the SideNavMenu component
-export type SideNavMenuProps = {
-  items: MenuItemWithDraft[];
-  level: number;
-};

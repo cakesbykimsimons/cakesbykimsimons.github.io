@@ -1,8 +1,8 @@
 ---
 title: Calling the Spirit Animals Through the Path of the Feather
 description: "A detailed look at this sculpted spirit animals cake creation."
-image: "@assets/gallery-thumbs/cake-gallery/spirit-animals-cake.jpg"
-imageAlt: "A detailed sculpted spirit animals cake"
+image: "@assets/cake-gallery/award-winning-cakes/show-cakes/spirit-animals-cake/spirit-animals-front.jpeg"
+objectPosition: "50% 25%"
 hideToc: true
 ---
 

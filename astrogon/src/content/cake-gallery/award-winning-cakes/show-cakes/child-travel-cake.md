@@ -1,8 +1,8 @@
 ---
 title: Child Travel Cake
 description: "A detailed look at this themed travel cake creation."
-image: "@assets/gallery-thumbs/cake-gallery/child-travel-cake.jpg"
-imageAlt: "A detailed sculpted child travel cake"
+image: "@assets/cake-gallery/award-winning-cakes/show-cakes/child-travel-cake/5744817.jpg"
+objectPosition: "80% 50%%"
 hideToc: true
 ---
 

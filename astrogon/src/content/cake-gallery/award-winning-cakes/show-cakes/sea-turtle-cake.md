@@ -1,8 +1,8 @@
 ---
 title: Sea Turtle Cake
 description: "A detailed look at this sculpted sea turtle cake creation."
-image: "@assets/gallery-thumbs/cake-gallery/sea-turtle-cake.jpg"
-imageAlt: "A detailed sculpted sea turtle cake"
+image: "@assets/cake-gallery/award-winning-cakes/show-cakes/sea-turtle-cake/7525255.jpg"
+objectPosition: "50% 75%"
 hideToc: true
 ---
 

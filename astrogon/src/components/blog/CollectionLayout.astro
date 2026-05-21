@@ -53,32 +53,32 @@ const {
   title={entryIndex.data.title}
   description={entryIndex.data.description}
 >
- <PageHeader title={entryIndex.data.title} />
+  <PageHeader title={entryIndex.data.title} />
   <section class="section">
     <div class="flex container">
       <div class="row px-0 mx-0 w-full">
         <!-- blog posts -->
         <div class="col-12 lg:col-8 lg:p-0">
-         {artistCard && pageIndex <= 1 && artistBio && (
-            <div class="mb-4 lg:hidden">
-              <ArtistCard
-                image={artistImage}
-                imageAlt={artistImageAlt}
-                objectPositionProp={objectPositionProp}
-                name={artistName}
-                tagline={artistTagline}
-                bio={artistBio}
-                socialLinks={socialLinks}
-              />
-            </div>
-          )}
-          {
-            entries.map((entry) => (
-              <div class="mb-4">
-                <BlogCard entry={entry} />
+          <Fragment>
+            {artistCard && pageIndex <= 1 && artistBio && (
+              <div class="mb-4 lg:hidden">
+                <ArtistCard
+                  image={artistImage}
+                  imageAlt={artistImageAlt}
+                  objectPositionProp={objectPositionProp}
+                  name={artistName}
+                  tagline={artistTagline}
+                  bio={artistBio}
+                  socialLinks={socialLinks}
+                />
               </div>
-            ))
-          }
+            )}
+          </Fragment>
+          {entries.map((entry) => (
+            <div class="mb-4">
+              <BlogCard entry={entry} />
+            </div>
+          ))}
           <Pagination
             collection={collection}
             basePath={basePath}
@@ -90,26 +90,28 @@ const {
         <div
           class="hidden lg:col-4 lg:flex max-h-static_sidemenu sticky p-0 pl-4 top-[4rem]"
         >
-          {artistCard ? (
-            <SidebarWithArtist
-              tags={tags}
-              categories={categories}
-              allCategories={allCategories}
-              artistImage={artistImage}
-artistImageAlt={artistImageAlt}
-               objectPositionProp={objectPositionProp}
-               artistName={artistName}
-              artistTagline={artistTagline}
-              artistBio={artistBio}
-              socialLinks={socialLinks}
-            />
-          ) : (
-            <BlogSidebar
-              tags={tags}
-              categories={categories}
-              allCategories={allCategories}
-            />
-          )}
+          {
+            artistCard ? (
+              <SidebarWithArtist
+                tags={tags}
+                categories={categories}
+                allCategories={allCategories}
+                artistImage={artistImage}
+                artistImageAlt={artistImageAlt}
+                objectPositionProp={objectPositionProp}
+                artistName={artistName}
+                artistTagline={artistTagline}
+                artistBio={artistBio}
+                socialLinks={socialLinks}
+              />
+            ) : (
+              <BlogSidebar
+                tags={tags}
+                categories={categories}
+                allCategories={allCategories}
+              />
+            )
+          }
         </div>
       </div>
     </div>

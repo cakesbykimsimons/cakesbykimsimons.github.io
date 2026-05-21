@@ -77,6 +77,7 @@ const cakeGallery = defineCollection({
       imageAlt: z.string().default(""),
       hideToc: z.boolean().default(false),
       hideNav: z.boolean().default(false),
+      objectPosition: z.string().default("center"),
     }),
 });
 
@@ -91,6 +92,7 @@ const artGallery = defineCollection({
       imageAlt: z.string().default(""),
       hideToc: z.boolean().default(false),
       hideNav: z.boolean().default(false),
+      objectPosition: z.string().default("center"),
     }),
 });
 
@@ -105,6 +107,7 @@ const foodArtGallery = defineCollection({
       imageAlt: z.string().default(""),
       hideToc: z.boolean().default(false),
       hideNav: z.boolean().default(false),
+      objectPosition: z.string().default("center"),
     }),
 });
 
@@ -127,47 +130,8 @@ const home = defineCollection({
       bio: z.string().optional(),
       facebook: z.string().optional(),
       instagram: z.string().optional(),
+      email: z.string().optional(),
     }),
-});
-
-const indexCards = defineCollection({
-  loader: glob({
-    pattern: "-index.{md,mdx}",
-    base: "./src/content/index-cards",
-  }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    cards: z.array(z.string()),
-  }),
-});
-
-const poetry = defineCollection({
-  loader: glob({ pattern: "**\/[^_]*.{md,mdx}", base: "./src/content/poetry" }),
-  schema: ({ image }) =>
-    searchable.extend({
-      date: z.date().optional(),
-      image: image().optional(),
-      imageAlt: z.string().default(""),
-      author: reference("authors").optional(),
-    }),
-});
-
-const portfolio = defineCollection({
-  loader: glob({
-    pattern: "-index.{md,mdx}",
-    base: "./src/content/portfolio",
-  }),
-  schema: searchable.extend({
-    projects: z.array(
-      z.object({
-        title: z.string(),
-        github: z.string().optional(),
-        technologies: z.array(z.string()).optional(),
-        content: z.array(z.string()).optional(),
-      }),
-    ),
-  }),
 });
 
 const recipes = defineCollection({
@@ -258,9 +222,6 @@ export const collections = {
   artGallery,
   foodArtGallery,
   home,
-  indexCards,
-  poetry,
-  portfolio,
   recipes,
   terms,
   "how-tos": howTos,

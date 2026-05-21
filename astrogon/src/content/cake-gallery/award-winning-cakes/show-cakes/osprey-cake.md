@@ -1,8 +1,8 @@
 ---
 title: Osprey Cake
 description: "A detailed look at this sculpted osprey cake creation."
-image: "@assets/gallery-thumbs/cake-gallery/osprey-cake.jpg"
-imageAlt: "A detailed sculpted osprey cake"
+image: "@assets/cake-gallery/award-winning-cakes/show-cakes/osprey-cake/3540286.jpg"
+objectPosition: "50% 30%"
 hideToc: true
 ---
 

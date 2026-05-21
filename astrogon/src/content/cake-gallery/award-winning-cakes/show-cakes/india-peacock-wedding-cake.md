@@ -1,8 +1,8 @@
 ---
 title: India Peacock Wedding Cake
 description: "A detailed look at this sculpted india peacock wedding cake creation."
-image: "@assets/gallery-thumbs/cake-gallery/india-peacock-wedding-cake.jpg"
-imageAlt: "A detailed sculpted india peacock wedding cake"
+image: "@assets/cake-gallery/award-winning-cakes/show-cakes/india-peacock-wedding-cake/4713973.jpg"
+objectPosition: "50% 10%"
 hideToc: true
 ---
 
