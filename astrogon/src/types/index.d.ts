@@ -10,8 +10,6 @@ export type CakeGalleryEntry = CollectionEntry<"cakeGallery">;
 export type ArtGalleryEntry = CollectionEntry<"artGallery">;
 export type FoodArtGalleryEntry = CollectionEntry<"foodArtGallery">;
 export type HomeEntry = CollectionEntry<"home">;
-export type IndexCardsEntry = CollectionEntry<"indexCards">;
-export type PoetryEntry = CollectionEntry<"poetry">;
 export type PortfolioEntry = CollectionEntry<"portfolio">;
 export type HowTosEntry = CollectionEntry<"how-tos">;
 export type RecipesEntry = CollectionEntry<"recipes">;
@@ -25,7 +23,6 @@ export type SearchableEntry =
   | ArtGalleryEntry
   | FoodArtGalleryEntry
   | HowTosEntry
-  | PoetryEntry
   | PortfolioEntry
   | RecipesEntry
   | TermsEntry;

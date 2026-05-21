@@ -133,29 +133,6 @@ const home = defineCollection({
     }),
 });
 
-const indexCards = defineCollection({
-  loader: glob({
-    pattern: "-index.{md,mdx}",
-    base: "./src/content/index-cards",
-  }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    cards: z.array(z.string()),
-  }),
-});
-
-const poetry = defineCollection({
-  loader: glob({ pattern: "**\/[^_]*.{md,mdx}", base: "./src/content/poetry" }),
-  schema: ({ image }) =>
-    searchable.extend({
-      date: z.date().optional(),
-      image: image().optional(),
-      imageAlt: z.string().default(""),
-      author: reference("authors").optional(),
-    }),
-});
-
 const portfolio = defineCollection({
   loader: glob({
     pattern: "-index.{md,mdx}",
@@ -261,8 +238,6 @@ export const collections = {
   artGallery,
   foodArtGallery,
   home,
-  indexCards,
-  poetry,
   portfolio,
   recipes,
   terms,
