@@ -1,0 +1,50 @@
+---
+import type { ArtGalleryEntry, MenuItem } from "@/types";
+import EntryLayout from "@components/art/EntryLayout.astro";
+import CollectionLayout from "@components/art/CollectionLayout.astro";
+import {
+  getEntries,
+  getAllChildrenInGroup,
+  buildMenuTree,
+} from "@lib/contentParser";
+import { sortByTitle } from "@lib/sortFunctions";
+
+export async function getStaticPaths() {
+  const entries = (await getEntries(
+    "artGallery",
+    sortByTitle,
+  )) as ArtGalleryEntry[];
+
+  const paths = entries.map((entry) => {
+    const cleanId = entry.id.replace("/-index", "");
+
+    return {
+      params: { id: cleanId },
+      props: { entry, isGroup: entry.id.endsWith("/-index") },
+    };
+  });
+
+  return paths;
+}
+
+const { entry, isGroup } = Astro.props;
+const groupName = entry.id.replace("/-index", "");
+const groupEntries = isGroup
+  ? ((await getAllChildrenInGroup(
+      "artGallery",
+      groupName,
+      sortByTitle,
+    )) as ArtGalleryEntry[])
+  : [];
+
+// Construct Doc Browser menu recursively
+const browserMenu = await buildMenuTree("artGallery", sortByTitle);
+---
+
+{
+  isGroup ? (
+    <CollectionLayout collectionIndex={entry} entries={groupEntries} />
+  ) : (
+    <EntryLayout entry={entry} browserMenu={browserMenu} />
+  )
+}

@@ -2,7 +2,7 @@
 import BaseLayout from "@components/base/BaseLayout.astro";
 import type { CakeGalleryEntry, MenuItem } from "@/types";
 import GalleryBrowser from "@components/cake-gallery/Browser.astro";
-import CakeImageGallery from "@components/cake-gallery/CakeImageGallery.astro";
+import ImageGallery from "@components/gallery/ImageGallery.astro";
 import { render } from "astro:content";
 
 interface Props {
@@ -37,7 +37,7 @@ const cakeSlug = entry.id.replace(/\/?-index$/, "");
         <section class="content mb-4 glass px-4 rounded-lg">
           <Content />
         </section>
-        <CakeImageGallery entryId={cakeSlug} />
+        <ImageGallery entryId={cakeSlug} galleryType="cake" />
         <div class="md:hidden mt-8">
           <GalleryBrowser menu={browserMenu} currentPage={cakeSlug} />
         </div>

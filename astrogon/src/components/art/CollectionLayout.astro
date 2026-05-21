@@ -1,0 +1,17 @@
+---
+import GalleryCollectionLayout from "@components/gallery/CollectionLayout.astro";
+import type { ArtGalleryEntry } from "@/types";
+
+interface Props {
+  collectionIndex: ArtGalleryEntry;
+  entries: ArtGalleryEntry[];
+}
+
+const { collectionIndex, entries } = Astro.props;
+---
+
+<GalleryCollectionLayout
+  collectionIndex={collectionIndex}
+  entries={entries}
+  basePath="art"
+/>

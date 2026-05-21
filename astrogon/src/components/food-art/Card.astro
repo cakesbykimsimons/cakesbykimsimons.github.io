@@ -1,0 +1,12 @@
+---
+import GalleryCard from "@components/gallery/Card.astro";
+import type { FoodArtGalleryEntry } from "@/types";
+
+interface Props {
+  entry: FoodArtGalleryEntry;
+}
+
+const { entry } = Astro.props;
+---
+
+<GalleryCard entry={entry} basePath="food-art" />

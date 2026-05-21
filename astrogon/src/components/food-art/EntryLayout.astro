@@ -1,0 +1,13 @@
+---
+import GalleryEntryLayout from "@components/food-art/GalleryEntryLayout.astro";
+import type { FoodArtGalleryEntry, MenuItem } from "@/types";
+
+interface Props {
+  entry: FoodArtGalleryEntry;
+  browserMenu: MenuItem[];
+}
+
+const { entry, browserMenu } = Astro.props;
+---
+
+<GalleryEntryLayout entry={entry} browserMenu={browserMenu} />

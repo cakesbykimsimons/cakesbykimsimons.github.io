@@ -17,7 +17,6 @@ export async function getStaticPaths() {
 
   const paths = entries.map((entry) => {
     const cleanId = entry.id.replace("/-index", "");
-    const segments = cleanId.split("/");
 
     return {
       params: { id: cleanId },

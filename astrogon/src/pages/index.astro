@@ -1,9 +1,50 @@
 ---
-import { getIndex } from "@lib/contentParser";
-import EntryLayout from "@components/home/EntryLayout.astro";
-import type { HomeEntry } from "@/types";
+import CollectionLayout from "@components/blog/CollectionLayout.astro";
+import { getTaxaMultiset, getTaxa, getSidebarTaxa } from "@lib/taxonomyParser";
+import { getEntries, getIndex } from "@lib/contentParser";
+import { sortByDate } from "@lib/sortFunctions";
+import type { BlogEntry, HomeEntry } from "@/types";
 
-const entry = (await getIndex("home")) as HomeEntry;
+const { slug } = Astro.params;
+const currentPageIndex = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
+
+const homeEntry = (await getIndex("home")) as HomeEntry;
+const entryIndex = (await getIndex("blog")) as BlogEntry;
+const entries = (await getEntries("blog", sortByDate)) as BlogEntry[];
+
+const allCategories = await getTaxaMultiset("blog", "categories");
+const categories = await getTaxa("blog", "categories");
+const tags = await getSidebarTaxa("blog", "tags");
+
+const entriesPerPage = 4;
+const indexOfLastEntry = currentPageIndex * entriesPerPage;
+const indexOfFirstEntry = indexOfLastEntry - entriesPerPage;
+const currentEntries = entries.slice(indexOfFirstEntry, indexOfLastEntry);
+
+const pageCount: number = Math.ceil(entries.length / entriesPerPage);
+
+const socialLinks = {
+  facebook: homeEntry.data.facebook,
+  instagram: homeEntry.data.instagram,
+};
 ---
 
-<EntryLayout entry={entry} />
+<CollectionLayout
+  entryIndex={entryIndex}
+  entries={currentEntries}
+  categories={categories}
+  tags={tags}
+  allCategories={allCategories}
+  pageIndex={currentPageIndex}
+  pageCount={pageCount}
+  basePath="/page/"
+  homeUrl="/"
+  artistCard={true}
+  artistImage={homeEntry.data.image}
+  artistImageAlt={homeEntry.data.imageAlt}
+  objectPositionProp={homeEntry.data.objectPosition ?? "top center"}
+  artistName={homeEntry.data.title}
+  artistTagline={homeEntry.data.tagline ?? "Multi-award winning master cake artist & Food Network Champion"}
+  artistBio={homeEntry.data.bio ?? ""}
+  socialLinks={socialLinks}
+/>
