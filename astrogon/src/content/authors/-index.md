@@ -1,4 +1,4 @@
 ---
 title: Authors
-description: this is meta description
+description: Authors on Cakes by Kim Simons
 ---

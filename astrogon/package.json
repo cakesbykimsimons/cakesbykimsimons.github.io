@@ -2,7 +2,7 @@
   "name": "Astrogon",
   "version": "1.0.0",
   "description": "Template.",
-  "author": "Jane Doe",
+  "author": "Kim Simons",
   "license": "MIT",
   "packageManager": "npm@10.8.2",
   "scripts": {
@@ -42,7 +42,6 @@
     "remark-math": "^6.0.0",
     "remark-toc": "^8.0.1",
     "sharp": "^0.32.4",
-    "swiper": "^10.1.0",
     "tailwind-merge": "^2.5.2"
   },
   "devDependencies": {

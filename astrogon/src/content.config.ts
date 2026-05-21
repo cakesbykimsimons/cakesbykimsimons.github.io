@@ -134,23 +134,6 @@ const home = defineCollection({
     }),
 });
 
-const portfolio = defineCollection({
-  loader: glob({
-    pattern: "-index.{md,mdx}",
-    base: "./src/content/portfolio",
-  }),
-  schema: searchable.extend({
-    projects: z.array(
-      z.object({
-        title: z.string(),
-        github: z.string().optional(),
-        technologies: z.array(z.string()).optional(),
-        content: z.array(z.string()).optional(),
-      }),
-    ),
-  }),
-});
-
 const recipes = defineCollection({
   loader: glob({
     pattern: "**\/[^_]*.{md,mdx}",
@@ -239,7 +222,6 @@ export const collections = {
   artGallery,
   foodArtGallery,
   home,
-  portfolio,
   recipes,
   terms,
   "how-tos": howTos,
