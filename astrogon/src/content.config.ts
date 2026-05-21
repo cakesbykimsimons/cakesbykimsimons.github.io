@@ -77,6 +77,7 @@ const cakeGallery = defineCollection({
       imageAlt: z.string().default(""),
       hideToc: z.boolean().default(false),
       hideNav: z.boolean().default(false),
+      objectPosition: z.string().default("center"),
     }),
 });
 
@@ -91,6 +92,7 @@ const artGallery = defineCollection({
       imageAlt: z.string().default(""),
       hideToc: z.boolean().default(false),
       hideNav: z.boolean().default(false),
+      objectPosition: z.string().default("center"),
     }),
 });
 
@@ -105,6 +107,7 @@ const foodArtGallery = defineCollection({
       imageAlt: z.string().default(""),
       hideToc: z.boolean().default(false),
       hideNav: z.boolean().default(false),
+      objectPosition: z.string().default("center"),
     }),
 });
 
