@@ -2,6 +2,7 @@
 title: Sea Turtle Cake
 description: "A detailed look at this sculpted sea turtle cake creation."
 image: "@assets/cake-gallery/award-winning-cakes/show-cakes/sea-turtle-cake/7525255.jpg"
+imageAlt: "An elaborate, multi-tiered cake sculpted to resemble a vibrant coral reef, featuring a large sea turtle perched atop the highest peak, surrounded by colorful fondant corals, starfish, and other marine life."
 objectPosition: "50% 75%"
 hideToc: true
 ---

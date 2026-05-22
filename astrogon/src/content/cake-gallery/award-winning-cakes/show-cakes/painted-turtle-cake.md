@@ -2,6 +2,7 @@
 title: Painted Turtle Cake
 description: "A detailed look at this sculpted painted turtle cake creation."
 image: "@assets/cake-gallery/award-winning-cakes/show-cakes/painted-turtle-cake/7186173.jpg"
+imageAlt: "A detailed diorama depicts three painted turtles basking on a log surrounded by lily pads, koi fish, and a small bird perched on a branch."
 objectPosition: "50% 50%"
 hideToc: true
 ---

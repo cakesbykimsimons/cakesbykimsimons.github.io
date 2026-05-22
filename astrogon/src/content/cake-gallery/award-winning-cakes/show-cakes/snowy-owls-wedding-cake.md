@@ -2,6 +2,7 @@
 title: Snowy Owls Wedding Cake
 description: "A detailed look at this sculpted snowy owls wedding cake creation."
 image: "@assets/cake-gallery/award-winning-cakes/show-cakes/snowy-owls-wedding-cake/9404115.jpg"
+imageAlt: "Two sculpted snowy owls with yellow eyes perch on birch tree branches adorned with red ribbons, set against a black background above a painted winter landscape base."
 objectPosition: "50% 20%"
 hideToc: true
 ---
