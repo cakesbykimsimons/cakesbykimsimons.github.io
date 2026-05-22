@@ -1,7 +1,7 @@
 // Art Gallery Utilities — loaded separately from cake gallery
 import { createGalleryLoader } from "./galleryLoader";
 
-const allImages = import.meta.glob("@/assets/art/**/*.{jpg,jpeg}", {
+const allImages = import.meta.glob("@/assets/art/**/*.{jpg,jpeg,webp}", {
   eager: true,
   query: "?url",
   import: "default",

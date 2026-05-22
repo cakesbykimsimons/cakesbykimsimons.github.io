@@ -2,6 +2,7 @@
 title: Sea Play Cake
 description: "A detailed look at this sculpted sea play cake creation."
 image: "@assets/cake-gallery/award-winning-cakes/show-cakes/sea-play-cake/2578096.jpg"
+imageAlt: "A sculpted cake diorama depicts an underwater scene with a sandy base, colorful rocks, and green kelp rising to support a clear, ice-like platform where two otters rest."
 objectPosition: "50% 25%"
 hideToc: true
 ---

@@ -46,17 +46,35 @@ export const plainify = (content: string) => {
 // strip entities for plainify
 const htmlEntityDecoder = (htmlWithEntities: string) => {
   let entityList: { [key: string]: string } = {
-    "&nbsp;": " ",
+    "&nbsp;": "\u00A0",
     "&lt;": "<",
     "&gt;": ">",
     "&amp;": "&",
     "&quot;": '"',
     "&#39;": "'",
+    "&ldquo;": "\u201C",
+    "&rdquo;": "\u201D",
+    "&lsquo;": "\u2018",
+    "&rsquo;": "\u2019",
+    "&hellip;": "\u2026",
+    "&mdash;": "\u2014",
+    "&ndash;": "\u2013",
+    "&laquo;": "\u00AB",
+    "&raquo;": "\u00BB",
+    "&prime;": "\u2032",
+    "&Prime;": "\u2033",
+    "&bull;": "\u2022",
+    "&trade;": "\u2122",
+    "&copy;": "\u00A9",
+    "&reg;": "\u00AE",
+    "&frac12;": "\u00BD",
+    "&frac14;": "\u00BC",
+    "&frac34;": "\u00BE",
   };
   let htmlWithoutEntities: string = htmlWithEntities.replace(
-    /(&amp;|&lt;|&gt;|&quot;|&#39;)/g,
+    /&[a-zA-Z]+;|&#\d+;/g,
     (entity: string): string => {
-      return entityList[entity];
+      return entityList[entity] || entity;
     },
   );
   return htmlWithoutEntities;

@@ -1,7 +1,8 @@
 ---
-title: Sugar Glass Art
+title: Sugar
 description: "Translucent spun sugar and sugar glass sculptures including crystals, herons, and turtles."
-image: "@assets/food-art/sugar/010c34ec-0533-494f-bff2-a185aca5c998.jpeg"
-imageAlt: "Sugar art piece with quartz-like crystals and spun sugar"
+image: "@assets/food-art/sugar/8449829.jpg"
+imageAlt: "A sculpted sugar rustic wooden rocking horse with a live-edge seat and natural wood grain sits on a dining table."
+objectPosition: "50% 50%"
 hideToc: true
 ---

@@ -17,4 +17,3 @@ export const sortByTitle = (entries: GenericEntry[]): GenericEntry[] => {
   );
   return sortedEntries;
 };
-

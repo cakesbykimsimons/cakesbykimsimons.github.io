@@ -55,7 +55,7 @@ const { tags, categories, allCategories }: Props = Astro.props;
       <hr class="mb-2 -mt-1" />
       <ul>
         {
-          tags.map((tag: any) => {
+          tags.slice(0, 12).map((tag: any) => {
             return (
               <li class="inline-block m-1">
                 <Button
@@ -66,6 +66,18 @@ const { tags, categories, allCategories }: Props = Astro.props;
               </li>
             );
           })
+        }
+        {
+          tags.length > 12 && (
+            <li class="inline-block m-1 mt-3">
+              <a
+                href="/blog/tags"
+                class="text-sm underline underline-offset-2 opacity-70 hover:opacity-100 transition-opacity"
+              >
+                View all tags &rarr;
+              </a>
+            </li>
+          )
         }
       </ul>
     </div>

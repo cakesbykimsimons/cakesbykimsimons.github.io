@@ -50,15 +50,17 @@ export default function GalleryViewer({ images }: Props) {
       {images.map((image, i) => (
         <div key={i} className="gallery-item">
           <div
-            className="glass rounded-lg p-3 cursor-pointer"
+            className="glass rounded-lg p-3 cursor-pointer group"
             onClick={() => openLightbox(i)}
           >
-            <img
-              src={image.src}
-              alt={image.alt || image.caption}
-              className="w-full rounded"
-              loading="lazy"
-            />
+            <div className="overflow-hidden rounded">
+              <img
+                src={image.src}
+                alt={image.alt || image.caption}
+                className="w-full group-hover:scale-[105%] transition-all duration-300"
+                loading="lazy"
+              />
+            </div>
             {image.credit && (
               <p className="mt-1 text-xs italic text-right text-muted-foreground/60">
                 {image.credit}

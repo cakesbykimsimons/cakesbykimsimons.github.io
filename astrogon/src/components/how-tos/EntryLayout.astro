@@ -6,6 +6,7 @@ import GuideSidebarMeta from "@components/guides/GuideSidebarMeta.astro";
 import GuideItemList from "@components/guides/GuideItemList.astro";
 import GuideInstructions from "@components/guides/GuideInstructions.astro";
 import GuideNotes from "@components/guides/GuideNotes.astro";
+import GuideProducts from "@components/guides/GuideProducts.astro";
 import BaseLayout from "@components/base/BaseLayout.astro";
 import { upperHumanize, slugify } from "@lib/textConverter";
 import { render } from "astro:content";
@@ -27,6 +28,7 @@ const {
   cost,
   supplies,
   notes,
+  products,
 } = entry.data;
 
 // Assemble sidebar items
@@ -97,6 +99,8 @@ if (cost) {
           <GuideInstructions title="Instructions" Content={Content} />
           <!-- Notes -->
           <GuideNotes notes={notes || []} />
+          <!-- Products -->
+          <GuideProducts products={products} />
         </article>
         <!-- Share -->
         <div

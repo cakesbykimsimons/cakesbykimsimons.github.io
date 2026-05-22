@@ -1,0 +1,39 @@
+---
+interface ProductEntry {
+  brand: string;
+  items: string[];
+}
+
+interface Props {
+  products?: ProductEntry[];
+}
+
+const { products }: Props = Astro.props;
+---
+
+{
+  products && products.length > 0 && (
+    <section class="col basis-full p-2 min-w-72">
+      <div class="glass rounded-lg p-4 intersect:animate-fadeUp opacity-0">
+        <h2 class="mb-2">Products Used</h2>
+        <div class="row justify-center">
+          {products.map((entry) => (
+            <div class="row my-1">
+              <div class="flex gap-2 py-2 items-start">
+                <span class="text-txt-s dark:text-darkmode-txt-s flex-shrink-0">
+                  •
+                </span>
+                <span class="text-sm text-txt-p dark:text-darkmode-txt-p">
+                  <strong>{entry.brand}</strong>
+                  {": "}
+                  {entry.items.join(", ")}
+                </span>
+              </div>
+              <hr class="my-1" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
