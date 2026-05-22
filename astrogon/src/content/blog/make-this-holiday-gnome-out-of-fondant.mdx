@@ -1,6 +1,7 @@
 ---
 title: "Make this holiday gnome out of fondant"
 date: 2022-12-22
+howTo: ./holiday-gnome-out-of-fondant
 description: "My mother was born on Christmas Day, which is why her name is Carol. But to hear her tell it, that wasn’t necessarily a great thing—at least for her. She was the youngest of four in a …"
 categories: [Kim's Kitchen]
 tags: [christmas, fondant, holiday, tutorial]
@@ -12,7 +13,6 @@ showFeaturedImage: true
 
 import { Image } from "astro:assets";
 import img1 from "@assets/blog/make-this-holiday-gnome-out-of-fondant/20221222-083320-51fd-_Kim-_main.jpg";
-import img2 from "@assets/blog/make-this-holiday-gnome-out-of-fondant/20221222-083325-HOLIDAY_20GNOME_20SUPPLY_20LIST.jpg";
 import img3 from "@assets/blog/make-this-holiday-gnome-out-of-fondant/20221222-083336-HOLIDAY_20GNOME_201.jpg";
 import img4 from "@assets/blog/make-this-holiday-gnome-out-of-fondant/20221222-083338-HOLIDAY_20GNOME_202.jpg";
 import img5 from "@assets/blog/make-this-holiday-gnome-out-of-fondant/20221222-083339-HOLIDAY_20GNOME_203.jpg";
@@ -56,26 +56,7 @@ Oh, and don’t forget to throw some tinsel at the tree!
   client:load
 />
 
-<figure class="blog-image">
-  <Image src={img2} alt="" />
-  <figcaption></figcaption>
-</figure>
-<supply>
-Holiday Gnome
-Supply List
-Fondant: green, your choice of color for
-skin, white, and black (I prefer Satin Ice)
-Cereal treats
-Cake tools
-Rolling pin
-X-Acto blade
-Toothpicks
-Water
-Silicone mat
-Paint brushes
-Edible powdered colors for dusting (I prefer
-The Sugar Art Colors)
-</supply>
+<HowToEmbed howToId="holiday-gnome-out-of-fondant" />
 
 <figure class="blog-image">
   <Image src={img3} alt="" />
