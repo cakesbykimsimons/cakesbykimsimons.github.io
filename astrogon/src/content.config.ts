@@ -205,6 +205,14 @@ const howTos = defineCollection({
         )
         .optional(),
       notes: z.array(z.string()).optional(),
+      products: z
+        .array(
+          z.object({
+            brand: z.string(),
+            items: z.array(z.string()),
+          }),
+        )
+        .optional(),
     }),
 });
 

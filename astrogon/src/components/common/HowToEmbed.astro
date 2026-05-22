@@ -31,6 +31,7 @@ const {
   cost,
   supplies,
   notes,
+  products,
 } = howTo.data;
 
 // Assemble sidebar items for embed (like recipes)
@@ -147,6 +148,30 @@ if (cost) {
             Notes
           </h4>
           <EmbedNotes notes={notes} />
+        </section>
+      )
+    }
+    <!-- Products -->
+    {
+      products && products.length > 0 && (
+        <section class="mb-4">
+          <h4 class="text-lg font-semibold text-txt-p dark:text-darkmode-txt-p mb-2">
+            Products Used
+          </h4>
+          <div class="glass rounded-lg p-3">
+            {products.map((entry) => (
+              <div class="flex gap-2 py-1.5 border-b border-border dark:border-darkmode-border last:border-0">
+                <span class="text-txt-s dark:text-darkmode-txt-s flex-shrink-0">
+                  •
+                </span>
+                <span class="text-sm text-txt-p dark:text-darkmode-txt-p">
+                  <strong>{entry.brand}</strong>
+                  {": "}
+                  {entry.items.join(", ")}
+                </span>
+              </div>
+            ))}
+          </div>
         </section>
       )
     }
