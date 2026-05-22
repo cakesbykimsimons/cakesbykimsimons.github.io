@@ -62,19 +62,19 @@ if (pageIDs) {
 {
   pageCount > 1 && (
     <nav class="flex items-center justify-center pb-8">
-      <div class="row glass rounded-md p-2 m-2 space-x-2 intersect:animate-fadeUp opacity-0">
+      <div class="flex flex-wrap items-center justify-center gap-2 glass rounded-md p-2 m-2 intersect:animate-fadeUp opacity-0">
         {/* previous */}
         {prevPage ? (
           <a
             href={prevPage}
-            class="col rounded px-2 py-1.5 text-txt-p dark:text-darkmode-txt-p"
+            class="rounded px-2 py-1.5 text-txt-p dark:text-darkmode-txt-p"
             aria-label="Previous"
           >
             <FaArrowLeft className="inline-block" />
           </a>
         ) : (
           <span
-            class="col rounded px-2 py-1.5 text-txt-light dark:text-darkmode-txt-light"
+            class="rounded px-2 py-1.5 text-txt-light dark:text-darkmode-txt-light"
             aria-label="Previous"
           >
             <FaArrowLeft className="inline-block" />
@@ -84,7 +84,7 @@ if (pageIDs) {
         {pageIDs ? (
           <div
             aria-current="page"
-            class="col rounded px-4 py-2 text-txt-p  dark:text-darkmode-txt-p"
+            class="rounded px-4 py-2 text-txt-p  dark:text-darkmode-txt-p"
           >
             {pageIndex + 1}
           </div>
@@ -93,7 +93,7 @@ if (pageIDs) {
             pagination === pageIndex ? (
               <span
                 aria-current="page"
-                class="col rounded px-4 py-2 font-semibold text-txt-p dark:text-darkmode-txt-p border border-txt-light dark:border-darkmode-txt-light"
+                class="rounded px-4 py-2 font-semibold text-txt-p dark:text-darkmode-txt-p border border-txt-light dark:border-darkmode-txt-light"
               >
                 {pagination}
               </span>
@@ -101,7 +101,7 @@ if (pageIDs) {
               <a
                 href={getPageUrl(pagination)}
                 aria-current="page"
-                class="col rounded px-4 py-2 font-semibold text-txt-p dark:text-darkmode-txt-p"
+                class="rounded px-4 py-2 font-semibold text-txt-p dark:text-darkmode-txt-p"
               >
                 {pagination}
               </a>
@@ -113,14 +113,14 @@ if (pageIDs) {
         {nextPage ? (
           <a
             href={nextPage}
-            class="col rounded px-2 py-1.5 text-txt-p dark:text-darkmode-txt-p"
+            class="rounded px-2 py-1.5 text-txt-p dark:text-darkmode-txt-p"
             aria-label="Next"
           >
             <FaArrowRight className="inline-block" />
           </a>
         ) : (
           <span
-            class="col rounded px-2 py-1.5 text-txt-light dark:text-darkmode-txt-light"
+            class="rounded px-2 py-1.5 text-txt-light dark:text-darkmode-txt-light"
             aria-label="Next"
           >
             <FaArrowRight className="inline-block" />
