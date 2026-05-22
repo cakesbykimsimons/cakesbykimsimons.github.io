@@ -53,4 +53,3 @@ export type MenuItem = {
   id: string;
   children: MenuItem[];
 };
-

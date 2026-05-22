@@ -60,7 +60,7 @@ const {
         <!-- blog posts -->
         <div class="col-12 lg:col-8 lg:p-0">
           <Fragment>
-            {artistCard && pageIndex <= 1 && artistBio && (
+            {(artistCard && pageIndex <= 1 && artistBio) && (
               <div class="mb-4 lg:hidden">
                 <ArtistCard
                   image={artistImage}
@@ -74,11 +74,13 @@ const {
               </div>
             )}
           </Fragment>
-          {entries.map((entry) => (
-            <div class="mb-4">
-              <BlogCard entry={entry} />
-            </div>
-          ))}
+          {
+            entries.map((entry) => (
+              <div class="mb-4">
+                <BlogCard entry={entry} />
+              </div>
+            ))
+          }
           <Pagination
             collection={collection}
             basePath={basePath}
