@@ -44,7 +44,8 @@ export const plainify = (content: string) => {
 };
 
 // strip entities for plainify
-const htmlEntityDecoder = (htmlWithEntities: string) => {
+export const htmlEntityDecoder = (htmlWithEntities: string | undefined | null) => {
+  if (!htmlWithEntities) return htmlWithEntities;
   let entityList: { [key: string]: string } = {
     "&nbsp;": "\u00A0",
     "&lt;": "<",

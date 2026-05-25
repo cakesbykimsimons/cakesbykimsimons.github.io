@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import type { BlogEntry } from "@/types";
-import { upperHumanize, plainify, slugify } from "@lib/textConverter";
+import { upperHumanize, plainify, slugify, htmlEntityDecoder } from "@lib/textConverter";
 import {
   FaRegFolder,
   FaRegClock,
@@ -33,7 +33,7 @@ const descriptionLength = 200;
 const entryDate = date ? formatDate(date) : null;
 const entryReadingTime = readingTime(entry.body!, complexity);
 const entryDescription =
-  description ||
+  htmlEntityDecoder(description) ||
   (autodescription ? plainify(entry.body!.slice(0, descriptionLength)) : null);
 ---
 

@@ -1,7 +1,7 @@
 import type { SearchableEntry } from "@/types";
 import Fuse from "fuse.js";
 import React, { useEffect, useRef, useState } from "react";
-import { plainify } from "@lib/textConverter";
+import { plainify, htmlEntityDecoder } from "@lib/textConverter";
 
 const descriptionLength = 200;
 
@@ -97,7 +97,7 @@ const SearchPage = ({ searchList }: Props) => {
                     <a href={"/" + getPath(item)}>{item.data.title}</a>
                   </h4>
                   {item.data.description && (
-                    <p className="">{item.data.description}</p>
+                    <p className="">{htmlEntityDecoder(item.data.description)}</p>
                   )}
                   {!item.data.description &&
                     item.data.autodescription &&
