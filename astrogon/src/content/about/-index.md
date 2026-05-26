@@ -2,6 +2,7 @@
 title: Kim Simons | Award-Winning Cake & Sugar Artist
 description: Multi-award winning master cake artist and Food Network champion (Holiday Wars 2019, Cake Wars - Star Wars 2016). Recognized as a Top-Ten Cake Artist in North America, Kim creates breathtakingly realistic sugar sculptures and unique cake designs.
 image: "@assets/profile/kim-simons.webp"
+imageAlt: Kim Simons
 draft: false
 ---
 

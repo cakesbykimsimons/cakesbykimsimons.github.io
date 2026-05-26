@@ -1,6 +1,7 @@
 ---
 title: Kim Simons
 image: "@assets/profile/kim-simons.webp"
+imageAlt: Kim Simons
 email: kame4@hotmail.com
 social:
   facebook: "https://www.facebook.com/kimsimons"
