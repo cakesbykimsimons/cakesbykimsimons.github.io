@@ -1,7 +1,7 @@
 // Cake Gallery Utilities
 import { createGalleryLoader } from "./galleryLoader";
 
-const allImages = import.meta.glob(
+const cakeImages = import.meta.glob(
   "@/assets/cake-gallery/**/*.{jpg,jpeg,webp}",
   {
     eager: true,
@@ -9,6 +9,17 @@ const allImages = import.meta.glob(
     import: "default",
   },
 );
+
+const howToImages = import.meta.glob(
+  "@/assets/how-tos/**/*.{jpg,jpeg,webp}",
+  {
+    eager: true,
+    query: "?url",
+    import: "default",
+  },
+);
+
+const allImages = { ...cakeImages, ...howToImages };
 
 const allGalleryConfigs = import.meta.glob(
   "@/assets/cake-gallery/**/gallery.json",
