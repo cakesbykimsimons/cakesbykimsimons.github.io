@@ -2,7 +2,7 @@
 import BaseLayout from "@components/base/BaseLayout.astro";
 import BlogCard from "@components/blog/Card.astro";
 import Share from "@components/common/Share.astro";
-import { plainify } from "@lib/textConverter";
+import { plainify, htmlEntityDecoder } from "@lib/textConverter";
 import type { BlogEntry } from "@/types";
 import TableOfContents from "@components/common/TableOfContents.astro";
 import { render } from "astro:content";
@@ -33,7 +33,7 @@ const actuallyHideToc =
   headings.filter((heading) => heading.depth <= tocDepth).length === 0;
 
 const entryDescription =
-  description ||
+  htmlEntityDecoder(description) ||
   (autodescription ? plainify(entry.body!.slice(0, descriptionLength)) : null);
 ---
 
