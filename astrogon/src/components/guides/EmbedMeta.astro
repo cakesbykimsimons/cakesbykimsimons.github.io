@@ -1,0 +1,72 @@
+---
+import type { Component } from "react";
+import {
+  FaRegClock,
+  FaBlender,
+  FaUtensils,
+  FaSeedling,
+  FaRegUserCircle,
+  FaPaintBrush,
+  FaTools,
+  FaDollarSign,
+  FaStar,
+  FaFire,
+  FaLightbulb,
+} from "react-icons/fa";
+
+interface SidebarItem {
+  icon?: string;
+  label: string;
+  value: string;
+  href?: string;
+}
+
+interface Props {
+  items: SidebarItem[];
+}
+
+const { items }: Props = Astro.props;
+
+const iconMap: Record<string, Component> = {
+  clock: FaRegClock,
+  blender: FaBlender,
+  utensils: FaUtensils,
+  seedling: FaSeedling,
+  user: FaRegUserCircle,
+  paintbrush: FaPaintBrush,
+  tools: FaTools,
+  dollar: FaDollarSign,
+  star: FaStar,
+  fire: FaFire,
+  lightbulb: FaLightbulb,
+};
+
+const hasItems = items.length > 0;
+---
+
+{
+  hasItems && (
+    <div class="glass rounded-lg p-3 flex-shrink-0">
+      {items.map((item) => (
+        <div class="flex items-center text-sm text-txt-s dark:text-darkmode-txt-s">
+          {item.icon &&
+            iconMap[item.icon] &&
+            (() => {
+              const Icon = iconMap[item.icon];
+              return <Icon className="mr-1.5 -mt-0.5 inline-block" />;
+            })()}
+          {item.href ? (
+            <a href={item.href} class="hover:underline">
+              {item.label || item.value}
+            </a>
+          ) : (
+            <>
+              {item.label && <span>{item.label}</span>}
+              {!item.label && <span>{item.value}</span>}
+            </>
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}

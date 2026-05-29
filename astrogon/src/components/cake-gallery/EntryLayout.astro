@@ -1,0 +1,13 @@
+---
+import GalleryEntryLayout from "@components/cake-gallery/GalleryEntryLayout.astro";
+import type { CakeGalleryEntry, MenuItem } from "@/types";
+
+interface Props {
+  entry: CakeGalleryEntry;
+  browserMenu: MenuItem[];
+}
+
+const { entry, browserMenu } = Astro.props;
+---
+
+<GalleryEntryLayout entry={entry} browserMenu={browserMenu} />

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /api/*
+
+Sitemap: https://www.cakesbykimsimons.com/sitemap-index.xml

@@ -1,0 +1,47 @@
+---
+import BaseLayout from "@components/base/BaseLayout.astro";
+import type { ArtGalleryEntry, MenuItem } from "@/types";
+import GalleryBrowser from "@components/art/Browser.astro";
+import ImageGallery from "@components/gallery/ImageGallery.astro";
+import { render } from "astro:content";
+
+interface Props {
+  entry: ArtGalleryEntry;
+  browserMenu: MenuItem[];
+}
+
+const { entry, browserMenu } = Astro.props;
+const { Content, headings } = await render(entry);
+const { title, description, image } = entry.data;
+
+// Strip the -index suffix and any leading slash to get the art slug for image lookup
+const artSlug = entry.id.replace(/\/?-index$/, "");
+---
+
+<BaseLayout title={title} image={image?.src} description={description}>
+  <section class="flex container p-4">
+    <div
+      class="sticky top-[5rem] mr-4 max-h-static_sidemenu hidden md:flex md:w-1/4 lg:w-1/4"
+    >
+      <GalleryBrowser menu={browserMenu} currentPage={artSlug} />
+    </div>
+    <div class="w-full md:w-3/4 lg:w-3/4">
+      <article class="">
+        <section class="">
+          <div
+            class="glass mb-8 p-4 rounded-lg intersect:animate-fade opacity-0 intersect-no-queue"
+          >
+            <h1>{title}</h1>
+          </div>
+        </section>
+        <section class="content mb-4 glass px-4 rounded-lg">
+          <Content />
+        </section>
+        <ImageGallery entryId={artSlug} galleryType="art" />
+        <div class="md:hidden mt-8">
+          <GalleryBrowser menu={browserMenu} currentPage={artSlug} />
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

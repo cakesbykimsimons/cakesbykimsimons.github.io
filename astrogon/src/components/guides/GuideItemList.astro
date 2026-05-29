@@ -1,0 +1,111 @@
+---
+import { replaceFractions } from "@lib/textConverter";
+
+interface FlatItems {
+  list: string[];
+  qty?: string[];
+}
+
+interface GroupedItem {
+  label: string;
+  list: string[];
+  qty?: string[];
+}
+
+interface Props {
+  title: string;
+  items?: FlatItems;
+  groups?: GroupedItem[];
+  columns?: 2 | 3;
+  replaceFractions?: boolean;
+}
+
+const {
+  title,
+  items,
+  groups,
+  columns = 2,
+  replaceFractions: doReplace = true,
+}: Props = Astro.props;
+
+const shouldReplace = (str: string) =>
+  doReplace ? replaceFractions(str) : str;
+---
+
+{
+  items || groups ? (
+    <section class="col basis-1/3 p-2 min-w-72">
+      <div class="glass rounded-lg p-4 intersect:animate-fadeUp opacity-0">
+        <h2 set:html={title} class="mb-2" />
+
+        {groups ? (
+          groups.map((group) => (
+            <div class="mb-3">
+              <h3
+                set:html={group.label}
+                class="text-sm font-semibold text-txt-s dark:text-darkmode-txt-s mb-1"
+              />
+              {columns === 3 ? (
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-y-2">
+                  {group.list.map((it: string, index: number) => (
+                    <div
+                      class="text-txt-p dark:text-darkmode-txt-p"
+                      set:html={shouldReplace(it)}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <div class="row justify-center">
+                  {group.list.map((it: string, index: number) => (
+                    <div class="row my-1">
+                      <div
+                        class="col-7 text-txt-p dark:text-darkmode-txt-p"
+                        set:html={shouldReplace(group.list[index])}
+                      />
+                      {group.qty && group.qty[index] && (
+                        <div
+                          class="col-5 text-right text-txt-s dark:text-darkmode-txt-s"
+                          set:html={shouldReplace(group.qty[index])}
+                        />
+                      )}
+                      <hr class="my-1" />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))
+        ) : items ? (
+          columns === 3 ? (
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-y-2">
+              {items.list!.map((it: string, index: number) => (
+                <div
+                  class="text-txt-p dark:text-darkmode-txt-p"
+                  set:html={shouldReplace(items.list![index])}
+                />
+              ))}
+            </div>
+          ) : (
+            <div class="row justify-center">
+              {items.list!.map((it: string, index: number) => (
+                <div class="row my-1">
+                  <div
+                    class="col-7 text-txt-p dark:text-darkmode-txt-p"
+                    set:html={shouldReplace(items.list![index])}
+                  />
+                  {items.qty && items.qty[index] && (
+                    <div
+                      class="col-5 text-right text-txt-s dark:text-darkmode-txt-s"
+                      set:html={shouldReplace(items.qty[index])}
+                    />
+                  )}
+                  <hr class="my-1" />
+                </div>
+              ))}
+            </div>
+          )
+        ) : null}
+      </div>
+    </section>
+  ) : null
+}

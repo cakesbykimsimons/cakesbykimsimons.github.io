@@ -1,0 +1,29 @@
+---
+import { replaceFractions } from "@lib/textConverter";
+
+interface Props {
+  notes: string[];
+}
+
+const { notes }: Props = Astro.props;
+---
+
+{
+  notes && notes.length > 0 && (
+    <section class="mb-2">
+      <div class="glass rounded-lg p-3">
+        {notes.map((note: string) => (
+          <div class="flex gap-2 py-1.5 border-b border-border dark:border-darkmode-border last:border-0">
+            <span class="text-txt-s dark:text-darkmode-txt-s flex-shrink-0">
+              •
+            </span>
+            <span
+              class="text-sm text-txt-p dark:text-darkmode-txt-p"
+              set:html={replaceFractions(note)}
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}

@@ -1,0 +1,30 @@
+---
+import GalleryViewer from "@components/gallery/GalleryViewer";
+import { getImagesForCake } from "@lib/cakeGalleryUtils";
+import { getImagesForArt } from "@lib/artGalleryUtils";
+import { getImagesForFoodArt } from "@lib/foodArtGalleryUtils";
+
+interface Props {
+  entryId: string;
+  galleryType: "cake" | "art" | "food-art";
+}
+
+const { entryId, galleryType } = Astro.props;
+
+const images =
+  galleryType === "cake"
+    ? await getImagesForCake(entryId)
+    : galleryType === "art"
+      ? await getImagesForArt(entryId)
+      : await getImagesForFoodArt(entryId);
+---
+
+<GalleryViewer
+  client:load
+  images={images.map((img) => ({
+    src: img.src,
+    caption: img.caption,
+    credit: img.credit,
+    alt: img.alt,
+  }))}
+/>

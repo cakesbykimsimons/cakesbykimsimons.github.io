@@ -1,0 +1,24 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  objectPosition?: string;
+}
+
+const { src, alt, objectPosition } = Astro.props;
+---
+
+<div
+  class="step-image-inline"
+  data-alt={alt}
+  {...(objectPosition && { "data-cover": true })}
+>
+  <Image
+    src={src}
+    alt={alt}
+    loading="lazy"
+    {...(objectPosition && { style: `object-position: ${objectPosition}` })}
+  />
+</div>

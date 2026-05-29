@@ -1,0 +1,97 @@
+---
+import type { Component } from "react";
+import {
+  FaRegClock,
+  FaBlender,
+  FaUtensils,
+  FaSeedling,
+  FaRegUserCircle,
+  FaPaintBrush,
+  FaTools,
+  FaDollarSign,
+  FaStar,
+  FaFire,
+  FaLightbulb,
+} from "react-icons/fa";
+import { markdownify } from "@lib/textConverter";
+
+interface SidebarItem {
+  icon?: string;
+  label: string;
+  value: string;
+  href?: string;
+}
+
+interface Props {
+  items: SidebarItem[];
+  description?: string;
+}
+
+const { items, description }: Props = Astro.props;
+
+const iconMap: Record<string, Component> = {
+  clock: FaRegClock,
+  blender: FaBlender,
+  utensils: FaUtensils,
+  seedling: FaSeedling,
+  user: FaRegUserCircle,
+  paintbrush: FaPaintBrush,
+  tools: FaTools,
+  dollar: FaDollarSign,
+  star: FaStar,
+  fire: FaFire,
+  lightbulb: FaLightbulb,
+};
+
+const hasItems = items.length > 0;
+---
+
+{
+  hasItems && (
+    <section class="col basis-1/3 p-2 min-w-72">
+      <div class="glass rounded-lg p-2 h-full intersect:animate-fadeUp opacity-0">
+        {items.map((item) => (
+          <div class="m-4 text-sm text-txt-s dark:text-darkmode-txt-s">
+            {item.icon &&
+              iconMap[item.icon] &&
+              (() => {
+                const Icon = iconMap[item.icon];
+                return <Icon className={"mr-2 -mt-1 inline-block"} />;
+              })()}
+            {item.href ? (
+              <a href={item.href} class="hover:underline">
+                {item.label && <span>{item.label}</span>}
+                {!item.label && <span>{item.value}</span>}
+              </a>
+            ) : (
+              <>
+                {item.label && <span>{item.label}</span>}
+                {!item.label && <span>{item.value}</span>}
+              </>
+            )}
+          </div>
+        ))}
+        {description && (
+          <div>
+            {hasItems ? <hr class="my-2" /> : null}
+            <div class="m-4">
+              <div set:html={markdownify(description)} />
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  )
+}
+
+{
+  !hasItems && description && (
+    <section class="col basis-1/3 p-2 min-w-72">
+      <div class="glass rounded-lg p-2 h-full intersect:animate-fadeUp opacity-0">
+        <div class="m-4">
+          <div set:html={markdownify(description)} />
+        </div>
+      </div>
+    </section>
+  )
+}

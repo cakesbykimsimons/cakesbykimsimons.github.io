@@ -1,0 +1,21 @@
+---
+import CollectionLayout from "@components/food-art/CollectionLayout.astro";
+import { getIndex, getGroups, getRootEntries } from "@lib/contentParser";
+import type { FoodArtGalleryEntry } from "@/types";
+import { sortByTitle } from "@lib/sortFunctions";
+
+const collectionIndex = (await getIndex(
+  "foodArtGallery",
+)) as FoodArtGalleryEntry;
+const groupIndices = (await getGroups(
+  "foodArtGallery",
+  sortByTitle,
+)) as FoodArtGalleryEntry[];
+const rootEntries = (await getRootEntries(
+  "foodArtGallery",
+  sortByTitle,
+)) as FoodArtGalleryEntry[];
+const allEntries = [...groupIndices, ...rootEntries];
+---
+
+<CollectionLayout entries={allEntries} collectionIndex={collectionIndex} />

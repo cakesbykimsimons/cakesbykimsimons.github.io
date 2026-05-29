@@ -1,0 +1,18 @@
+---
+import GalleryBrowser from "@components/gallery/Browser.astro";
+import type { MenuItem } from "@/types";
+
+interface Props {
+  menu: MenuItem[];
+  currentPage: string;
+}
+
+const { menu, currentPage } = Astro.props;
+---
+
+<GalleryBrowser
+  menu={menu}
+  currentPage={currentPage}
+  basePath="cake-gallery"
+  title="Cake Gallery"
+/>

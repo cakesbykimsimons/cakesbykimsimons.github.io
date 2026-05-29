@@ -1,0 +1,17 @@
+---
+import GalleryCollectionLayout from "@components/gallery/CollectionLayout.astro";
+import type { CakeGalleryEntry } from "@/types";
+
+interface Props {
+  collectionIndex: CakeGalleryEntry;
+  entries: CakeGalleryEntry[];
+}
+
+const { collectionIndex, entries } = Astro.props;
+---
+
+<GalleryCollectionLayout
+  collectionIndex={collectionIndex}
+  entries={entries}
+  basePath="cake-gallery"
+/>

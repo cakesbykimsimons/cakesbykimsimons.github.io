@@ -1,0 +1,35 @@
+---
+import { replaceFractions } from "@lib/textConverter";
+
+interface Props {
+  notes: string[];
+}
+
+const { notes }: Props = Astro.props;
+---
+
+{
+  notes && notes.length > 0 && (
+    <section class="col basis-full p-2 min-w-72">
+      <div class="glass rounded-lg p-4 intersect:animate-fadeUp opacity-0">
+        <h2 set:html="Notes" class="mb-2" />
+        <div class="row justify-center">
+          {notes.map((it: string, index: number) => (
+            <div class="row my-1">
+              <div class="flex gap-2 py-2 items-start">
+                <span class="text-txt-s dark:text-darkmode-txt-s flex-shrink-0">
+                  •
+                </span>
+                <span
+                  class="text-sm text-txt-p dark:text-darkmode-txt-p"
+                  set:html={replaceFractions(it)}
+                />
+              </div>
+              <hr class="my-1" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

@@ -1,0 +1,17 @@
+---
+title: Snowy Owls Wedding Cake
+description: "A detailed look at this sculpted snowy owls wedding cake creation."
+image: "@assets/cake-gallery/award-winning-cakes/show-cakes/snowy-owls-wedding-cake/9404115.jpg"
+imageAlt: "Two sculpted snowy owls with yellow eyes perch on birch tree branches adorned with red ribbons, set against a black background above a painted winter landscape base."
+objectPosition: "50% 20%"
+hideToc: true
+---
+
+#### 2012 - Connecticut Cake Competition, Hartford. CT.
+
+**Show Theme** - _The Great Outdoors_
+
+- 1st Place in Wedding Cakes, Master's Division
+- Grand Prize Winner of Wedding Cake Competition
+
+_A wedding cake for a couple who enjoy the great outdoors and share a love for birdwatching. The majestic snowy owl is a rare sighting for birdwatchers. In Native American culture, the owl is a symbol of a new beginning. The snowy owls themselves often mate for life as well._

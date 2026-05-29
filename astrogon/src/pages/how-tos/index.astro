@@ -1,0 +1,25 @@
+---
+import CollectionLayout from "@components/how-tos/CollectionLayout.astro";
+import { getIndex, getEntries } from "@lib/contentParser";
+import { sortByDate } from "@lib/sortFunctions";
+import type { HowTosEntry } from "@/types";
+
+const entryIndex = (await getIndex("how-tos")) as HowTosEntry;
+const entries = (await getEntries("how-tos", sortByDate)) as HowTosEntry[];
+
+const { slug } = Astro.params;
+
+const entriesPerPage = 6;
+const currentPageIndex = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
+const pageCount = Math.ceil(entries.length / entriesPerPage);
+const indexOfLastEntry = currentPageIndex * entriesPerPage;
+const indexOfFirstEntry = indexOfLastEntry - entriesPerPage;
+const currentEntries = entries.slice(indexOfFirstEntry, indexOfLastEntry);
+---
+
+<CollectionLayout
+  entryIndex={entryIndex}
+  entries={currentEntries}
+  pageIndex={currentPageIndex}
+  pageCount={pageCount}
+/>

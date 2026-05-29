@@ -1,0 +1,19 @@
+---
+import CollectionLayout from "@components/art/CollectionLayout.astro";
+import { getIndex, getGroups, getRootEntries } from "@lib/contentParser";
+import type { ArtGalleryEntry } from "@/types";
+import { sortByTitle } from "@lib/sortFunctions";
+
+const collectionIndex = (await getIndex("artGallery")) as ArtGalleryEntry;
+const groupIndices = (await getGroups(
+  "artGallery",
+  sortByTitle,
+)) as ArtGalleryEntry[];
+const rootEntries = (await getRootEntries(
+  "artGallery",
+  sortByTitle,
+)) as ArtGalleryEntry[];
+const allEntries = [...groupIndices, ...rootEntries];
+---
+
+<CollectionLayout entries={allEntries} collectionIndex={collectionIndex} />
